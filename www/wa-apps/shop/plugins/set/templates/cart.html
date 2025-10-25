@@ -1,0 +1,25 @@
+<div id="shop-set-plugin-cart-wr">
+{if $cart_sets_items}
+{foreach $cart_sets_items as $set_id=>$set}
+{foreach $set.items as $item}
+<script type="text/html" class="set-cart-item-tmpl" data-id="{$item.id}" data-quantity="{$item.quantity}">
+<div class="set-cart-item-info" data-set-item-quantity="{$item.set_item_count}">
+	<p>{$item.set_item_count} шт. товара из {$item.quantity} <a href="#" data-id="{$set_id}">в комплекте №{$set_id}</a></p>
+</div>
+</script>
+{/foreach}
+{/foreach}
+{/if}
+
+{if $items_without_set}
+{foreach $items_without_set as $id=>$set_ids}
+{foreach $set_ids as $set_id}
+<script type="text/html" class="set-cart-item-tmpl" data-id="{$id}">
+<div class="set-cart-item-info" data-set-item-quantity="0">
+	<p><a href="#" data-id="{$set_id}">Добавить комплект №{$set_id}</a></p>
+</div>
+</script>
+{/foreach}
+{/foreach}
+{/if}
+</div>

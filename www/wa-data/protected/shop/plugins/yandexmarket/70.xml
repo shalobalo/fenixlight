@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2015-07-03 12:54">
+  <shop>
+    <name>Fenix-russia.ru</name>
+    <company>Fenix-russia.ru</company>
+    <url>https://fenix-russia.ru/</url>
+    <phone>+7 (499) 322-25-80</phone>
+    <platform>Shop-Script</platform>
+    <version>5.2.3.33159</version>
+    <currencies>
+      <currency id="RUB" rate="1.00"/>
+    </currencies>
+    <categories>
+      <category id="449">Акция</category>
+      <category id="416">Новинки</category>
+      <category id="400">Фонари</category>
+      <category id="414" parentId="400">TK серия</category>
+      <category id="408" parentId="400">E серия</category>
+      <category id="410" parentId="400">PD серия</category>
+      <category id="409" parentId="400">LD серия</category>
+      <category id="415" parentId="400">UC серия</category>
+      <category id="412" parentId="400">RC серия</category>
+      <category id="411" parentId="400">MC серия</category>
+      <category id="407" parentId="400">CL серия</category>
+      <category id="413" parentId="400">SD серия</category>
+      <category id="401">Налобные фонари</category>
+      <category id="406" parentId="401">HP серия</category>
+      <category id="405" parentId="401">HL серия</category>
+      <category id="402">Велосипедные фонари</category>
+      <category id="404" parentId="402">BC серия</category>
+      <category id="403" parentId="402">BT серия</category>
+      <category id="442">Фонари по назначению</category>
+      <category id="444" parentId="442">Велофары</category>
+      <category id="446" parentId="442">Для охоты и рыбалки</category>
+      <category id="437" parentId="442">Карманные</category>
+      <category id="440" parentId="442">Кемпинговые</category>
+      <category id="443" parentId="442">Налобные</category>
+      <category id="441" parentId="442">Подводные</category>
+      <category id="447" parentId="442">Подствольные</category>
+      <category id="439" parentId="442">Сверхмощные</category>
+      <category id="436" parentId="442">Тактические</category>
+      <category id="448" parentId="442">Туристические</category>
+      <category id="438" parentId="442">Универсальные</category>
+      <category id="422">Фонари по типу элементов питания</category>
+      <category id="423" parentId="422">18650</category>
+      <category id="424" parentId="422">CR123</category>
+      <category id="445" parentId="422">16340</category>
+      <category id="434" parentId="422">26650</category>
+      <category id="426" parentId="422">AAA</category>
+      <category id="425" parentId="422">AA</category>
+      <category id="428" parentId="422">D</category>
+      <category id="427" parentId="422">Оригинальный аккумулятор</category>
+      <category id="421">Фонари по мощности</category>
+      <category id="429" parentId="421">До 100 Люмен</category>
+      <category id="430" parentId="421">До 300 Люмен</category>
+      <category id="431" parentId="421">До 900 Люмен</category>
+      <category id="432" parentId="421">До 2000 Люмен</category>
+      <category id="433" parentId="421">От 2000 Люмен</category>
+      <category id="21">Аксессуары для фонарей</category>
+      <category id="417" parentId="21">Батареи и аккумуляторы</category>
+      <category id="418" parentId="21">Зарядные устройства</category>
+      <category id="219" parentId="21">Фильтры</category>
+      <category id="224" parentId="21">Линзы</category>
+      <category id="223" parentId="21">Крепления</category>
+      <category id="222" parentId="21">Тактические кнопки</category>
+      <category id="435" parentId="21">Секции корпуса</category>
+      <category id="221" parentId="21">Чехлы</category>
+    </categories>
+    <offers>
+      <offer available="true" id="484">
+        <url>https://fenix-russia.ru/vynosnaya-takticheskaya-knopka-dlya-fenix-tk/</url>
+        <price>1360.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/750/750.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3061/3061.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3062/3062.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3064/3064.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3841/3841.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3842/3842.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3843/3843.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/84/04/484/images/3844/3844.970.png</picture>
+        <name>Выносная тактическая кнопка Fenix AR102</name>
+        <description>Выносная тактическая тактическая кнопка крепится к подствольным фонарям, чтобы пользователь имел возможность включать свет, не отвлекаясь от прицеливания. В первую очередь, этот аксессуар будет интересен охотникам и любителям спортивной стрельбы.</description>
+      </offer>
+      <offer available="true" id="964">
+        <url>https://fenix-russia.ru/velosipednoe-kreplenie-fenix-alb-10/</url>
+        <price>1240.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3935/3935.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3953/3953.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3954/3954.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3955/3955.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3956/3956.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3957/3957.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3958/3958.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3959/3959.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/64/09/964/images/3960/3960.970.jpg</picture>
+        <name>Велосипедное крепление Fenix ALB-10</name>
+        <description>Универсальное велосипедное крепление Fenix ALB-10 подходит для рулей разного диаметра и совместимо с обширным списком моделей фонарей. Этот аксессуар успешно решает проблему обеспечения качественного освещения для велосипедистов.</description>
+      </offer>
+      <offer available="true" id="1912">
+        <url>https://fenix-russia.ru/zaryadnoe-ustroystvo-fenix-charger-are-c1-2x18650/</url>
+        <price>1650.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6692/6692.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6693/6693.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6694/6694.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6695/6695.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6696/6696.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6697/6697.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6698/6698.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6699/6699.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6700/6700.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/12/19/1912/images/6701/6701.970.jpg</picture>
+        <name>Зарядное устройство Fenix Charger ARE-C1 2x18650</name>
+        <description>Зарядное устройство Charger ARE-C1 от компании Fenix, предназначенное для зарядки двух элементов питания стандарта 18650.</description>
+      </offer>
+      <offer available="true" id="1913">
+        <url>https://fenix-russia.ru/zaryadnoe-ustroystvo-fenix-charger-are-c2/</url>
+        <price>3360.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6702/6702.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6703/6703.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6704/6704.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6705/6705.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6706/6706.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6707/6707.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6708/6708.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6709/6709.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6710/6710.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/19/1913/images/6711/6711.970.jpg</picture>
+        <name>Зарядное устройство Fenix Charger ARE-C2 (16850, 16340, 14500, 26650, AA, ААА, С)</name>
+        <description>Fenix Charger ARE-C2 — это многозадачное зарядное устройство, которое может работать с аккумуляторами разного размера и типа. Требуемый режим работы зарядка выбирает самостоятельно, что способствует увеличению срока эксплуатации аккумуляторов.</description>
+      </offer>
+      <offer available="true" id="1907">
+        <url>https://fenix-russia.ru/akkumulyator-18650-2600mah-fenix-s-zashchitoy/</url>
+        <price>1090.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6672/6672.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6612/6612.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6614/6614.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6616/6616.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6609/6609.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6610/6610.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6615/6615.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6617/6617.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/07/19/1907/images/6611/6611.970.jpg</picture>
+        <name>Аккумулятор 18650 Fenix ARB-L2 (2600 mAh)</name>
+        <description>Фирменные аккумуляторы ARB-L2 стандарта 18650 являются отличным вариантом для электропитания мощных и ярких фонарей этого бренда. Их емкость достигает 2600 мАч, а большое количество циклов перезарядки выгодно отличает ARB-L2 от некоторых других элементов питания.</description>
+      </offer>
+      <offer available="true" id="1908">
+        <url>https://fenix-russia.ru/akkumulyator-18650-3400mah-fenix/</url>
+        <price>1800.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6673/6673.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6674/6674.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6675/6675.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6676/6676.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6677/6677.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6678/6678.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6679/6679.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6680/6680.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6681/6681.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/19/1908/images/6682/6682.970.jpg</picture>
+        <name>Аккумулятор 18650 Fenix ARB-L2S (3400mAh)</name>
+        <description>Аккумулятор Fenix ARB-L2S формата 18650 — это наиболее емкая модель элементов питания Fenix. Он подходит для самых энергоемких фонарей этого бренда. Аболее экономные модели фонарей смогут работать с этими аккумуляторами еще дольше.</description>
+      </offer>
+      <offer available="true" id="518">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-belyy-fenix/</url>
+        <price>150.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/18/05/518/images/793/793.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/18/05/518/images/3552/3552.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/18/05/518/images/3554/3554.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/18/05/518/images/3553/3553.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/18/05/518/images/3551/3551.970.png</picture>
+        <name>Диффузионный фильтр Fenix AD101-W белый</name>
+        <description>Диффузионный фильтр белого цвета производства Fenix позволит расширить функциональность фонаря и использовать его для равномерного освещения в палаточном лагере или во время любого отдыха за городом.</description>
+      </offer>
+      <offer available="true" id="514">
+        <url>https://fenix-russia.ru/diffuzionnaya-linza-fenix/</url>
+        <price>150.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/14/05/514/images/6723/6723.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/14/05/514/images/6724/6724.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/14/05/514/images/6725/6725.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/14/05/514/images/6722/6722.970.JPG</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/14/05/514/images/6726/6726.970.png</picture>
+        <name>Диффузионная линза Fenix AD401</name>
+        <description>Диффузионная линза Fenix AD401 разработана для некоторых моделей ручных и налобных фонарей, среди которых HP10, PD20, LD20 и некоторые другие.</description>
+      </offer>
+      <offer available="true" id="525">
+        <url>https://fenix-russia.ru/kempingovyy-rasseivatel-fenix/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/05/525/images/800/800.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/05/525/images/3018/3018.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/05/525/images/3019/3019.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/05/525/images/3016/3016.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/05/525/images/3017/3017.970.png</picture>
+        <name>Кемпинговый рассеиватель Fenix Camping Lampshade</name>
+        <description>Фонари Fenix из серий LD, PD легко превратятся в удобные кемпинговые светильники, если использовать их вместе с рассеивателем Fenix Camping Lampshade.</description>
+      </offer>
+      <offer available="true" id="532">
+        <url>https://fenix-russia.ru/filtr-zelenyy-dlya-fenix-tk/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/32/05/532/images/807/807.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/32/05/532/images/3001/3001.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/32/05/532/images/3002/3002.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/32/05/532/images/3000/3000.970.jpg</picture>
+        <name>Фильтр Fenix AD302-G зеленый для серии TK</name>
+        <description>Зеленый светофильтр Fenix AD302-G разработан специально для тактических фонарей этого бренда и больше всего пригодится охотникам.</description>
+      </offer>
+      <offer available="true" id="522">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-krasnyy-fenix/</url>
+        <price>150.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/05/522/images/797/797.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/05/522/images/3010/3010.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/05/522/images/3013/3013.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/05/522/images/3012/3012.970.png</picture>
+        <name>Диффузионный фильтр Fenix AD101-R красный</name>
+        <description>Диффузионный фильтр красного цвета Fenix AD101-R — это аксессуар, который добавит фонарям Fenix из серий LD, PD и некоторым другим сразу несколько функциональных возможностей.</description>
+      </offer>
+      <offer available="true" id="524">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-krasnyy-dlya-fenix-pd31pd32/</url>
+        <price>150.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/24/05/524/images/799/799.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/24/05/524/images/3024/3024.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/24/05/524/images/3026/3026.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/24/05/524/images/3025/3025.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/24/05/524/images/3027/3027.970.png</picture>
+        <name>Диффузионный фильтр Fenix AOD-SOR красный 24 мм, для PD31/PD32</name>
+        <description>Обыкновенный ручной фонарь Fenix легко превратится в сигнальный жезл красного света для подачи в темноте световых сигналов и просто равномерного освещения окружающей территории не нарушающим ночное зрение красным светом.</description>
+      </offer>
+      <offer available="true" id="526">
+        <url>https://fenix-russia.ru/kempingovyy-rasseivatel-dlya-fenix-tk/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/05/526/images/801/801.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/05/526/images/3028/3028.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/05/526/images/3030/3030.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/05/526/images/3029/3029.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/05/526/images/3031/3031.970.png</picture>
+        <name>Кемпинговый рассеиватель Fenix AD502-N</name>
+        <description>Кемпинговый рассеиватель с кольцом для подвешивания — незаменимый аксессуар во время любого активного отдыха на природе. Ведь с его помощью ручной фонарь легко превращается в отличный кемпинговый светильник, который дает равномерное освещение.</description>
+      </offer>
+      <offer available="true" id="527">
+        <url>https://fenix-russia.ru/signalnyy-zhezl-fenix/</url>
+        <price>200.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/27/05/527/images/802/802.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/27/05/527/images/3036/3036.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/27/05/527/images/3032/3032.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/27/05/527/images/3037/3037.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/27/05/527/images/3038/3038.970.png</picture>
+        <name>Сигнальный жезл Fenix AD201</name>
+        <description>Сигнальный жезл Fenix AD201 используется для подачи с помощью обычного фонаря световых сигналов для регулировки ситуации на дорогах и в чрезвычайных ситуациях.</description>
+      </offer>
+      <offer available="true" id="528">
+        <url>https://fenix-russia.ru/signalnyy-zhezl-dlya-fenix-tk/</url>
+        <price>200.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/05/528/images/803/803.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/05/528/images/3041/3041.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/05/528/images/3040/3040.970.jpeg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/05/528/images/3042/3042.970.png</picture>
+        <name>Сигнальный жезл Fenix AD202</name>
+        <description>Сигнальный жезл Fenix AD202 — это практичный аксессуар, который поможет преобразовать свет любого фонаря в хорошо заметный на большом расстоянии красный свет.</description>
+      </offer>
+      <offer available="true" id="529">
+        <url>https://fenix-russia.ru/filtr-fenix-krasnyy/</url>
+        <price>200.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/05/529/images/804/804.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/05/529/images/3557/3557.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/05/529/images/3558/3558.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/05/529/images/3559/3559.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/05/529/images/3560/3560.970.jpg</picture>
+        <name>Фильтр Fenix AD301-R красный</name>
+        <description>Красный фильтр Fenix AD301-R — это доступная альтернатива покупке нового фонаря с необходимой функциональностью. Он подходит для использования с большим количеством различных фонарей Fenix.</description>
+      </offer>
+      <offer available="true" id="530">
+        <url>https://fenix-russia.ru/filtr-krasnyy-dlya-fenix-tk/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/805/805.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/3003/3003.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/3004/3004.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/3005/3005.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/3006/3006.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/30/05/530/images/3007/3007.970.png</picture>
+        <name>Фильтр Fenix AD302-R красный для серии TK</name>
+        <description>Красный светофильтр Fenix AD302-R предназначен для использования с фонарями серии TK. Это качественная и компактная насадка, которая в считанные секунды предоставит пользователю тактического фонаря доступ к яркому красному свету.</description>
+      </offer>
+      <offer available="true" id="521">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-belyy-dlya-fenix-tk40-tk41-tk50-tk60/</url>
+        <price>290.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/796/796.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/3043/3043.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/3047/3047.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/3046/3046.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/3045/3045.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/21/05/521/images/3044/3044.970.jpg</picture>
+        <name>Диффузионный фильтр Fenix AOD-L белый для TK40, TK41, TK50, TK60</name>
+        <description>Белый диффузионный фильтр Fenix AOD-L предназначенный для фонарей с диаметром головы 66,2 мм. Яркий сфокусированный свет он превращает в комфортное кемпинговое освещение.</description>
+      </offer>
+      <offer available="true" id="531">
+        <url>https://fenix-russia.ru/filtr-siniy-dlya-fenix-tk/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/31/05/531/images/806/806.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/31/05/531/images/3008/3008.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/31/05/531/images/3009/3009.970.jpg</picture>
+        <name>Фильтр Fenix AD302-B синий для серии TK</name>
+        <description>Синий светофильтр Fenix AD302-B предлагает каждому владельцу тактических фонарей Fenix расширить функциональные возможности своего фонаря. Особенно большим спросом данный фильтр пользуется среди рыбаков.</description>
+      </offer>
+      <offer available="true" id="490">
+        <url>https://fenix-russia.ru/kreplenie-na-oruzhie-dlya-fonarey-na-planku-pikatinni-fenix-alg-01/</url>
+        <price>880.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/811/811.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3100/3100.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3096/3096.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3101/3101.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3099/3099.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3098/3098.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/90/04/490/images/3097/3097.970.png</picture>
+        <name>Крепление на оружие для фонарей на планку Пикатинни Fenix ALG-01</name>
+        <description>Для крепления фонарей бренда Fenix на оружие, компания разработала и выпустила кронштейн Fenix ALG-01, который подходит на планку Пикатинни.</description>
+      </offer>
+      <offer available="true" id="487">
+        <url>https://fenix-russia.ru/kreplenie-nagolovnoe-dlya-fonarey-fenix/</url>
+        <price>1460.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/810/810.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/3118/3118.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/3120/3120.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/3121/3121.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/3122/3122.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/87/04/487/images/3119/3119.970.png</picture>
+        <name>Крепление наголовное Fenix Headband</name>
+        <description>Крепление на голову Fenix Headband — это уникальная возможность использовать обыкновенный ручной фонарь в качестве налобного и, тем самым, освободить руки.</description>
+      </offer>
+      <offer available="true" id="808">
+        <url>https://fenix-russia.ru/signalnyy-zhezl-fenix-aot/</url>
+        <price>290.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1611/1611.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1617/1617.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1612/1612.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1613/1613.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1615/1615.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1616/1616.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/08/808/images/1614/1614.970.jpg</picture>
+        <name>Сигнальный жезл Fenix AOT Traffic Wand</name>
+        <description>Для подачи хорошо видных на дальнем расстоянии световых сигналов, компания Fenix предлагает воспользоваться сигнальным жезлом Fenix AOT Traffic Wand.</description>
+      </offer>
+      <offer available="true" id="809">
+        <url>https://fenix-russia.ru/filtr-fenix-aof-l/</url>
+        <price>490.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/09/08/809/images/1618/1618.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/09/08/809/images/1619/1619.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/09/08/809/images/1621/1621.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/09/08/809/images/1620/1620.970.jpg</picture>
+        <name>Светофильтр Fenix AOF-L</name>
+        <description>Светофильтр зеленого цвета для фонарей Fenix с легкостью превратит обыкновенный белый луч света в зеленый, который используют охотники, чтобы не спугнуть зверя.</description>
+      </offer>
+      <offer available="true" id="828">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-fenix-aod-s/</url>
+        <price>290.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/1906/1906.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/3051/3051.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/3052/3052.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/1905/1905.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/1907/1907.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/28/08/828/images/1908/1908.970.jpg</picture>
+        <name>Диффузионный фильтр Fenix AOD-S</name>
+        <description>Для того, чтобы яркий ручной фонарь можно было использовать для организации освещения в туристическом лагере, компания Fenix предлагает воспользоваться диффузионным фильтром Fenix AOD-S.</description>
+      </offer>
+      <offer available="true" id="829">
+        <url>https://fenix-russia.ru/diffuzionnyy-filtr-fenix-aod-m/</url>
+        <price>290.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/1910/1910.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/3536/3536.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/3535/3535.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/3537/3537.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/1909/1909.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/1911/1911.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/29/08/829/images/1912/1912.970.jpg</picture>
+        <name>Диффузионный фильтр Fenix AOD-M</name>
+        <description>Диффузионный фильтр Fenix AOD-M мягко рассеивает сфокусированный луч ярких фонарей и превращает их в подходящий для кемпинга свет. Этот аксессуар чрезвычайно популярен, поскольку совместим со многими моделями фонарей.</description>
+      </offer>
+      <offer available="true" id="513">
+        <url>https://fenix-russia.ru/sekciya-korpusa-s-batareynoy-kassetoy-dlya-fonarya-fenix-tk75/</url>
+        <price>2400.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/817/817.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/4436/4436.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/4437/4437.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/4438/4438.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/4439/4439.970.png</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/13/05/513/images/4440/4440.970.png</picture>
+        <name>Секция корпуса с батарейной кассетой для фонарей Fenix ТК61, ТК75 и ТК76</name>
+        <description>Секция корпуса с дополнительной кассетой для аккумуляторов — это дополнительное время автономной работы вашего фонаря без замены элементов питания. В некоторых случаях этот аксессуар может сыграть решающую роль, например, в поиске туристического лагеря или наоборот — отдыхающих, которые заблудились.</description>
+      </offer>
+      <offer available="true" id="916">
+        <url>https://fenix-russia.ru/chekhol-dlya-fenix-tk35/</url>
+        <price>500.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/16/09/916/images/7022/7022.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/16/09/916/images/7023/7023.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/16/09/916/images/7024/7024.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/16/09/916/images/7025/7025.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/16/09/916/images/7026/7026.970.jpg</picture>
+        <name>Чехол для Fenix TK35</name>
+        <description>Достойный выбор для хранения фонаря Fenix TK35 — это нейлоновый чехол производства этой же компании. Такой аксессуар значительно повышает удобство его использования.</description>
+      </offer>
+      <offer available="true" id="1996">
+        <url>https://fenix-russia.ru/akkumulyator-26650-4000-mah-li-ion-x-tar/</url>
+        <price>1500.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/96/19/1996/images/7178/7178.970.jpeg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/96/19/1996/images/7179/7179.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/96/19/1996/images/7180/7180.970.jpg</picture>
+        <name>Аккумулятор 26650 4000 mAh Li-ion X-tar</name>
+        <description>Типоразмер: 26650
+Номинальное напряжение: 3,7В
+Емкость: 4000mAh
+Аккумулятор для фонаря Fenix PD40 перейти</description>
+      </offer>
+      <offer available="true" id="1923">
+        <url>https://fenix-russia.ru/svistok-cpasatelnyy-fenix-nw20/</url>
+        <price>1250.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6568/6568.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6556/6556.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6557/6557.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6558/6558.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6559/6559.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6560/6560.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6561/6561.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6562/6562.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6563/6563.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/23/19/1923/images/6564/6564.970.jpg</picture>
+        <name>Свисток cпасательный Fenix NW20</name>
+        <description>Свисток cпасательный Fenix NW 20 из пищевой нержавеющей стали.</description>
+      </offer>
+      <offer available="true" id="1922">
+        <url>https://fenix-russia.ru/svistok-cpasatelnyy-fenix-nw30/</url>
+        <price>1550.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">21</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6570/6570.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6569/6569.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6571/6571.970.JPG</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6572/6572.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6573/6573.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6574/6574.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6575/6575.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6576/6576.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6577/6577.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/22/19/1922/images/6578/6578.970.jpg</picture>
+        <name>Свисток cпасательный Fenix NW30</name>
+        <description>Свисток cпасательный Fenix NW 30 из пищевой нержавеющей стали.</description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

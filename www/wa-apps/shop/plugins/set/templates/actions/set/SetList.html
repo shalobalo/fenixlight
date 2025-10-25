@@ -1,0 +1,26 @@
+<div class="content right200px">
+	<div class="block double-padded">
+		<h1>Акционные комплекты</h1>
+		<p>Дополните любой товар другими товарами со скидкой, создав акционный комплект. Ниже приведен список товаров, которые дополнены до акционного комплекта. Для редактирования комплекта товара, нажмите на элемент списка.</p>
+		{if $list}
+		<table class="zebra">
+			<tbody>
+				{foreach $list as $set}
+				<tr>
+					<td>
+						<span class="hint">{$set.sku_name}</span>
+					</td>
+					<td>
+						<a href="?action=products#/product/{$set.id}/edit/sets/">
+							{$set.name}
+						</a>
+					</td>
+				</tr>
+				{/foreach}
+			</tbody>
+		</table>
+		{else}
+		<p><strong>Для создания нового комплекта выберите комплектообразующий товар в каталоге и перейдите в раздел редактирования товара во вкладку "Комплекты".</strong></p>
+		{/if}
+	</div>
+</div>

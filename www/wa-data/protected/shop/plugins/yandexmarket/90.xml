@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+<yml_catalog date="2015-07-03 12:54">
+  <shop>
+    <name>Fenix-russia.ru</name>
+    <company>Fenix-russia.ru</company>
+    <url>https://fenix-russia.ru/</url>
+    <phone>+7 (499) 322-25-80</phone>
+    <platform>Shop-Script</platform>
+    <version>5.2.3.33159</version>
+    <currencies>
+      <currency id="RUB" rate="1.00"/>
+    </currencies>
+    <categories>
+      <category id="449">Акция</category>
+      <category id="416">Новинки</category>
+      <category id="400">Фонари</category>
+      <category id="414" parentId="400">TK серия</category>
+      <category id="408" parentId="400">E серия</category>
+      <category id="410" parentId="400">PD серия</category>
+      <category id="409" parentId="400">LD серия</category>
+      <category id="415" parentId="400">UC серия</category>
+      <category id="412" parentId="400">RC серия</category>
+      <category id="411" parentId="400">MC серия</category>
+      <category id="407" parentId="400">CL серия</category>
+      <category id="413" parentId="400">SD серия</category>
+      <category id="401">Налобные фонари</category>
+      <category id="406" parentId="401">HP серия</category>
+      <category id="405" parentId="401">HL серия</category>
+      <category id="402">Велосипедные фонари</category>
+      <category id="404" parentId="402">BC серия</category>
+      <category id="403" parentId="402">BT серия</category>
+      <category id="442">Фонари по назначению</category>
+      <category id="444" parentId="442">Велофары</category>
+      <category id="446" parentId="442">Для охоты и рыбалки</category>
+      <category id="437" parentId="442">Карманные</category>
+      <category id="440" parentId="442">Кемпинговые</category>
+      <category id="443" parentId="442">Налобные</category>
+      <category id="441" parentId="442">Подводные</category>
+      <category id="447" parentId="442">Подствольные</category>
+      <category id="439" parentId="442">Сверхмощные</category>
+      <category id="436" parentId="442">Тактические</category>
+      <category id="448" parentId="442">Туристические</category>
+      <category id="438" parentId="442">Универсальные</category>
+      <category id="422">Фонари по типу элементов питания</category>
+      <category id="423" parentId="422">18650</category>
+      <category id="424" parentId="422">CR123</category>
+      <category id="445" parentId="422">16340</category>
+      <category id="434" parentId="422">26650</category>
+      <category id="426" parentId="422">AAA</category>
+      <category id="425" parentId="422">AA</category>
+      <category id="428" parentId="422">D</category>
+      <category id="427" parentId="422">Оригинальный аккумулятор</category>
+      <category id="421">Фонари по мощности</category>
+      <category id="429" parentId="421">До 100 Люмен</category>
+      <category id="430" parentId="421">До 300 Люмен</category>
+      <category id="431" parentId="421">До 900 Люмен</category>
+      <category id="432" parentId="421">До 2000 Люмен</category>
+      <category id="433" parentId="421">От 2000 Люмен</category>
+      <category id="21">Аксессуары для фонарей</category>
+      <category id="417" parentId="21">Батареи и аккумуляторы</category>
+      <category id="418" parentId="21">Зарядные устройства</category>
+      <category id="219" parentId="21">Фильтры</category>
+      <category id="224" parentId="21">Линзы</category>
+      <category id="223" parentId="21">Крепления</category>
+      <category id="222" parentId="21">Тактические кнопки</category>
+      <category id="435" parentId="21">Секции корпуса</category>
+      <category id="221" parentId="21">Чехлы</category>
+    </categories>
+    <offers>
+      <offer available="true" id="1919">
+        <url>https://fenix-russia.ru/fonar-fenix-pd40-cree-mt-g2/</url>
+        <price>6500.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">416</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/7182/7182.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6537/6537.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6538/6538.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6539/6539.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6540/6540.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6541/6541.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6542/6542.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6543/6543.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6544/6544.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/19/19/1919/images/6545/6545.970.jpg</picture>
+        <name>Фонарь Fenix PD40 Cree MT-G2</name>
+        <description>Компактный, но невероятно яркий фонарь Fenix PD40 Cree MT-G2 предназначен для охотников, рыбаков, туристов и других любителей активного отдыха на природе. Он может светить с яркостью вплоть до 1600 люмен и предлагает широкий выбор рабочих режимов. Управление этой моделью фонаря максимально простое — за счет всего одной кнопки.
+Аккумулятор для фонаря Fenix PD40 перейти</description>
+      </offer>
+      <offer available="true" id="1826">
+        <url>https://fenix-russia.ru/fonar-fenix-uc35-xm-l2-u2/</url>
+        <price>6100.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">400</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/5925/5925.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6049/6049.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6050/6050.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6051/6051.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6052/6052.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6053/6053.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6054/6054.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6055/6055.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6056/6056.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/26/18/1826/images/6057/6057.970.jpg</picture>
+        <name>Фонарь Fenix UC35 Cree XM-L2 (U2)</name>
+        <description>Fenix UC35 XM-L2 (U2) — это осветительный прибор, работающий как на батарейках, так и на аккумуляторе. При этом аккумулятор можно подзаряжать непосредственно через разъем USB. Максимально возможная яркость для Fenix UC35 составляет 960 люмен.</description>
+      </offer>
+      <offer available="true" id="1772">
+        <url>https://fenix-russia.ru/fonar-fenix-cl20-xm-l2-u2/</url>
+        <price>2680.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">400</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5824/5824.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5825/5825.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5826/5826.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5827/5827.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5828/5828.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5829/5829.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5830/5830.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5831/5831.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5832/5832.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/72/17/1772/images/5833/5833.970.jpg</picture>
+        <name>Фонарь Fenix CL20</name>
+        <description>Фонарь Fenix CL20 открывает серию фонарей выпускаемых компанией Fenix и направленных на организацию освещения в палаточном лагере или на месте загородного отдыха. Он дает рассеянный белый свет с предельной яркостью 165 люмен, а также может работать в режиме неяркого красного света и подавать мигающий сигнал SOS.</description>
+      </offer>
+      <offer available="true" id="908">
+        <url>https://fenix-russia.ru/fonar-fenix-e25-cree-xp-e2/</url>
+        <price>3000.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">400</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4334/4334.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4335/4335.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4336/4336.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4337/4337.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4338/4338.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4339/4339.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4340/4340.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4341/4341.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4342/4342.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/08/09/908/images/4343/4343.970.jpg</picture>
+        <name>Фонарь Fenix E25 Cree XP-E2</name>
+        <description>Фонарь Fenix E25 с диодом Cree XP-E2 — это обновленный вариант предыдущей модели. Производители добавили к его возможностям режим Burst с яркостью света 260 люмен, а время работы в наиболее экономном режиме увеличено до 72 ч.</description>
+      </offer>
+      <offer available="true" id="825">
+        <url>https://fenix-russia.ru/fonar-fenix-tk75-cree-xm-l2-u2/</url>
+        <price>13500.00</price>
+        <currencyId>RUB</currencyId>
+        <categoryId type="Own">400</categoryId>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1842/1842.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/2796/2796.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/2795/2795.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/2009/2009.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1843/1843.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1845/1845.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1846/1846.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1847/1847.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1848/1848.970.jpg</picture>
+        <picture>https://fenix-russia.ru/wa-data/public/shop/products/25/08/825/images/1924/1924.970.jpg</picture>
+        <name>Тактический фонарь Fenix TK75 Cree XM-L2 (U2)</name>
+        <description>Модифицированный вариант модели фонаря Fenix TK75 стал еще ярче — до 2900 люмен. При этом время работы осветительного прибора от 1 комплекта аккумуляторов не уменьшилось. Эта тактическая модель позиционируется как поисковая.</description>
+      </offer>
+    </offers>
+  </shop>
+</yml_catalog>

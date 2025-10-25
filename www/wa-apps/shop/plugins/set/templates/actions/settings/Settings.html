@@ -1,0 +1,65 @@
+{$js}{$css}
+<h1>Настройка плагина</h1>
+<div class="fields form">
+	<div id="desc-block">
+		<p>Плагин позволяет создавать и управлять акционными комплектами товаров.</p>
+		<p><u>Акционный комплект состоит из основого товара без скидки, к которому назначаются товары со скидкой.</u></p>
+		<p>Управление комплектами осуществляется в разделе редактора товара во вкладке "Комплекты". Для каждого артикула товара можно создавать отдельные комплекты. В комплект товары добавляются с точностью до артикула.</p>
+		<p>Вывод комплекта (или комплектов) товара осуществляется через хук frontend_product.block на странице товара или с помощью хелпера {literal}<b>{shopSetPlugin::set($product)}</b>{/literal}, где $product - переменная шаблона страницы товара.</p>
+		<p>В корзину комплект добавляется как отдельные товары со скидкой. Если указаны jQuery-селекторы элементов корзины в настройке плагина, то в корзине указывается информация о комплектах для данного товара с возможность изменять количество комплекта.</p>
+		<p>Для настройки обновления корзины без перезагрузки страницы при добавлении комплекта в корзину на странице товара внесите изменения в метод afterAddCompect в блоке head.</p>
+		<p>Значения настроек по умолчанию даны для темы <i>default</i>.</p>
+		<p>Если настройки плагина вызывает затруднения, обратитеcь в тех поддержку плагина <a href="mailto:waapru@gmail.com">waapru@gmail.com</a></p>
+	</div>
+	
+	<div class="block block-frontend-disign">
+		<h4>
+			<i class="icon16 palette"></i>Дизайн плагина на витрине для темы 
+			<select name="theme" id="select-frontend-disign-theme">
+				<option value="_">Для всех тем</option>
+				{foreach $themes as $theme}
+				<option value="{$theme}">{$theme}</option>
+				{/foreach}
+			</select>
+		</h4>
+		<a href="#" class="inline-link" data-mode="text/css" data-name="css">css-стили</a>
+		<a href="#" class="inline-link" data-mode="text/javascript" data-name="js">js-скрипты</a>
+		<a href="#" class="inline-link" data-mode="text/html" data-name="head">head</a>
+		<a href="#" class="inline-link" data-mode="text/html" data-name="complect">блок "Комплект на странице товара"</a>
+		<a href="#" class="inline-link" data-mode="text/html" data-name="cart">блок "Корзина с комплектами"</a>
+		<a href="#" class="inline-link" data-mode="text/html" data-name="set">блок "Комплект в корзине"</a>
+		<div id="frontend-disign-dialog" style="display:none;">
+			<textarea style="display:none;"></textarea>
+			{$wa->csrf()}
+		</div>
+		<div>
+			<span class="hint" style="display:none;">По умолчанию дизайн плагина на витрине один и тот же для всех витрин. Если требуется настоить индивидуальный дизайн для каждой витрины, выберите тему в выпадающем списке, кликните на нужный блок и внесите необходимые правки.</span>
+		</div>
+	</div>
+	
+	<h4>Настройка плагина</h4>
+	<form action="?module=plugins&id=set&action=save" method="post" id="plugins-settings-form">
+		{$wa->csrf()}
+		<div class="field-group">
+			{$standart_settings}
+		</div>
+		<div class="field-group">
+			<h2>Настройка плагина для корректной работы корзины на витрине</h2>
+			<p>Необходимо указать jQuery-селекторы элементов на странице корзины.<br>Если данная настройка вызывает затруднения, обратитеcь в тех поддержку плагина <a href="mailto:waapru@gmail.com">waapru@gmail.com</a></p>
+			{$selector_settings}
+		</div>
+		<hr>
+		<input type="submit" class="button green" value="Сохранить">
+		<span id="plugins-settings-form-status" style="display:none">
+			<i style="vertical-align:middle" class="icon16 yes"></i> [`Saved`]
+		</span>
+	</form>
+</div>
+
+<script type="text/javascript">
+$(function(){
+
+	$('#desc-block').waapplugindesc();
+	$('.block-frontend-disign').waapplugindisign();
+})
+</script>

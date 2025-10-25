@@ -1,0 +1,248 @@
+(function($) {
+
+$.fn.shopSetPluginSets = function(options){
+	
+	var settings = $.extend({
+				_csrf : ''
+			},options);
+	
+	
+	$('.set-search',this).unbind();
+	
+	this
+	.on('click','.jsaction',initJAction)
+	.on('keyup','.set-search',initSearch)
+	.on('blur','.set-search',initSearchBlur)
+	.on('click','.set-search-wr a',initAddItem)
+	.find('table').each(function(){
+		$(this).sortable({
+			'distance': 5,
+			'opacity': 0.75,
+			'items': '> tbody:first > tr:visible',
+			'handle': '.sort',
+			'cursor': 'move',
+			'tolerance': 'pointer',
+			'stop' : sortStop
+		})
+	})
+	
+	function initJAction(){
+		var t = $(this),
+			h = t.attr('href');
+		
+		if ( h == '#sets-new-set' )    setsNewSet(t);
+		if ( h == '#sets-delete-set' ) setsDeleteSet(t);
+		if ( h == '#set-delete-item' ) setDeleteItem(t);
+		if ( h == '#set-edit-item' )   setEditItem(t);
+		if ( h == '#set-save-item' )   setSaveItem(t);
+		
+		return false;
+	}
+	
+	
+	function initSearch(){
+		var self = $(this),
+			wr = self.closest('.set-search-wr')
+			v = self.val();
+		if ( v.length >= 3 ){
+			if ( $('.loading',wr).size() == 0 ){
+				wr.append('<i class="icon16 loading"></i>');
+				$.get('?action=autocomplete&type=sets&&term='+v,function(response){
+					if ( response.length > 0){
+						var r = self.next('ul');
+						r.html('');
+						for ( i=0;i<response.length;i++ ){
+							r.append('<li><a data-product-id="'+response[i].id+'" data-sku-id="'+response[i].sku_id+'">'+response[i].value+'</a></li>');
+						}
+					}
+					$('.loading',wr).remove();
+				},'json')
+			}
+		}
+	}
+	
+	
+	function initSearchBlur(){
+		var s = $(this);
+		timeoutId = setTimeout(function(){
+			s.next('ul').find('li').remove();
+		},1000);
+	}
+	
+	
+	function initAddItem(){
+		var self = $(this),
+			set = self.closest('.set-set'),
+			p = postData({
+				product_id : self.data('product-id'),
+				set_id : set.data('set-id'),
+				sku_id : self.data('sku-id'),
+				sort : set.data('k')
+			});
+		
+		self.closest('ul').html('');
+		self.closest('.set-search-wr').find('.set-search').attr('value','');
+		
+		$.post('?plugin=set&module=addItem',p,function(response){
+			postAddItem(response,set)
+		},'json')
+	}
+	
+	
+	function postAddItem(response,set){
+		if ( response.data ){
+			var h = $('#tmpl-new-item').html(),
+				a = response.data;
+			for (var p in a){
+				reg = new RegExp('#'+p+'#',"g");
+				h = h.replace(reg,a[p]);
+			}
+			$('tr',set).not('.last').last().after(h);
+		}
+	}
+	
+	
+	function sortStop(e,ui){
+		var p = postData({
+				items_ids : []
+			}),
+			i = ui.item,
+			set = i.closest('.set-set');
+			
+		$('tbody tr',set).not('.last').each(function(i){
+			p.item_ids[i] = $(this).data('set-item-id');
+		})
+		$.post('?plugin=set&module=saveSort',p);
+	}
+	
+	
+	function setsNewSet(self){
+		var sets = self.closest('.sets-sku'),
+			last = $('.set-set',sets).last(),
+			p = postData({
+				sku_id:sets.data('sku-id')
+			});
+		
+		$.post('?plugin=set&module=newSet',p,function(response){
+			var set_id = response.data;
+			if ( set_id ){
+				var html = $('#tmpl-new-set').html().replace(/#set_id#/g,set_id);
+				if ( last.size() > 0 )
+					last.after(html);
+				else
+					$('.sets',sets).prepend(html);
+			}
+		},'json')
+	}
+	
+	
+	function setsDeleteSet(self){
+		var set = self.closest('.set-set'),
+			p = postData({
+				set_id : set.data('set-id')
+			});
+		$.post('?plugin=set&module=deleteSet',p,function(){
+			set.remove();
+		},'json')
+	}
+	
+	
+	function setDeleteItem(self){
+		var p = postData({
+				item_id : self.closest('tr').data('set-item-id')
+			});
+		$.post('?plugin=set&module=deleteItem',p,function(){
+			self.closest('tr').remove();
+		})
+	}
+	
+	
+	function setEditItem(self){
+		var p = postData({
+				item_id : self.closest('tr').data('set-item-id')
+			});
+		if ( $('loading',self).size() == 0 )
+		{
+			$('i',self).removeClass('edit').addClass('loading');
+			$.post('?plugin=set&module=editItem',p,function(response){
+				postEditItem(response,self);
+			},'json');
+		}
+	}
+	
+	
+	function postEditItem(response,self){
+		var tr = self.closest('tr'),
+			sku_td = $('td:eq(3)',tr),
+			price_td = $('.set-price',tr);
+		
+		if ( response.data.sku_count > 1){
+			var select = $('<select />').attr('name','sku_id');
+			for ( sku_id in response.data.skus ){
+				var sku = response.data.skus[sku_id],
+					option = $('<option />').val(sku_id);
+				if ( sku_id == response.data.sku_id )
+					option.attr('selected','selected');
+				option.text(sku.name+' '+sku.sku+' id:'+sku.id)
+				select.append(option);
+			}
+			sku_td.html('').append(select);
+		}
+		if ( response.data.price ){
+			var input = $('<input />').attr('type','text').addClass('bold numerical short');
+			input.val(response.data.price);
+			$('b',price_td).replaceWith(input);
+		}
+		if ( typeof response.data.count != 'undefined' ){
+			var input = $('<input />').attr('type','text').addClass('bold numerical short');
+			input.val(response.data.count);
+			$('.item-count',tr).html(input);
+		}
+		$('i',self).removeClass('loading').addClass('edit');
+		self.hide();
+		self.closest('.set-controls').find('.ctrl-save').show().css('display','inline-block');
+	}
+	
+	
+	function setSaveItem(self){
+		var tr = self.closest('tr'),
+			sku_td = $('td:eq(3)',tr),
+			select = $('select',sku_td),
+			price_td = $('.set-price',tr),
+			input = $('input',price_td),
+			sku_price = parseFloat(sku_td.next().data('price')),
+			p = postData({
+				item_id : tr.data('set-item-id'),
+				price   : parseFloat(input.val()),
+				sku_id  : $(':selected',select).val(),
+				count   : $('.item-count input').val(),
+				currency : price_td.data('currency')
+			}),
+			per = Math.round(100*(sku_price-p.price)/sku_price);
+		
+		
+		select.replaceWith($(':selected',select).text());
+		price_td.next().text(per+'%');
+		$('.item-count').text($('.item-count input').val());
+		
+		if ( $('loading',self).size() == 0 )
+		{
+			$('i',self).removeClass('disk').addClass('loading');
+			$.post('?plugin=set&module=saveItem',p,function(response){
+				input.replaceWith($('<b />').text(response.data.price));
+				$('.ctrl-edit',self.closest('.set-controls')).show();
+				$('i',self).removeClass('loading').addClass('disk');
+				self.hide();
+			},'json');
+		}
+	}
+	
+	
+	function postData(p){
+		if ( settings._csrf != '' )
+			p._csrf = settings._csrf;
+		return p;
+	}
+}
+
+})(jQuery);

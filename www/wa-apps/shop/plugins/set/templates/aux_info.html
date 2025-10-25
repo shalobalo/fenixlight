@@ -1,0 +1,13 @@
+{if $set_ids}
+<div id="ordered_sets">
+В заказе комплекты: 
+{foreach $set_ids as $v}<a href="?action=products#/product/{$v.product_id}/edit/sets/" target="_blank">№{$v.set_id}{if $v.count > 1}[{$v.count}шт.]{/if}</a>{if !$v@last},{/if}&nbsp;{/foreach}
+</div>
+{/if}
+
+<style>
+#ordered_sets, #ordered_sets a {
+color:green;
+font-weight:bold;
+}
+</style>

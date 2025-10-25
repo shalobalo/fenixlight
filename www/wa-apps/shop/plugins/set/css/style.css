@@ -1,0 +1,175 @@
+.set-base-product {
+width: 100px;
+}
+
+.set-cart-item-info p {
+margin: 0;
+}
+
+#shop-set-plugin-complect-block {
+border: #EEE8E8 solid 1px;
+padding: 10px 20px;
+margin:20px 0;
+}
+.box-modal #shop-set-plugin-complect-block {
+border: none;
+padding: 0;
+margin:0;
+}
+
+#shop-set-plugin-complect-block h2 {
+font-size: 24px;
+margin: 10px 0 20px;
+}
+#shop-set-plugin-complect-block .set-base-product,
+#shop-set-plugin-complect-block .set-item-plus,
+#shop-set-plugin-complect-block .set-item,
+#shop-set-plugin-complect-block .set-result {
+float:left;
+}
+#shop-set-plugin-complect-block .set-item-count{
+position: absolute;
+top: 7px;
+left: 0;
+background: rgba(252, 174, 91, 0.89);
+padding: 0px 5px;
+font-size: 10px;
+color: #141313;
+font-weight: bold;
+line-height: 13px;
+}
+#shop-set-plugin-complect-block .set {
+display: inline-block;
+margin-bottom: 20px;
+padding: 10px;
+border-top: #E3EAF1 solid 1px;
+}
+.box-modal #shop-set-plugin-complect-block .set {
+border-top: none;
+border-bottom: #E3EAF1 solid 1px;
+margin-bottom: 10px;
+}
+#shop-set-plugin-complect-block .set-item {
+position:relative;
+  width: 100px;
+}
+#shop-set-plugin-complect-block .set-item-discount {
+position: absolute;
+top: 10px;
+right: 0;
+background: orange;
+padding: 3px 10px;
+color: #fff;
+font-size: 11px;
+line-height: 10px;
+font-weight: bold;
+}
+#shop-set-plugin-complect-block .set-item-plus {
+padding: 40px 10px;
+font-size: 30px;
+color: green;
+}
+#shop-set-plugin-complect-block .set-image {
+height: 80px;
+text-align: center;
+padding: 5px;
+}
+#shop-set-plugin-complect-block .set-item-price s {
+color:red;
+}
+#shop-set-plugin-complect-block .set-product-price b,
+#shop-set-plugin-complect-block .set-item-price b {
+color:green;
+}
+#shop-set-plugin-complect-block .set-item-name a,
+#shop-set-plugin-complect-block .set-product-name a {
+text-decoration:none;
+color: #1838A7;
+}
+#shop-set-plugin-complect-block .set-item-name a:hover,
+#shop-set-plugin-complect-block .set-product-name a:hover {
+text-decoration:none;
+color: #1838A7;
+}
+#shop-set-plugin-complect-block .set-error {
+text-align: center;
+color: #FAFAFA;
+background: rgb(224, 199, 199);
+line-height: 16px;
+font-size: 12px;
+}
+#shop-set-plugin-complect-block .set-total-price {
+color: green;
+font-size: 20px;
+padding: 39px 10px 10px;
+}
+#shop-set-plugin-complect-block  button {
+margin: 0 10px;
+padding: 6px 15px;
+background-image: -webkit-gradient(
+	linear,
+	right bottom,
+	left top,
+	color-stop(0, #12A33D),
+	color-stop(1, #11BF62)
+);
+background-image: -o-linear-gradient(left top, #12A33D 0%, #11BF62 100%);
+background-image: -moz-linear-gradient(left top, #12A33D 0%, #11BF62 100%);
+background-image: -webkit-linear-gradient(left top, #12A33D 0%, #11BF62 100%);
+background-image: -ms-linear-gradient(left top, #12A33D 0%, #11BF62 100%);
+background-image: linear-gradient(to left top, #12A33D 0%, #11BF62 100%);
+border: none;
+color: #fff;
+cursor: pointer;
+}
+#shop-set-plugin-complect-block  button:hover {
+background-image: -webkit-gradient( linear, left top, left bottom, color-stop(0, #12A33D), color-stop(1, #11BF62) );
+background-image: -o-linear-gradient(bottom, #12A33D 0%, #11BF62 100%);
+background-image: -moz-linear-gradient(bottom, #12A33D 0%, #11BF62 100%);
+background-image: -webkit-linear-gradient(bottom, #12A33D 0%, #11BF62 100%);
+background-image: -ms-linear-gradient(bottom, #12A33D 0%, #11BF62 100%);
+background-image: linear-gradient(to bottom, #12A33D 0%, #11BF62 100%);
+}
+#shop-set-plugin-complect-block  button:focus {
+outline:none;
+}
+#shop-set-plugin-complect-block  button:active {
+background-image: -webkit-gradient(
+	linear,
+	left top,
+	right bottom,
+	color-stop(0, #1CC74D),
+	color-stop(1, #15D971)
+);
+background-image: -o-linear-gradient(right bottom, #1CC74D 0%, #15D971 100%);
+background-image: -moz-linear-gradient(right bottom, #1CC74D 0%, #15D971 100%);
+background-image: -webkit-linear-gradient(right bottom, #1CC74D 0%, #15D971 100%);
+background-image: -ms-linear-gradient(right bottom, #1CC74D 0%, #15D971 100%);
+background-image: linear-gradient(to right bottom, #1CC74D 0%, #15D971 100%);
+}
+
+table.cart .set-tr td {
+padding: 15px 7px;
+border:none;
+}
+
+table.cart td.valignm {
+vertical-align:middle;
+}
+
+.set-success {
+text-align:center;
+color: green;
+}
+
+.set-cart-item input {
+width: 30px;
+text-align: center;
+margin-right: 30px;
+}
+
+.set-cart-item .cart-item-total{
+float: right;
+font-size: 18px;
+color: green;
+}

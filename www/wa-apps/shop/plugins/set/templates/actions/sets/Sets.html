@@ -1,0 +1,250 @@
+<div class="shop-set-plugin">
+{if !empty($product_sets)}
+{foreach $product_sets as $sku_id=>$s}
+<div data-sku-id="{$sku_id}" class="sets-sku">
+	<h2>
+		Комплекты к артикулу
+		{if !empty($s.sku_name)}
+		<span class="sku-name">{$s.sku_name}</span>
+		{elseif !empty($s.sku)}
+		<span class="sku">{$s.sku}</span>
+		{else}
+		<span class="sku-id">id:{$sku_id}</span>
+		{/if}
+	</h2>
+	<div class="sets block">
+		{if !empty($s.sets)}
+		{foreach $s.sets as $k=>$set}
+		<div class="set-set" data-set-id="{$set.id}" data-k="{$k+1}">
+			<div class="set-title">
+				Комплект <b>№{$set.id}</b>
+				<a href="#sets-delete-set" class="jsaction inline-link">
+					<i class="icon16 delete"></i>удалить комплект
+				</a>
+			</div>
+			<table class="zebra">
+				<thead>
+					<tr>
+						<th></th>
+						<th></th>
+						<th>Наименовние товара</th>
+						<th>Артикул</th>
+						<th class="m">Цена</th>
+						<th class="m">Цена в комплекте</th>
+						<th>Скидка</th>
+						<th>Количество</th>
+						<th class="min-width"></th>
+					</tr>
+				</thead>
+				<tbody>
+					{if !empty($set.items)}
+					{foreach $set.items as $item}
+					<tr data-set-item-id="{$item.id}">
+						<td class="min-width"><i class="icon16 sort"></i></td>
+						<td>{$wa->shop->productImgHtml($item.image, '80', ['itemprop' => 'image', 'alt' => $item.name])}</td>
+						<td><a href="?action=products#/product/{$item.product_id}/edit/" target="_blank">{$item.name}</a></td>
+						<td>
+							{if !empty($item.sku_name)}
+							<span class="sku-name">{$item.sku_name}</span>
+							{elseif !empty($item.sku)}
+							<span class="sku">{$item.sku}</span>
+							{elseif !empty($item.sku_id)}
+							<span class="sku-id">id:{$item.sku_id}</span>
+							{/if}
+						</td>
+						<td data-price="{$item.sku_price}" class="original-price">
+							{*{$item.sku_price} {$item.currency}*}
+							{shop_currency($item.sku_price,$item.currency,$item.currency)}
+						</td>
+						<td class="set-price" align="center" data-currency="{$item.currency}">
+							{*<b>{$item.price}</b>
+							<input type="text" value="{$item.price}" class="bold numerical short">
+							{$item.currency}*}
+							<b>{shop_currency($item.sku_price - ($item.sku_price*$item.percent/100), $item.currency,$item.currency)}</b>
+							
+						</td>
+						<td align="center" class="set-percent" >
+							<b>{$item.percent} %</b>
+						</td>
+						<td class="item-count" align="center">{$item.count}</td>
+						<td class="min-width">
+							<div class="set-controls">
+								<a href="#set-save-item" class="jsaction inline-link ctrl-save" title="сохранить"><i class="icon16 disk"></i></a>
+								<a href="#set-edit-item" class="jsaction inline-link ctrl-edit" title="редактировать"><i class="icon16 edit"></i></a>
+								<a href="#set-delete-item" class="jsaction inline-link" title="удалить"><i class="icon16 delete"></i></a>
+							</div>
+						</td>
+					</tr>
+					{/foreach}
+					{/if}
+					<tr class="last">
+						<td colspan="3">
+							<div class="set-search-wr">
+								<input type="text" class="long set-search" placeholder="поиск товара">
+								<ul></ul>
+							</div>
+						</td>
+						<td colspan="6">
+							<span class="hint">начните набирать имя товара и выберите нужный из списка для добавления в комплект</span>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		{/foreach}
+		{/if}
+		<a href="#sets-new-set" class="jsaction inline-link"><i class="icon16 add"></i>создать новый комплект</a>
+	</div>
+</div>
+{/foreach}
+{/if}
+</div>
+
+<style type="text/css">
+.shop-set-plugin .set-set {
+margin-bottom: 20px;
+}
+.shop-set-plugin .sets {
+margin-bottom: 20px;
+}
+.shop-set-plugin .sets-sku > h2 .sku {
+color: rgb(177, 17, 17);
+}
+.shop-set-plugin .sets-sku > h2 .sku-name {
+color: rgb(6, 109, 6);
+}
+.shop-set-plugin .sets-sku > h2 .sku-id {
+color: gray;
+}
+.set-search-wr {
+position:relative;
+padding:0;
+}
+.set-search-wr ul {
+position: absolute;
+background: #FFFFFF;
+top: 24px;
+left: 2px;
+list-style: none;
+padding: 0;
+margin: 0;
+z-index: 100;
+box-shadow: black 0px 1px 6px;
+}
+.set-search-wr li {
+padding:5px 10px;
+cursor:pointer;
+}
+.s-product-form.sets {
+min-height:1000px;
+}
+.set-controls {
+text-align:right;
+min-width: 110px;
+}
+table.zebra .set-controls a {
+display:inline-block;
+margin: 10px 0;
+}
+table.zebra .set-controls a.ctrl-save {
+display:inline-block;
+display:none;
+}
+.set-title {
+padding:5px 0 8px;
+}
+a[href="#sets-delete-set"] {
+float:right;
+}
+.set-title b {
+background: #FF9300;
+padding: 1px 5px;
+color: #FFFFFF;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+}
+.shop-set-plugin table.zebra th {
+padding:5px;
+}
+.shop-set-plugin table.zebra th.m {
+min-width:90px;
+}
+.set-search-wr .loading {
+position: absolute;
+left: 337px;
+top: 3px;
+}
+</style>
+
+<script type="text/html" id="tmpl-new-set">
+	<div class="set-set block" data-set-id="#set_id#">
+		<div class="set-title">
+			Комплект <b>№#set_id#</b>
+			<a href="#sets-delete-set" class="jsaction inline-link">
+				<i class="icon16 delete"></i>удалить комплект
+			</a>
+		</div>
+		<table class="zebra">
+			<thead>
+				<tr>
+					<th></th>
+					<th></th>
+					<th>Наименовние товара</th>
+					<th>Артикул</th>
+					<th class="m">Цена</th>
+					<th class="m">Цена в комплекте</th>
+					<th>Скидка</th>
+					<th>Количество</th>
+					<th class="min-width"></th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr class="last">
+					<td colspan="3">
+						<div class="set-search-wr">
+							<input type="text" class="long set-search" placeholder="поиск товара">
+							<ul></ul>
+						</div>
+					</td>
+					<td colspan="6">
+						<span class="hint">начните набирать имя товара и выберите нужный из списка для добавления в комплект</span>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</script>
+
+<script type="text/html" id="tmpl-new-item">
+<tr data-set-item-id="#item_id#">
+	<td class="min-width"><i class="icon16 sort"></i></td>
+	<td>#item_image#</td>
+	<td>#item_name#</td>
+	<td>
+		<span class="sku-name">#item_sku_name#</span>
+		<span class="sku">#item_sku#</span>
+		<span class="sku-id">id:#item_sku_id#</span>
+	</td>
+	<td data-price="#item_price#">#item_price#</td>
+	<td class="set-price" align="center" data-currency="#item_currency#">
+		<b>#item_price#</b> 
+	</td>
+	<td align="center" class="set-percent"><b>0%</b></td>
+	<td class="item-count" align="center">1</td>
+	<td class="min-width">
+		<div class="set-controls">
+			<a href="#set-save-item" class="jsaction inline-link ctrl-save"><i class="icon16 disk" title="сохранить"></i></a>
+			<a href="#set-edit-item" class="jsaction inline-link ctrl-edit" title="редактировать"><i class="icon16 edit"></i></a>
+			<a href="#set-delete-item" class="jsaction inline-link" title="удалить"><i class="icon16 delete"></i></a>
+		</div>
+	</td>
+</tr>
+</script>
+
+<script type="text/javascript" src="{$wa_app_static_url}plugins/set/js/sets.js?v{$wa->version()}"></script>
+<script type="text/javascript">
+$(function(){
+	$('.shop-set-plugin').shopSetPluginSets({ _csrf : $('input[name="_csrf"]').val() });
+})
+</script>

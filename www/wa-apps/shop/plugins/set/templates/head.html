@@ -1,0 +1,17 @@
+<script type="text/javascript">
+$(function(){
+    $.shopSetPlugin.init({
+        url:'{$wa_app_url}',
+        cart_form_selector: '{$settings.cart_form_selector}',
+        cart_item_selector: '{$settings.cart_item_selector}',
+        cart_item_qty_selector: '{$settings.cart_item_qty_selector}',
+        afterAddCompect: function(response){
+            if ( response.status=='ok') {
+                $('#cart .cart-total').html(response.data.total_html);            
+                $('.header-mini-cart a').html('Корзина <span>' + response.data.count + ' товаров - '+ response.data.total_with_currency +'</span>');
+                open_pop_up('#onclick_buy');
+            }
+        }
+    })
+})
+</script>

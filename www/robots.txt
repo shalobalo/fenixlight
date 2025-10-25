@@ -1,0 +1,17 @@
+User-agent: *
+Disallow: /*_openstat
+Disallow: /*from=adwords
+Disallow: /*utm_source*
+Disallow: /*gclid=
+Disallow: /search/
+Disallow: /*?view=
+Disallow: /*?sort=
+Disallow: /cart/
+Disallow: /login/
+Disallow: /signup/
+Disallow: /compare/
+Disallow: /check*
+
+
+Host: fenixlight.by
+Sitemap: http://fenixlight.by/sitemap.xml

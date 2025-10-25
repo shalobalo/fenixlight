@@ -1,0 +1,218 @@
+#AuthType Basic
+#AuthName "Password Protected Area"
+#AuthUserFile /h/fenixlight.by/www/.htpasswd
+#Require valid-user
+
+php_value date.timezone Europe/Moscow
+
+DirectoryIndex index.php
+
+AddDefaultCharset utf-8
+#Options -Indexes -MultiViews
+
+<ifModule mod_rewrite.c>
+    RewriteEngine On
+
+    RewriteCond %{REQUEST_URI} !\.(js|css|jpg|gif|png)$
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule ^(.*)$ index.php [L,QSA]
+</ifModule>
+
+<ifModule mod_headers.c>
+    Header always append X-Frame-Options SAMEORIGIN
+    <FilesMatch "\.(jpg|jpeg|png|gif|js|css)$">
+	Header set Cache-Control "max-age=3600, public"
+    </FilesMatch>
+    <FilesMatch "\.(js|css|xml|gz)$">
+	Header append Vary: Accept-Encoding
+    </FilesMatch>
+</ifModule>
+
+Redirect 301 /other/72-other/337-svistok-fenix-nw2.html http://fenixlight.by/svistok-cpasatelnyy-fenix-nw20/
+Redirect 301 /other/72-other/311-vynosnaya-takticheskaya-knopka-fenix-aer-03.html http://fenixlight.by/vynosnaya-takticheskaya-knopka-fenix-aer-03/
+Redirect 301 /other/72-other/310-vynosnaya-takticheskaya-knopka-fenix-aer-02.html http://fenixlight.by/vynosnaya-takticheskaya-knopka-fenix-aer-02/
+Redirect 301 /other/72-other/114-tail-102.html http://fenixlight.by/vynosnaya-takticheskaya-knopka-dlya-fenix-tk/
+Redirect 301 /other/72-other/221-sekciya-tk75.html http://fenixlight.by/sekciya-korpusa-s-batareynoy-kassetoy-dlya-fonarya-fenix-tk75/
+Redirect 301 /clip/71-clip/257-fenix-alb10-2.html http://fenixlight.by/velosipednoe-kreplenie-fenix-alb-10/
+Redirect 301 /clip/71-clip/160-alg-01.html http://fenixlight.by/kreplenie-na-oruzhie-dlya-fonarey-na-planku-pikatinni-fenix-alg-01/
+Redirect 301 /clip/71-clip/218-af02.html http://fenixlight.by/velosipednoe-kreplenie-fenix-af02/
+Redirect 301 /clip/71-clip/142-fenix-ab02.html http://fenixlight.by/klipsa-dlya-fonarey-fenix-ab02/
+Redirect 301 /clip/71-clip/219-fenix-headband.html http://fenixlight.by/kreplenie-nagolovnoe-dlya-fonarey-fenix/
+Redirect 301 /accessories/59-accesories/249-aof-s.html http://fenixlight.by/filtr-fenix-aof-s/
+Redirect 301 /accessories/59-accesories/222-aot.html http://fenixlight.by/signalnyy-zhezl-fenix-aot/
+Redirect 301 /accessories/59-accesories/108-trafficwand.html http://fenixlight.by/signalnyy-zhezl-fenix-aot/
+Redirect 301 /accessories/59-accesories/139-camping-lampshade.html http://fenixlight.by/kempingovyy-rasseivatel-fenix/
+Redirect 301 /accessories/59-accesories/224-aod-l.html http://fenixlight.by/diffuzionnyy-filtr-belyy-dlya-fenix-tk40-tk41-tk50-tk60/
+Redirect 301 /accessories/59-accesories/226-aof-l.html http://fenixlight.by/filtr-fenix-aof-l/
+Redirect 301 /accessories/59-accesories/117-diflinse.html http://fenixlight.by/diffuzionnaya-linza-fenix/
+Redirect 301 /accessories/59-accesories/225-fenix-hp20-diffuser-lans-ad03.html http://fenixlight.by/diffuzionnaya-linza-fenix-hp20/
+Redirect 301 /accessories/59-accesories/115-redfiltertk.html http://fenixlight.by/filtr-krasnyy-dlya-fenix-tk/
+Redirect 301 /accessories/59-accesories/106-redfilter.html http://fenixlight.by/filtr-fenix-krasnyy/
+Redirect 301 /other.html http://fenixlight.by/category/aksessuary-dlya-fonarej/
+Redirect 301 /clip.html http://fenixlight.by/category/aksessuary-dlya-fonarej/krepleniya/
+Redirect 301 /accessories.html http://fenixlight.by/category/aksessuary-dlya-fonarej/
+Redirect 301 /batteries.html http://fenixlight.by/category/aksessuary-dlya-fonarej/batarei-i-akkumulyatory/
+Redirect 301 /fd-seriya.html http://fenixlight.by/category/fonari/fd-seriya/
+Redirect 301 /cl-seriya.html http://fenixlight.by/category/fonari/cl-seriya/
+Redirect 301 /sd-seriya.html http://fenixlight.by/category/fonari/sd-seriya/
+Redirect 301 /bc-seriya.html http://fenixlight.by/category/velosipednye-fonari/bc-seriya/
+Redirect 301 /uc-seriya.html http://fenixlight.by/category/fonari/uc-seriya/
+Redirect 301 /mc-series.html http://fenixlight.by/category/fonari/mc-seriya/
+Redirect 301 /e-series.html http://fenixlight.by/category/fonari/e-seriya/
+Redirect 301 /tk-series.html http://fenixlight.by/category/fonari/tk-seriya/
+Redirect 301 /rc-series.html http://fenixlight.by/category/fonari/rc-seriya/
+Redirect 301 /hl-series.html http://fenixlight.by/category/nalobnye-fonari/hl-seriya/
+Redirect 301 /ld-series.html http://fenixlight.by/category/fonari/ld-seriya/
+Redirect 301 /pd-series.html http://fenixlight.by/category/fonari/pd-seriya/
+Redirect 301 /hp-series.html http://fenixlight.by/category/nalobnye-fonari/hp-seriya/
+Redirect 301 /bt-series.html http://fenixlight.by/category/velosipednye-fonari/bt-seriya/
+Redirect 301 /new-anglelight.html http://fenixlight.by/category/fonari/mc-seriya/ 
+Redirect 301 /new-headlamp.html http://fenixlight.by/category/nalobnye-fonari/
+Redirect 301 /contacts.html http://fenixlight.by/kontakty/
+Redirect 301 /service/warranty.html http://fenixlight.by/garantiya/
+Redirect 301 /service.html http://fenixlight.by/garantiya/
+Redirect 301 /-news.html http://fenixlight.by/blog/
+Redirect 301 /about-us/about.html http://fenixlight.by/o-nas/
+Redirect 301 /about-us/fenix-company-history.html http://fenixlight.by/o-brende/
+Redirect 301 /about-us/history.html http://fenixlight.by/o-brende/
+Redirect 301 /about-us.html http://fenixlight.by/o-nas/
+Redirect 301 /batteries/70-batteries/343-batareya-fenix-arb-l18-2300-18650.html http://fenixlight.by/akkumulyator-fenix-18650-arb-l18-2300mah/
+Redirect 301 /batteries/70-batteries/342-batareya-fenix-arb-l18-2600-18650.html http://fenixlight.by/akkumuljator-fenix-arb-l18-2600-18650/
+Redirect 301 /batteries/70-batteries/320-zaryadnoe-ustrojstvo-fenix-are-x1-18650-26650.html http://fenixlight.by/zaryadnoe-ustroystvo-fenix-are-x1-18650-26650/
+Redirect 301 /batteries/70-batteries/315-akkumulyator-14500-fenix-arb-l14-800mah.html http://fenixlight.by/akkumulyator-14500-fenix-arb-l14-800mah/
+Redirect 301 /batteries/70-batteries/314-akkumulyator-16340-fenix-arb-l16-700mah.html http://fenixlight.by/akkumulyator-16340-fenix-arb-l16-700mah/
+Redirect 301 /batteries/70-batteries/279-fenix-arb-l2p.html http://fenixlight.by/dopolnitelnyy-akkumulyator-fenix-arb-l2p-3200-mah/
+Redirect 301 /batteries/70-batteries/328-akkumulyator-fenix-arb-l18-3500-18650-rechargeable-li-ion-battery.html http://fenixlight.by/akkumulyator-fenix-arb-l18-3500-18650-rechargeable-li-ion-battery/
+Redirect 301 /batteries/70-batteries/266-arw-10.html http://fenixlight.by/avtomobilnyy-perekhodnik-fenix-arw-10/
+Redirect 301 /batteries/70-batteries/202-arb-l2s.html http://fenixlight.by/akkumulyator-18650-3400mah-fenix/
+Redirect 301 /batteries/70-batteries/199-are-c2.html http://fenixlight.by/zaryadnoe-ustroystvo-fenix-charger-are-c2/
+Redirect 301 /batteries/70-batteries/215-arb-l1s.html http://fenixlight.by/dopolnitelnyy-akkumulyator-fenix-arb-l1s-dlya-fenix-rc10-rc15/
+Redirect 301 /batteries/70-batteries/216-fenix-charger-are-c1-2x18650.html http://fenixlight.by/zaryadnoe-ustroystvo-fenix-charger-are-c1-2x18650/
+Redirect 301 /batteries/70-batteries/217-arb-l2.html http://fenixlight.by/akkumulyator-18650-2600mah-fenix-s-zashchitoy/
+Redirect 301 /fd-seriya/324-fonar-fenix-fd40-cree-xp-l-hi-led.html http://fenixlight.by/fonar-fenix-fd40-cree-xp-l-hi-led/
+Redirect 301 /cl-seriya/325-fonar-fenix-cl05-liplight.html http://fenixlight.by/fonar-fenix-cl05-liplight/
+Redirect 301 /cl-seriya/285-fenix-cl20.html http://fenixlight.by/fonar-fenix-cl20-xm-l2-u2/
+Redirect 301 /sd-seriya/281-fenix-sd10.html http://fenixlight.by/fonar-fenix-sd10-cree-xm-l2-t6/
+Redirect 301 /bc-seriya/327-velofara-fenix-bc21r-xm-l2-t6-natural-white-led.html http://fenixlight.by/velofara-fenix-bc21r-xm-l2-t6-natural-white-led/
+Redirect 301 /bc-seriya/308-velofara-fenix-bc30r-cree-xm-l2-t6.html http://fenixlight.by/velofara-fenix-bc30r-cree-xm-l2-t6/
+Redirect 301 /bc-seriya/274-fenix-bc30.html http://fenixlight.by/velofara-fenix-bc30-cree-xm-l-t6/
+Redirect 301 /bc-seriya/293-fenix-bc20.html http://fenixlight.by/velofara-fenix-bc20-cree-xp-g2-r5/
+Redirect 301 /uc-seriya/74-uc/302-fonar-fenix-uc30-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-uc30/
+Redirect 301 /uc-seriya/74-uc/289-fonar-fenix-uc35-xm-l2-u2.html http://fenixlight.by/fonar-fenix-uc35-xm-l2-u2/
+Redirect 301 /uc-seriya/74-uc/265-uc50-2.html http://fenixlight.by/fonar-fenix-uc50-xm-l2-u2/
+Redirect 301 /uc-seriya/74-uc/272-fenix-uc45.html http://fenixlight.by/fonar-fenix-uc45-xm-l2-u2/
+Redirect 301 /mc-series/64-mc/286-fenix-mc11xp-g2-r5.html http://fenixlight.by/fonar-fenix-mc11-xp-g2-r5/
+Redirect 301 /mc-series/64-mc/193-fenix-mc11-22375488.html http://fenixlight.by/fonar-fenix-mc11-xp-g2-r5/
+Redirect 301 /e-series/58-e/322-fonar-fenix-e25ue-cree-xp-l-v5.html http://fenixlight.by/fonar-fenix-e25ue-cree-xp-l-v5-brok-fon/
+Redirect 301 /e-series/58-e/340-fonar-fenix-e35ue-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-e35-cree-xm-l2-u2-ultimate-edition/
+Redirect 301 /e-series/58-e/321-fonar-fenix-e20-2015-cree-xp-e2-led.html http://fenixlight.by/fonar-fenix-e20-2015-cree-xp-e2-led/
+Redirect 301 /e-series/58-e/288-fenix-e41.html http://fenixlight.by/fonar-fenix-e41-xm-l2/
+Redirect 301 /e-series/58-e/287-fenix-e99ti.html http://fenixlight.by/fonar-fenix-e99ti-xp-e2/
+Redirect 301 /e-series/58-e/277-fenix-e05-2014.html http://fenixlight.by/fonar-fenix-e05-cree-xp-e2-r3-led/
+Redirect 301 /e-series/58-e/276-fenix-e20.html http://fenixlight.by/fonar-fenix-e20-cree-xp-e2-led/
+Redirect 301 /e-series/58-e/269-fonar-fenix-e05ss-cree-xp-e2-led.html http://fenixlight.by/fonar-fenix-e05ss-cree-xp-e2-led/
+Redirect 301 /e-series/58-e/326-fonar-fenix-e152016-cree-xp-g2-r5-led-2016.html http://fenixlight.by/fonar-fenix-e152016-cree-xp-g2-r5-led-2016/
+Redirect 301 /e-series/58-e/260-e12.html http://fenixlight.by/fonar-fenix-e12-cree-xp-e/
+Redirect 301 /e-series/58-e/258-e25-e2.html http://fenixlight.by/fonar-fenix-e25-cree-xp-e2/
+Redirect 301 /e-series/58-e/254-fenix-e-50ue.html http://fenixlight.by/fenix-e50-cree-xm-l-t6-neutral-white/
+Redirect 301 /e-series/58-e/214-fenix-e-50.html http://fenixlight.by/fenix-e50-cree-xm-l-t6-neutral-white/
+Redirect 301 /e-series/58-e/213-e40.html http://fenixlight.by/fenix-e40-cree-xp-e-r4/
+Redirect 301 /e-series/58-e/212-e35.html http://fenixlight.by/fonar-fenix-e35-cree-xm-l2-u2-ultimate-edition/
+Redirect 301 /e-series/58-e/211-e25.html http://fenixlight.by/fonar-fenix-e25ue-cree-xp-l-v5-brok-fon/
+Redirect 301 /e-series/58-e/130-e21.html http://fenixlight.by/fenix-e21-cree-xp-e/
+Redirect 301 /e-series/58-e/156-e15-56716918.html http://fenixlight.by/fenix-e15-cree-xp-e/
+Redirect 301 /e-series/58-e/155-e15.html http://fenixlight.by/fonar-fenix-e152016-cree-xp-g2-r5-led-2016/
+Redirect 301 /e-series/58-e/143-e05-r4.html http://fenixlight.by/fonar-fenix-e05-cree-xp-e2-r3-led/
+Redirect 301 /e-series/58-e/210-fenix-e01-nichia-white-gs-led.html http://fenixlight.by/fenix-e01-nichia-white-gs/
+Redirect 301 /tk-series/334-takticheskij-fonar-fenix-tk09-xp-l-hi-led.html http://fenixlight.by/takticheskiy-fonar-fenix-tk09-xp-l-hi-led/
+Redirect 301 /tk-series/319-fonar-fenix-tk35ue-2015-cree-xhp-50.html http://fenixlight.by/fonar-fenix-tk35ue-2015-cree-xhp-50/
+Redirect 301 /tk-series/51-tk/341-fonar-fenix-tk41c-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-tk41c-cree-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/335-takticheskij-fonar-fenix-tk41-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-tk41-xm-l/
+Redirect 301 /tk-series/51-tk/316-takticheskij-fonar-fenix-tk75-cree-xm-l2-u2-2015.html http://fenixlight.by/fonar-fenix-tk75-cree-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/312-takticheskij-fonar-fenix-tk16-cree-xm-l2-u2.html http://fenixlight.by/takticheskiy-fonar-fenix-tk16-cree-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/301-takticheskij-fonar-fenix-tk15c-cree-xp-g2-r5.html http://fenixlight.by/takticheskiy-fonar-fenix-tk15c-cree-xp-g2-r5/
+Redirect 301 /tk-series/51-tk/294-fenix-tk09-cree-xp-g2-r5.html http://fenixlight.by/fonar-fenix-tk09-cree-xp-g2-r5/
+Redirect 301 /tk-series/51-tk/273-fenix-tk22-2014.html http://fenixlight.by/fonar-fenix-tk22-2014-edition-cree-xm-l2-u2-led/
+Redirect 301 /tk-series/51-tk/270-fenix-tk32.html http://fenixlight.by/fonar-fenix-tk32-cree-xm-l2-u2-led/
+Redirect 301 /tk-series/51-tk/262-tk35ue.html http://fenixlight.by/fonar-fenix-tk35ue-2015-cree-xhp-50/
+Redirect 301 /tk-series/51-tk/189-fenix-tk51-cree-xm-l2-65789794.html http://fenixlight.by/fonar-fenix-tk51-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/237-fenix-tk22-ue-u2.html http://fenixlight.by/fonar-fenix-tk22-cree-xm-l2-u2-grey/
+Redirect 301 /tk-series/51-tk/191-fenix-tk22-ue-99386596.html http://fenixlight.by/fonar-fenix-tk22-cree-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/178-tk75.html http://fenixlight.by/fonar-fenix-tk75-cree-xm-l2-u2/
+Redirect 301 /tk-series/51-tk/205-fenix-tk22-xm-l2.html http://fenixlight.by/fonar-fenix-tk22-2014-edition-cree-xm-l2-u2-led-grey/
+Redirect 301 /tk-series/51-tk/206-tk75-u2.html http://fenixlight.by/takticheskiy-fonar-fenix-tk75-cree-xm-l2-u2-2015/
+Redirect 301 /tk-series/51-tk/127-tk45.html http://fenixlight.by/fonar-fenix-tk45-cree-xp-g-r5/
+Redirect 301 /tk-series/51-tk/207-fenix-tk41-n.html http://fenixlight.by/fonar-fenix-tk41-cree-xm-l-u2/
+Redirect 301 /tk-series/51-tk/151-fenix-tk41.html http://fenixlight.by/fonar-fenix-tk41-xm-l-u2/
+Redirect 301 /tk-series/51-tk/146-fenix-tk35-cree-xm-l-t6-led.html http://fenixlight.by/fonar-fenix-tk35-cree-xm-l2-u2-led/
+Redirect 301 /tk-series/51-tk/177-fenix-tk22.html http://fenixlight.by/nabor-takticheskiy-fenix-tk22-xm-l2-u2-new-arb-l2-2600-are-x1-aer-02/
+Redirect 301 /tk-series/51-tk/141-fenix-tk15-s2.html http://fenixlight.by/fonar-fenix-tk15-cree-xp-g-s2/
+Redirect 301 /tk-series.html?start=21 http://fenixlight.by/category/fonari/tk-seriya/
+Redirect 301 /rc-series/67-rc/339-fonar-fenix-rc40-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-rc40-cree-xm-l2-u2-led/
+Redirect 301 /rc-series/67-rc/336-fonar-fenix-rc09-cree-xp-l-hi-led.html http://fenixlight.by/fonar-fenix-rc09-cree-xp-l-hi-led/
+Redirect 301 /rc-series/67-rc/323-fonar-fenix-rc20-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-rc20-cree-xm-l2-u2/
+Redirect 301 /rc-series/67-rc/264-uc50.html http://fenixlight.by/fonar-fenix-uc50-xm-l2-u2/
+Redirect 301 /rc-series/67-rc/187-fenix-uc40-xp-g2-r5-88919067.html http://fenixlight.by/fonar-fenix-uc40-xp-g2-r5/
+Redirect 301 /rc-series/67-rc/176-fenix-rc40-cree-xm-l-u2.html http://fenixlight.by/fonar-fenix-rc40-cree-xm-l-u2/
+Redirect 301 /rc-series/67-rc/175-fenix-rc15-cree-xm-l-u2.html http://fenixlight.by/fonar-fenix-rc15-cree-xm-l-u2/
+Redirect 301 /rc-series/67-rc/192-fenix-rc10-r5.html http://fenixlight.by/fonar-fenix-rc10-cree-xp-g-r5/
+Redirect 301 /rc-series.html?start=5 http://fenixlight.by/category/fonari/rc-seriya/
+Redirect 301 /rc-series.html?limitstart=0 http://fenixlight.by/category/fonari/rc-seriya/
+Redirect 301 /hl-series/338-fenix-hl60r.html http://fenixlight.by/fonar-fenix-hl60r-cree-xm-l2-t6-neutral-white-led/
+Redirect 301 /hl-series/66-hl/318-nalobnyj-fonar-fenix-hl05-white-red-leds.html http://fenixlight.by/nalobnyy-fonar-fenix-hl05-whitered-leds/
+Redirect 301 /hl-series/66-hl/300-nalobnyj-fonar-fenix-hl30-cree-xp-g2-r5.html http://fenixlight.by/nalobnyy-fonar-fenix-hl30-cree-xp-g2-r5/
+Redirect 301 /hl-series/66-hl/291-fonar-fenix-hl25-xp-g2-r5.html http://fenixlight.by/fonar-fenix-hl25-xp-g2-r5/
+Redirect 301 /hl-series/66-hl/268-hl50.html http://fenixlight.by/fonar-fenix-hl50-cree-xm-l2-t6/
+Redirect 301 /hl-series/66-hl/329-nalobnyj-fonar-fenix-hl35-cree-xp-g2-r5-led.html http://fenixlight.by/nalobnyy-fonar-fenix-hl35-cree-xp-g2-r5-neutral-white-led/
+Redirect 301 /hl-series/66-hl/282-fenix-hl55.html http://fenixlight.by/fonar-fenix-hl55-xm-l2-t6/
+Redirect 301 /hl-series/66-hl/253-fenix-hl22.html http://fenixlight.by/fonar-fenix-hl22-cree-xp-e-r4/
+Redirect 301 /hl-series/66-hl/171-fenix-hl30.html http://fenixlight.by/fonar-fenix-hl30-cree-xp-g-r5/
+Redirect 301 /hl-series.html?start=5 http://fenixlight.by/category/nalobnye-fonari/hl-seriya/
+Redirect 301 /hl-series/66-hl/150-fenix-hl21.html http://fenixlight.by/fonar-fenix-hl21-cree-xp-e/
+Redirect 301 /hl-series/66-hl/169-fenix-hl10.html http://fenixlight.by/fonar-fenix-hl10-cree-xp-e/
+Redirect 301 /hl-series.html?limitstart=0 http://fenixlight.by/category/nalobnye-fonari/hl-seriya/
+Redirect 301 /hl-series.html?start=10 http://fenixlight.by/category/nalobnye-fonari/hl-seriya/
+Redirect 301 /ld-series/49-ld/317-fonar-fenix-ld22-cree-xp-g2-r5-2015.html http://fenixlight.by/fonar-fenix-ld22-cree-xp-g2-r5/
+Redirect 301 /ld-series/49-ld/307-fonar-fenix-ld41-cree-xm-l2-u2-2015.html http://fenixlight.by/fonar-fenix-ld41-cree-xm-l2-u2/
+Redirect 301 /ld-series/49-ld/331-fonar-fenix-ld09-cree-xp-e2-r3-led-2015.html http://fenixlight.by/fonar-fenix-ld09-cree-xp-e2-r3-led-2015/
+Redirect 301 /ld-series/49-ld/306-fonar-fenix-ld11-cree-xp-g2-r5.html http://fenixlight.by/fonar-fenix-ld11-xp-g2-r5/
+Redirect 301 /ld-series/49-ld/303-fonar-fenix-ld75c-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-ld75c-cree-xm-l2-u2/
+Redirect 301 /ld-series/49-ld/284-fenix-ld60.html http://fenixlight.by/fonar-fenix-ld60-xm-l2-u2/
+Redirect 301 /ld-series/49-ld/283-fenix-ld50.html http://fenixlight.by/fonar-fenix-ld50-xm-l2-u2/
+Redirect 301 /ld-series/49-ld/275-fenix-ld09.html http://fenixlight.by/fonar-fenix-ld09-cree-xp-e2-led/
+Redirect 301 /ld-series/49-ld/271-fenix-ld02.html http://fenixlight.by/fonar-fenix-ld02-cree-xp-e2-led/
+Redirect 301 /ld-series/49-ld/195-fenix-ld41-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-ld41-cree-xm-l2-u2-2015/
+Redirect 301 /ld-series/49-ld/198-fenix-ld41-cree-xm-l-u2.html http://fenixlight.by/fonar-fenix-ld41-cree-xm-l-u2/
+Redirect 301 /ld-series/49-ld/209-ld22-r5.html http://fenixlight.by/fonar-fenix-ld22-cree-xp-g2-r5-2015/
+Redirect 301 /ld-series/49-ld/126-ld15r4.html http://fenixlight.by/fonar-fenix-ld15-cree-xp-g-r4/
+Redirect 301 /ld-series/49-ld/208-ld12-r5.html http://fenixlight.by/fonar-fenix-ld12-cree-xp-g2-r5/
+Redirect 301 /ld-series/49-ld/140-fenix-ld01-r5.html http://fenixlight.by/fonar-fenix-ld01-cree-xp-e/
+Redirect 301 /pd-series/50-pd/313-fonar-fenix-pd35-cree-x5-l-v5-tac-tactical-edition.html http://fenixlight.by/fonar-fenix-pd35-cree-x5-l-v5-tac-tactical-edition/
+Redirect 301 /pd-series/50-pd/305-fonar-fenix-pd25-cree-xp-l.html http://fenixlight.by/fonar-fenix-pd25-cree-xp-l/
+Redirect 301 /pd-series/50-pd/296-fonar-fenix-pd40-cree-mt-g2.html http://fenixlight.by/fonar-fenix-pd40-cree-mt-g2/
+Redirect 301 /pd-series/50-pd/290-fonar-fenix-pd22-ultimate-edition.html http://fenixlight.by/fonar-fenix-pd22-ultimate-edition/
+Redirect 301 /pd-series/50-pd/278-fenix-pd35-2014.html http://fenixlight.by/fonar-fenix-pd35-cree-xm-l2-u2/
+Redirect 301 /pd-series/50-pd/204-fenix-pd12-cree-xm-l2-t6.html http://fenixlight.by/fonar-fenix-pd12-cree-xm-l2-t6/
+Redirect 301 /pd-series/50-pd/174-fenix-pd35-cree-xm-l2-u2.html http://fenixlight.by/fonar-fenix-pd35-cree-xm-l2-2014-edition/
+Redirect 301 /pd-series/50-pd/159-pd32.html http://fenixlight.by/fonar-fenix-pd32-cree-xp-l-hi-white-led/
+Redirect 301 /pd-series/50-pd/196-fenix-pd32-ue.html http://fenixlight.by/fonar-fenix-pd32-ultimate-edition-cree-xm-l-t6-neutral-white/
+Redirect 301 /pd-series/50-pd/251-pd32-old.html http://fenixlight.by/fonar-fenix-pd32-cree-xp-g2-r5/
+Redirect 301 /pd-series/50-pd/197-pd22-r5.html http://fenixlight.by/fonar-fenix-pd22-cree-xp-g2-r5/
+Redirect 301 /pd-series/50-pd/252-pd22-old.html http://fenixlight.by/fonar-fenix-pd22-cree-xp-g-s2/
+Redirect 301 /hp-series/65-hp/295-nalobnyj-fonar-fenix-hp12.html http://fenixlight.by/fonar-fenix-hp12/
+Redirect 301 /hp-series/65-hp/280-fenix-hp40f.html http://fenixlight.by/fonar-fenix-hp40f-xp-g2-r5/
+Redirect 301 /hp-series/65-hp/247-fenix-hp05-cree-xp-g-r5.html http://fenixlight.by/fonar-fenix-hp05-xp-g-r5/
+Redirect 301 /hp-series/65-hp/243-fenix-hp30-cree-xm-l2.html http://fenixlight.by/fonar-fenix-hp30-xm-l2/
+Redirect 301 /hp-series/65-hp/240-fenix-hp01-cree-xp-g-r5.html http://fenixlight.by/fonar-fenix-hp01-xp-g-r5/
+Redirect 301 /hp-series/65-hp/167-fenix-hp15-cree-xm-l2.html http://fenixlight.by/fonar-fenix-hp15-xm-l2/
+Redirect 301 /hp-series/65-hp/164-fenix-hp25-cree-xp-e.html http://fenixlight.by/fenix-hp25-cree-xp-e/
+Redirect 301 /hp-series.html?start=5 http://fenixlight.by/category/nalobnye-fonari/hp-seriya/
+Redirect 301 /hp-series.html?limitstart=0 http://fenixlight.by/category/nalobnye-fonari/hp-seriya/
+Redirect 301 /bt-series/68-bt/304-velofara-fenix-bt30r-cree-xm-l2-t6.html http://fenixlight.by/velofara-fenix-bt30r-cree-xm-l2-t6/
+Redirect 301 /bt-series/68-bt/163-fenix-bt10.html http://fenixlight.by/velofara-fenix-bt10-cree-xp-g-r5/
+Redirect 301 /bt-series/68-bt/162-fenix-bt20.html http://fenixlight.by/velofara-fenix-bt20-cree-xm-l-t6/
+Redirect 301 /new-anglelight/61-newangle/161-fenix-mc11.html http://fenixlight.by/fonar-fenix-mc11-xp-g2-r5/
+Redirect 301 /new-headlamp/60-newheadlight/299-nalobnyj-fonar-fenix-hl23-cree-xp-g2-r5.html http://fenixlight.by/fonar-fenix-hl23-cree-xp-g2-r5/
+Redirect 301 /new-headlamp/60-newheadlight/298-nalobnyj-fonar-fenix-hp15ue.html http://fenixlight.by/fonar-fenix-hp15ue/
+Redirect 301 /new-headlamp/60-newheadlight/333-fonar-fenix-hl60r-cree-xm-l2-t6-neutral-white-led.html http://fenixlight.by/fonar-fenix-hl60r-cree-xm-l2-t6-neutral-white-led/

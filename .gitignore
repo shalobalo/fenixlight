@@ -1,0 +1,32 @@
+# Runtime data
+www/wa-cache/**
+www/wa-log/**
+www/wa-data/public/**
+*.log
+
+# Database
+database.sql.gz
+database.sql
+*.sql
+!migrations/**/*.sql
+
+# SSL certificates (actual secrets)
+ssl/*.key
+ssl/*.pem
+!.ssl-template/.gitkeep
+
+# Environment
+.env
+*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Docker volumes
+docker-compose.override.yml
