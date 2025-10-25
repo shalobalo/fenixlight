@@ -1,35 +1,91 @@
-# Fenixlight.by Docker Infrastructure
+# Fenixlight.by
+
+E-commerce website for Fenix flashlights in Belarus. Built on Webasyst framework.
+
+## Tech Stack
+
+- **PHP**: 7.4.33
+- **Database**: MariaDB 11.4
+- **Web Server**: Apache 2.4 + Nginx (reverse proxy)
+- **SSL**: HTTPS enabled
+- **Cache**: File-based + OPcache
 
 ## Quick Start
+
+### Fresh Ubuntu Server
+
 ```bash
+git clone <repo-url> fenixlight
+cd fenixlight
+make install
+```
+
+### Local Development
+
+```bash
+git clone <repo-url> fenixlight
+cd fenixlight
 cp .env.example .env
-make ssl-copy-from-prod  # or make ssl-generate-self-signed
+make ssl-generate-self-signed  # or make ssl-copy-from-prod
 make up
 ```
 
 Access: https://fenixlight.by/
 
-## Structure
-```
-├── docker/              # Dockerfile
-├── config/              # PHP, Apache configs (versioned)
-├── nginx/               # Nginx config (versioned)
-├── migrations/          # Database migrations (versioned)
-│   ├── schema/         # DDL changes
-│   └── data/           # DML changes
-├── ssl/                # SSL certificates (gitignored)
-├── backups/            # Database backups (gitignored)
-├── .env                # Environment (gitignored)
-└── www/ (external)     # Website files (separate)
-```
-
 ## Commands
-- `make help` - Show all commands
-- `make up/down/restart` - Container management
-- `make db-backup` - Backup database
-- `make migrate` - Run migrations
-- `make php-upgrade` - Change PHP version
 
-## Website Files
-Website code lives in `../fenixlight/www/` (not in git, too large)
-Only infrastructure/config is versioned.
+```bash
+make install    # Install Docker + build + start (Ubuntu only)
+make up         # Start containers
+make down       # Stop containers
+make restart    # Restart containers
+make rebuild    # Rebuild images and restart
+make logs       # View all logs
+make help       # Show all commands
+```
+
+## Database
+
+**Auto-configured on first run:**
+- Database: `fenix_russia_ru`
+- User: `fenixrussiaru`
+- Password: `7P1a4N2o`
+
+**Snapshot:** `migrations/init-database.sql.gz` (auto-imported)
+
+```bash
+make db-backup        # Create backup
+make db-shell         # Access database CLI
+make db-export-schema # Export schema only
+```
+
+## SSL Certificates
+
+Development: `make ssl-generate-self-signed`  
+Production: Add real certificates to `ssl/` folder
+
+## Migrations
+
+- `migrations/schema/` - Database schema changes
+- `migrations/data/` - Data migrations
+
+```bash
+make migrate        # Run all migrations
+make migrate-create # Create new migration
+```
+
+## Admin
+
+Admin panel: https://fenixlight.by/webasyst/
+
+## Structure
+
+```
+├── www/              # Website code (Webasyst)
+├── docker/           # Dockerfile
+├── config/           # PHP, Apache configs
+├── nginx/            # Nginx config
+├── ssl/              # SSL certificates (gitignored)
+├── migrations/       # Database dumps & migrations
+└── backups/          # Database backups (gitignored)
+```
