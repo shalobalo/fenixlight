@@ -71,7 +71,7 @@ db-shell:
 
 db-backup:
 	@mkdir -p backups
-	docker exec fenixlight-db mysqldump -u $(DB_USER) -p$(DB_PASSWORD) $(DB_NAME) | gzip > backups/db_$(shell date +%Y%m%d_%H%M%S).sql.gz
+	docker exec fenixlight-db mariadb-dump -u $(DB_USER) -p$(DB_PASSWORD) $(DB_NAME) | gzip > backups/db_$(shell date +%Y%m%d_%H%M%S).sql.gz
 	@echo "Backup created in backups/"
 
 db-restore:
@@ -80,7 +80,7 @@ db-restore:
 
 db-export-schema:
 	@mkdir -p migrations/schema
-	docker exec fenixlight-db mysqldump -u $(DB_USER) -p$(DB_PASSWORD) --no-data fenix_russia_ru > migrations/schema/schema_$(shell date +%Y%m%d_%H%M%S).sql
+	docker exec fenixlight-db mariadb-dump -u $(DB_USER) -p$(DB_PASSWORD) --no-data fenix_russia_ru > migrations/schema/schema_$(shell date +%Y%m%d_%H%M%S).sql
 	@echo "Schema exported to migrations/schema/"
 
 migrate:
