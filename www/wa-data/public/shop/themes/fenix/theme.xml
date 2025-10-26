@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE theme PUBLIC "wa-app-theme" "https://www.webasyst.com/wa-content/xml/wa-app-theme.dtd">
+<theme id="fenix" system="0" vendor="webasyst" author="Webasyst" app="site" version="1.0.0">
+  <name locale="en_US">fenix</name>
+  <name locale="ru_RU">fenix</name>
+  <files>
+    <file path="index.html" custom="0" modified="1">
+		<description locale="en_US">Core layout of the fonarik theme family</description>
+		<description locale="ru_RU"></description>
+    </file>
+  <file path="style.css" custom="1" modified="1"/></files>
+</theme>

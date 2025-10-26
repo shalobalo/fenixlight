@@ -1,0 +1,54 @@
+<div class="product light product_{$p.id}">
+    <figure class="figure-hover-overlay">
+        <a href="{$p.frontend_url}"  class="figure-href"></a>
+        {$badge_html = $wa->shop->badgeHtml($p.badge)}
+        {if $badge_html}
+        {$badge_html}
+        {/if}
+        {$product = $wa->shop->product($p.id)}
+        <img src="{$wa->shop->productImgUrl($product,'253x0')}" class="img-responsive" alt="">
+
+    </figure>
+    <div class="product-caption">
+        <div class="block-name">
+            <a href="{$p.frontend_url}" class="product-name">{$p.name}</a>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="product-rating">
+                    <div class="stars">
+                        <a href="{$p.frontend_url}reviews">{for $i = 1 to 5}<span class="star {if (5-$i) < $p.rating }active{/if}"></span>{/for}</a>
+                    </div>
+                    {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+                    {if $reviews_total_count}
+                    <a class="review" href="{$p.frontend_url}reviews">{$reviews_total_count} отзывов</a>
+                    {else}
+                    <span class="review">&nbsp;</span>
+                    {/if}
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xs-6 to-compare-block">
+                <div class="checkbox">
+                    <label>
+                        <input type="checkbox" class="compare-grid-checkbox" data-product="{$p.id}">
+                        <a class="compare-grid-add" data-product="{$p.id}" href="#">К&nbsp;сравнению</a>
+                        <a class="compare-grid-link" data-product="{$p.id}" href="{$wa->getUrl('/frontend/compare/')}">В&nbsp;сравнении</a>
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <p class="product-price-grid">{shop_currency($p.price)}{if $p.compare_price > 0 }<br><span>{shop_currency($p.compare_price|ceil)}</span>{/if}</p>
+            </div>
+
+                <form method="post" action="{$wa->getUrl('shop/frontendCart/add')}" class="addtocart product-cart">
+                    <input type="hidden" name="product_id" value="{$p.id}">
+                    <input type="submit" {if $p.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $p.count !== null && $p.count <= 0) }class="buy disabled" disabled="disabled"{else}class="buy"{/if} value="КУПИТЬ">
+                </form>
+
+        </div>
+    </div>
+
+</div>

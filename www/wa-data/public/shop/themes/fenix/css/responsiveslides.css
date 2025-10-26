@@ -1,0 +1,257 @@
+/*! http://responsiveslides.com v1.54 by @viljamis */
+
+.rslsides {
+  position: relative;
+  list-style: none;
+  overflow: hidden;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  }
+
+.rslides li {
+  -webkit-backface-visibility: hidden;
+  position: absolute;
+  display: none;
+  width: 100%;
+  left: 0;
+  top: 0;
+  }
+
+.rslides li:first-child {
+  position: relative;
+  display: block;
+  float: left;
+  }
+
+.rslides img {
+  display: block;
+  height: auto;
+  float: left;
+  width: 100%;
+  border: 0;
+  }
+@media (max-width: 1920px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 200px;
+    }
+}
+@media (max-width: 1920px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 200px;
+    }
+}
+@media (max-width: 1600px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 200px;
+    }
+}
+@media (max-width: 1440px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 150px;
+    }
+}
+@media (max-width: 1280px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 100px;
+    }
+}
+@media (max-width: 1024px) {
+    .slide-title, .slide-title2, .tp-caption a {
+        margin-left: 50px;
+    }
+    .slide-title{
+        margin-top: -25px;
+    }
+    .slide-title2 {
+        margin-top: -10px;
+    }
+}
+
+
+@charset "utf-8";
+.raleway {
+    font-family: sans-serif}
+.border-box-sizing {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box}
+@media (max-width: 1185px) {
+    .second-page-container{
+        padding-top: 225px;
+    }
+}
+@media (max-width: 1024px) {
+    .second-page-container{
+        padding-top: 15px;
+    }
+}
+@media (max-width: 991px) {
+    #header .header-logo{
+        margin: 0 auto;
+    }
+    .small-menu a {
+        width: 27%;
+    }
+    .small-menu .pull-right {
+        float: none !important;
+        margin-top: 15px;
+    }
+    /*#header.header-top-fixed {
+    position: absolute}*/
+    #header.header-top-fixed .dis-n {
+        display: block}
+    #header .header-main-fixed {
+        height: 150px;
+        box-shadow: none}
+    #header .header-main-fixed .header-main-block1 {
+        background-color: black}
+    #header .header-logo {
+        text-align: center}
+    .home-category .home-category-block .home-category-title {
+        position: relative;
+        margin-top: 30px}
+    .second-page-container {
+        padding-top: 15px}
+    .payment-service h3 {
+        text-align: center}
+    .payment-service p {
+        text-align: center}
+    #header .header-bg-fixed {
+        height: 150px}
+    #header #container-fixed {
+        margin: 5px 0}
+    .main-category-block .main-category-list .with-dropdown .dropdown-menu {
+        position: relative;
+        left: -1px;
+        width: 100%}
+    .block-chess-banners .block-chess .chess-caption-right{
+        padding: 30px;
+    }
+    .block-chess-banners .block-chess .chess-caption-left{
+        padding: 30px;
+    }
+}
+@media (max-width: 1023px) {
+    .nav-justified>li>a {
+        margin-bottom: 0}
+    #header .header-main .navbar-collapse {
+        z-index: 999;
+        position: relative;
+        background-color: #0e0e0e}
+    #header .header-main .navbar-collapse h4 {
+        color: rgba(234,234,234,.9)}
+    #header .header-main .navbar-collapse .dropdown-menu a {
+        /*    color: rgba(234,234,234,.5)*/
+    }
+    #header .header-main .navbar-collapse .dropdown-menu a:hover {
+        color: #eb2c33}
+    .style-h1 { font-size:25px;}
+}
+@media (max-width: 767px) {
+    .nav-justified>li>a {
+        margin-bottom: 0}
+    #header .header-main .navbar-collapse {
+        z-index: 999;
+        position: relative;
+        background-color: #0e0e0e}
+    #header .header-main .navbar-collapse h4 {
+        color: rgba(234,234,234,.9)}
+    #header .header-main .navbar-collapse .dropdown-menu a {
+        /*    color: rgba(234,234,234,.5)*/
+    }
+    #header .header-main .navbar-collapse .dropdown-menu a:hover {
+        color: #eb2c33}
+    .product-image {
+        margin-bottom: 30px}
+    .navbar-nav .open .dropdown-menu>li>a {
+        height: 40px;
+        line-height: 30px}
+    #header .navbar-main .dropdown-submenu>.dropdown-menu {
+        position: relative;
+        left: 0;
+        padding-left: 30px}
+    .header-for-light h1 {
+        font-size: 32px;
+        line-height: 42px}
+    .header-for-dark h1 {
+        font-size: 32px;
+        line-height: 42px}
+    .product.list .figure-hover-overlay  img{}
+}
+@media (max-width: 480px) {
+    .second-page-container {
+        padding-top: 15px}
+    #header .header-main .top-search-form {
+        width: 100%;
+        text-align: right}
+    .header-for-light h1 {
+        font-size: 26px;
+        line-height: 42px}
+    .header-for-dark h1 {
+        font-size: 26px;
+        line-height: 42px}
+}
+@media (min-width: 768px) and (max-width: 1200px) {
+    .product-image {
+        margin-bottom: 30px}
+}
+@media (max-width: 390px) {
+    .second-page-container{
+        padding-top: 15px;
+    }
+}
+
+
+
+@media (max-width: 1024px) {
+    #header, #header.header-top-fixed {
+        position: relative;
+    }
+    #header .header-bg {
+        height: auto;
+    }
+    #header .header-main {
+        height: auto;
+    }
+    #header .header-logo {
+        display: none;
+    }
+
+    .tp-caption a {
+        font-size: 12px;
+        padding: 10px 15px;
+    }
+
+    .dropdown .product.light {
+        display: none;
+    }
+
+    .is_desctop .nav.navbar-nav.navbar-right {
+        margin-right: 0;
+    }
+
+}
+@media (max-width: 1200px) {
+    .product.light .product-caption .product-cart {
+        right: 5px;
+    }
+    /*.product.light .col-md-6 {
+        margin-left: -5px;
+    }*/
+}
+@media (max-width: 950px) {
+    .product.light .product-caption .product-cart {
+        right: 10px;
+    }
+    .product.light .col-md-6 {
+        margin-left: 0;
+    }
+}
+@media (max-width: 1023px) {
+.header-menu .menu-link {
+    font-size: 12px;
+    color: white;
+    border: none;
+}
+}

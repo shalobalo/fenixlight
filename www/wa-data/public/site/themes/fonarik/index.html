@@ -1,0 +1,129 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+   "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{if $my_r_title}{$my_r_title}{else}{if $product && $product.name == $wa->title()}{$wa->title()|escape}: купить {$wa->title()|escape}, лучшая цена в интернет-магазине fonarik-market.ru{else}{$wa->title()|escape}{/if}{/if}</title>
+<meta name="Keywords" content="{if $my_r_keywords}{$my_r_description}{else}{if $wa->meta('keywords')}{$wa->meta('keywords')|escape}{else}{if $product}{$wa->title()|escape}, купить {$wa->title()|escape}, {$wa->title()|escape} цена, интернет магазин, fenixlight.by{/if}{/if}{/if}">
+<meta name="Description" content="{if $my_r_description}{$my_r_keywords}{else}{if $wa->meta('description') }{$wa->meta('description')|escape}{else}{if $product}{$wa->title()|escape} в интернет-магазине fenixlight.by. Хотите купить {$wa->title()|escape} по выгодной цене? Заходите в наш интернет-магазин fenixlight.by!{/if}{/if}{/if}">
+<meta name="google-site-verification" content="HgxM5mlLK6npvnMkRhl7Bcs-1uABQjKYeeq6zbmKtb0">
+<meta name="yandex-verification" content="5eb55ef94d5b056b" >
+{if waRequest::get(page) || waRequest::get(sort) || waRequest::get(view) 
+    || $wa->currentUrl(0, 1)|strpos:'/tag/' !== false || $wa->currentUrl(0, 1)|strpos:'/search/' !== false || $wa->currentUrl(0, 1)|strpos:'/compare/' !== false || $wa->currentUrl(0, 1)|strpos:'/reviews/' !== false }
+<meta name="robots" content="noindex,follow" />
+{/if}
+    <script type="text/javascript" src="{$wa_url}wa-content/js/jquery/jquery-1.8.2.min.js"></script>
+	{if $wa->isMobile()}
+		<link href="{$wa_theme_url}custom.mobile.css?{$wa->version()}" rel="stylesheet" type="text/css">
+		<meta name="viewport" content="width=device-width; initial-scale=1; maximum-scale=1;user-scalable=0;">
+    {else}          
+	{/if}
+	{include file="`$wa_active_theme_path`/head.html" inline}
+	{$wa->headJs()}
+
+<style type="text/css">
+  .tooltip {
+   	text-align: center;
+font-size: 12px;
+color: #808183;
+position: relative;
+padding: 5px;
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+background-color: #fff;
+float: left;
+margin: 6px 0 0px 7px;
+width: 190px; 
+  }
+  .tooltip:before,
+.tooltip:after {
+    content: "\2666";
+font-family: monospace;
+font-size: 50px;
+line-height: 52px;
+text-align: center;
+position: absolute;
+overflow: hidden;
+width: 40px;
+height: 50px;
+-moz-user-select: -moz-none;
+-khtml-user-select: none;
+-webkit-user-select: none;
+user-select: none;
+}
+.tooltip:before {
+    color:#ccc;
+}
+.tooltip:after {
+    color:#fff;
+}
+  .leftArrow:before,
+.leftArrow:after {
+    top: 55%;
+left: -15px;
+margin-top: -25px;
+clip: rect(0px, 15px, 30px, 0px);
+}
+.leftArrow:before {
+}
+.leftArrow:after {
+    left: -14px;
+}
+  .primary ul li a {
+   	padding: 21px 15px;
+ 
+  }
+</style>
+<style type="text/css">  
+  .sh_operator_logo {
+width: 100px!important;
+height: 120px!important;
+cursor: pointer!important;
+float: left!important;
+margin: 0 0 5px 0!important;
+}
+.sh_chat_operator_logo {
+max-width: 100px!important;
+}
+.sh_operator_help {
+width: 300px!important;
+min-height: 150px!important;
+}
+.sh_operator_button_no {
+margin: 20px 0 0 125px!important;
+}
+.sh_operator_button_save {
+margin-left: 15px!important;
+}
+.sh_operator_title {
+font-size: 20px!important;
+width: 275px!important;
+padding: 20px 0!important;
+color: #2d669b!important;
+margin-top: 0!important;
+margin-bottom: 0!important;
+}
+.sh_operator_description {
+padding: 10px 0 0 0;
+font-size: 16px!important;
+line-height: 26px!important;
+}
+.sh_btn_right_top {
+top: 5px!important;
+}
+.sh_btn_right .sh_operator_triangle_white {
+left: 318px!important;
+}
+.sh_btn_right .sh_operator_triangle {
+left: 320px!important;
+}
+</style>
+</head>
+<body> 
+  {include file="`$wa_active_theme_path`/content.html" inline}
+  {literal}<script id="CrossssGoScr" type="text/javascript">(function(){var f = function(){var s = document.createElement("script");document.getElementsByTagName("HEAD")[0].appendChild(s);s.type="text/javascript";s.async=true;s.src="http://crossss.com/crossssInfo.aspx?id=468";};if (navigator.userAgent.toLowerCase().indexOf("opera")!=-1){document.addEventListener("DOMContentLoaded",f,false);}else{f();} })();</script>{/literal}
+  <img style="display:none;" src="//a.marketgid.com/1x1.gif?id=244405&type=c&g=x&t=x&tg=&v=1&r=">
+</body>
+</html>

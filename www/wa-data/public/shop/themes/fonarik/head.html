@@ -1,0 +1,134 @@
+<!-- shop app css -->
+  <link rel="shortcut icon" href="{$wa_theme_url}images/favicon.png">
+  <link rel="stylesheet" href="{$wa_theme_url}style.css?v=1" type="text/css" media="screen" >
+  <link href="{$wa_theme_url}css/grid.css" media="screen" rel="stylesheet" type="text/css" >
+  <link rel="stylesheet" href="{$wa_theme_url}css/jquery.jqzoom.css" type="text/css" >
+
+    <!-- js -->
+    <script type="text/javascript" src="{$wa_url}wa-content/js/jquery-wa/wa.core.js"></script>
+	<script type="text/javascript" src="//yandex.st/share/share.js" charset="utf-8"></script>   
+    {if pages_cur}
+    {if $pages_cur AND $pages_cur neq 1 AND $pages_cur neq ''}
+    {if $pages_cur eq $pages_count}
+        <link rel="prev" href="{$prev_url} ">
+    {/if}
+    {else}
+    {if $pages_cur AND  $pages_count neq 1 AND $pages_count neq '' AND $pages_count neq $pages_cur}
+        <link rel="next" href="{$next_url} ">
+    {/if}                           
+    {/if}
+    
+    
+    {if $pages_cur AND $pages_cur neq 1 AND $pages_cur neq ''}
+    {if $pages_count neq $pages_cur}
+        <link rel="prev" href="{$prev_url} ">
+        <link rel="next" href="{$next_url} ">
+    {/if}{/if}
+    {/if}
+    {$nr_title}           
+  <script src="{$wa_theme_url}js/html5.js" type="text/javascript" ></script>
+  <script src="{$wa_theme_url}js/jflow.plus.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}js/jquery.carouFredSel-5.2.2-packed.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}js/checkbox.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}js/radio.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}js/selectBox.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}js/jquery.jqzoom-core.js" type="text/javascript"></script>
+  <script src="{$wa_theme_url}custom.shop.js" type="text/javascript"></script>
+  
+  <script src="/wa-apps/shop/plugins/custommenu/js/custommenu_frontend.js" type="text/javascript"></script>
+  <link rel="stylesheet" href="/wa-apps/shop/plugins/custommenu/css/custommenu.css" type="text/css" >
+  
+  {$wa->css()}
+  {$wa->js()}
+
+<!-- headhunter -->
+  <link rel="stylesheet" href="{$wa_theme_url}headhunter/style.css" type="text/css" >
+  <script src="{$wa_theme_url}headhunter/popup.js" type="text/javascript"></script>
+  
+  <!-- LiveTex {literal} -->
+<!--<script type='text/javascript'>
+var liveTex = true,
+liveTexID = 70545,
+liveTex_object = true;
+(function() {
+var lt = document.createElement('script');
+lt.type ='text/javascript';
+lt.async = true;
+lt.src = '//cs15.livetex.ru/js/client.js';
+var sc = document.getElementsByTagName('script')[0];
+if ( sc ) sc.parentNode.insertBefore(lt, sc);
+else document.documentElement.firstChild.appendChild(lt);
+})();
+</script>-->
+<!-- LiveTex {/literal} -->    
+  <script type="text/javascript">
+	$(function() {
+	  $('#list_product').carouFredSel({
+		prev: '#prev_c1',
+		next: '#next_c1',
+		auto: false
+	  });
+     $('#list_product2').carouFredSel({
+		prev: '#prev_c2',
+		next: '#next_c2',
+		auto: false
+	  });
+	  $('#thumblist').carouFredSel({
+		prev: '#img_prev',
+		next: '#img_next',
+		scroll: 1,
+		auto: false,
+		circular: false,
+	  });
+	 
+	  $(window).resize();
+	});
+  </script>
+  <script type="text/javascript">
+       $(document).ready(function(){
+		   
+		   
+		   
+	      $("button").click(function(){
+		     $(this).addClass('click')
+	      });
+
+		$('.jqzoom').jqzoom({
+			zoomType: 'standard',
+			lens:true,
+			preloadImages: true,
+			alwaysOn:false
+		});
+
+		$('#wrapper_tab a.tab_link').click(function() {
+			if ($(this).attr('class') != $('#wrapper_tab').attr('class') ) {
+				$('#wrapper_tab').attr('class',$(this).attr('class'));
+			}
+			return false;
+		});
+		
+		 $("#myController").jFlow({
+			controller: ".control", 
+			slideWrapper : "#jFlowSlider", 
+			slides: "#slider", 
+			selectedWrapper: "jFlowSelected", 
+			width: "984px", 
+			height: "300px",  
+			duration: 400,  
+			prev: ".slidprev", 
+			next: ".slidnext", 
+			auto: true
+    });
+	$('p').each(function() {
+    var $this = $(this);
+    if($this.html().replace(/\s|&nbsp;/g, '').length == 0)
+        $this.remove();
+	$("select.select").selectBox();
+});
+		
+	});
+  </script>
+    {if !empty($nofollow)}
+        <!-- "nofollow" for pages not to be indexed, e.g. customer account -->
+        <meta name="robots" content="noindex,nofollow" >
+    {/if}

@@ -1,0 +1,16 @@
+{if isset($breadcrumbs)}
+<div class="block-breadcrumb">
+    <ul class="breadcrumb" itemprop="breadcrumb">
+        <li><a href="/"><i class="fa fa-home"></i></a></li>
+        {if $breadcrumbs}
+        {foreach $breadcrumbs as $breadcrumb}
+        <li><a href="{$breadcrumb.url}">{$breadcrumb.name}</a></li>
+        {/foreach}
+        {/if}
+        {$last_path = ''}
+        {if isset($product.name) && $wa->currentUrl(0) eq $wa->shop->productUrl($product)}{$last_path = $product.name}{/if}
+        {if isset($category)}{$last_path = $category.name}{/if}
+        <li class="active">{$last_path}</li>
+    </ul>
+</div>
+{/if}

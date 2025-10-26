@@ -24,6 +24,9 @@ install:
 	}
 	@echo "Setting up environment..."
 	@test -f .env || cp .env.example .env
+	@echo "Creating writable directories..."
+	@mkdir -p www/wa-cache www/wa-log www/wa-data/public
+	@chmod -R 777 www/wa-cache www/wa-log www/wa-data/public
 	@echo "Building and starting containers..."
 	$(MAKE) rebuild
 	@echo ""

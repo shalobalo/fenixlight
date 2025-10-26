@@ -1,0 +1,12 @@
+@charset "utf-8";
+/* CSS Document */
+
+@import "bootstrap.css";
+@import "font-awesome.css";
+@import "animate.css";
+@import "owl.carousel.css";
+@import "main.css";
+@import "responsiveslides.css";
+
+@media (max-width:500px)
+{ .table88{display:none;} }

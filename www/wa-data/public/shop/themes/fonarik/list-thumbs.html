@@ -1,0 +1,36 @@
+   {foreach $products as $p}
+		     <div class="grid_3 product" itemscope itemtype ="http://schema.org/Product">
+			    <div class="prev">
+                                {$badge_html = $wa->shop->badgeHtml($p.badge)}
+                                {if $badge_html}
+                                    <div class="corner top right">{$badge_html}</div>
+                                {/if}
+                <a href="{$p.frontend_url}" title="{$p.name}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">
+                {$wa->shop->productImgHtml($p, '200x0', ['itemprop' => 'image', 'default' => "`$wa_theme_url`img/dummy200.png", 'alt' => $p.name])}
+                    </a></div>
+            {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+            <div class="product-rating">
+            {if !empty($p.rating) && $p.rating > 0}
+                    <span class="rating nowrap" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" title="{sprintf('[`Average user rating: %s / 5`]', $product.rating)}">
+                        {$wa->shop->ratingHtml($p.rating, 16)}
+                        <span itemprop="ratingValue" style="display: none;" itemprop="ratingValue">{$p.rating}</span>
+                        <span itemprop="reviewCount" style="display: none;" itemprop="ratingCount">{$p.rating_count}</span>
+                        <span itemprop="bestRating" style="display: none;">5</span>
+                    </span>
+            {else}
+                <span class="rating nowrap">
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                </span>
+            {/if}
+            {if $reviews_total_count }
+                <a href="http://fonarik-market.ru{$p.frontend_url}#reviews"><span>Отзывы {$reviews_total_count}</span></a>
+            {/if}
+            </div>
+              <a href="http://fonarik-market.ru{$p.frontend_url}" title="{$p.name}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}"><h3 class="title">{$p.name}</h3></a>
+              {include file='product-price-cart.html' p=$p}
+            </div> 
+    {/foreach}

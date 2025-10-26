@@ -1,0 +1,43 @@
+<meta name="google-site-verification" content="qycRp4EUG2iMjv47092bnQKHFdPwcq9E4GkcJ5Vb7xk" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<link rel="stylesheet" type="text/css" href="{$wa_theme_url}css/theme-style.css">
+<link rel="stylesheet" href="{$wa_theme_url}css/ie.style.css">
+<link rel="icon" type="image/png" href="/favicon.png">
+
+<!--[if lt IE 9]>
+<script src="https://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+<script src="https://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script>
+<![endif]-->
+<!--[if IE 7]>
+<link rel="stylesheet" href="{$wa_theme_url}css/font-awesome-ie7.css">
+<![endif]-->
+<script src="{$wa_theme_url}js/vendor/jquery.js"></script>
+<script>
+       var rrPartnerId = "56791d756636b327249bd6bc";
+       var rrApi = {}; 
+       var rrApiOnReady = rrApiOnReady || [];
+       rrApi.addToBasket = rrApi.order = rrApi.categoryView = rrApi.view = 
+           rrApi.recomMouseDown = rrApi.recomAddToCart = function() {};
+       (function(d) {
+           var ref = d.getElementsByTagName('script')[0];
+           var apiJs, apiJsId = 'rrApi-jssdk';
+           if (d.getElementById(apiJsId)) return;
+           apiJs = d.createElement('script');
+           apiJs.id = apiJsId;
+           apiJs.async = true;
+           apiJs.src = "//cdn.retailrocket.ru/content/javascript/api.js";
+           ref.parentNode.insertBefore(apiJs, ref);
+       }(document));
+</script>
+
+{$wa->css()}
+<script src="/wa-apps/dislider/third-party/revolution/jquery.revolution.min.js?0.1.5"></script>
+<script src="/wa-apps/dislider/third-party/revolution/jquery.plugins.min.js?0.1.5"></script>
+<script src="/wa-apps/dislider/third-party/revolution/jquery.scrollTo-1.4.2-min.js?0.1.5"></script>
+<script src="/wa-apps/shop/plugins/set/js/arcticmodal/jquery.arcticmodal-0.3.min.js?5.2.3"></script>
+<script src="/wa-data/public/shop/plugins/set/_/js/shopSetPlugin.js"></script>
+{$wa->headJs()}
+
+<!-- plugin hook: 'frontend_head' -->
+{* @event frontend_head.%plugin_id% *}
+{foreach $frontend_head as $_}{$_}{/foreach}

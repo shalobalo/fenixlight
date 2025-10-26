@@ -1,0 +1,81 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 data-wow-duration="1s" class="wow fadeInRight animated animated" style="visibility: visible;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;">[`Compare products`]</h1>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div data-wow-duration="1s" class="box-border wow fadeInLeft animated overflow-x" style="visibility: visible;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;overflow-x:auto;">
+                            <table class="cart-table table compare">
+                                <thead>
+                                <tr class="card_product_name">
+                                    <th></th>
+                                    {foreach $products as $p}
+                                    <th><a href="{$wa->getUrl('/frontend/product/', ['product_url' => $p.url])}">{$p.name|escape}</a></th>
+                                    {/foreach}
+                                </tr>
+                                <tr class="card_product_name second">
+                                    <th></th>
+                                    {foreach $products as $p}
+                                    <th>
+                                        {if count($products) > 2}
+                                        <a data-product="{$p.id}" class="page-compare-remove" href="{$p.delete_url}" title="[`Remove from comparison list`]"><i class="icon16 remove">удалить из сравнения</i></a>
+                                        {/if}
+                                    </th>
+                                    {/foreach}
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td data-th="Products" class="card_product_image">Изображение</td>
+                                    {foreach $products as $p}
+                                    <td data-th="{$p.name|escape}" class="card_product_image">
+                                        <a href="{$wa->getUrl('/frontend/product/', ['product_url' => $p.url])}">{$wa->shop->productImgHtml($p, '253x0', ['itemprop' => 'image', 'id' => 'product-image', 'default' => "`$wa_theme_url`img/dummy96.png", 'title' => $p.name|cat:' ':strip_tags($p.summary)|escape])}</a>
+                                    </td>
+                                    {/foreach}
+                                </tr>
+                                <tr>
+                                    <td data-th="Products"><a href="#">Цена</a></td>
+                                    {foreach $products as $p}
+                                    <td data-th="Product Name1" class="card_product_price product-caption">
+                                        <p class="product-price-grid">{if $p.compare_price > 0 }<span>{shop_currency($p.compare_price|ceil)}</span>{/if} {shop_currency($p.price)}</p>
+                                        <form method="post" action="{$wa->getUrl('/frontendCart/add')}" class="addtocart product-cart">
+                                            <input type="hidden" name="product_id" value="{$p.id}">
+                                            <input type="submit" {if $p.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $p.count !== null && $p.count <= 0) }class="buy disabled" disabled="disabled"{else}class="buy"{/if} value="КУПИТЬ">
+                                        </form>
+                                    </td>
+                                    {/foreach}
+                                </tr>
+                                {foreach $features as $f_id=>$f}
+                                <tr{if $f.same} class="same"{/if}>
+                                    <td data-th="Products" class="card_product_image"><a href="#">{$f.name}</tв>
+                                    {foreach $products as $p}
+                                    <td data-th="{$p.name|escape}" class="card_product_price">
+                                        {if isset($p.features[$f_id])}
+                                        {if is_array($p.features[$f_id])}
+                                        {implode(', ', $p.features[$f_id])}
+                                        {else}
+                                        {$p.features[$f_id]}
+                                        {/if}
+                                        {else}
+                                        <span class="gray">&mdash;</span>
+                                        {/if}
+                                    </td>
+                                    {/foreach}
+                                </tr>
+                                {/foreach}
+                                </tbody>
+                            </table>
+                        </div>
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

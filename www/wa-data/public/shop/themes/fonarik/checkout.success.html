@@ -1,0 +1,29 @@
+<!-- Conversion tracking code: purchases. Step 3: Order complete -->
+<img src="//drs2.veinteractive.com/DataReceiverService.asmx/Pixel?journeycode=C332A04C-A86B-47C8-A143-D5534D83373C" width="1" height="1"/>
+<script type="text/javascript">
+(function(w, p) {
+var a, s;
+(w[p] = w[p] || []).push({
+counter_id: 371963834,
+tag: 'b5a413c54040fa8e1347e8c99532e7fb'
+});
+a = document.createElement('script'); a.type = 'text/javascript'; a.async = true;
+a.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'autocontext.begun.ru/analytics.js';
+s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(a, s);
+})(window, 'begun_analytics_params');
+</script>
+<div class="checkout-result success">
+    <h1>[`Thank you!`]</h1>
+    <p>[`We successfully accepted your order, and will contact you asap.`]<br />
+    [`Your order number is `] <strong>{$order.id}</strong>.</p>
+    
+    {if !empty($payment)}
+        <div class="plugin">
+            {$payment}
+        </div>
+    {/if}
+    
+    <p class="back">
+        &larr; <a href="{$wa_app_url}">[`Back to the store`]</a>
+    </p>
+</div>

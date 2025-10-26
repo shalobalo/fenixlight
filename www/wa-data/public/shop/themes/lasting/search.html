@@ -1,0 +1,90 @@
+<section>
+    <div class="second-page-container">
+        <div class="container">
+            <div class="row">
+
+
+                {include file="sidebar.html"}
+
+
+
+
+                <div class="col-md-9">
+                    {include file="breadcrumbs.html"}
+
+                    <div class="header-for-light"><h1 class="wow fadeInRight animated" data-wow-duration="1s">{$title}</h1></div>
+                    <div class="block-products-modes color-scheme-2">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4 col-md-4 col-lg-4">
+                                <div class="product-view-mode">
+                                    <a title="Витрина" href="#" class="list_link{if waRequest::get(view) eq 'grid' or !waRequest::get(view)} active{/if}" rel="grid"><i class="fa fa-th-large"></i></a>
+                                    <a title="Список" href="#" class="list_link{if waRequest::get(view) eq 'table'} active{/if}" rel="table"><i class="fa fa-th-list"></i></a>
+                                </div>
+                                <script type="text/javascript">
+                                    $("a.list_link").click(function () {
+                                        var url = location.href;
+                                        if (url.indexOf('?') == -1) {
+                                            url += '?';
+                                        } else {
+                                            url += '&';
+                                        }
+                                        if(url.indexOf('view') == -1) {
+                                            location.href = url + 'view=' + $(this).attr('rel');
+                                        }
+                                        else {
+                                            if(url.indexOf('&view') == -1) {
+                                                var newURL = url.split('?view', 1)[0];
+                                                newURL += '?';
+                                                newAfterURL = url.split('?view')[1];
+                                                newAfterURL = newAfterURL.split('&');
+                                                var nameAfterURL = '';
+                                                for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+                                                    if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+                                                }
+                                            } else if(url.indexOf('?view') == -1) {
+                                                var newURL = url.split('&view', 1)[0];
+                                                newURL += '&';
+                                                newAfterURL = url.split('&view')[1];
+                                                newAfterURL = newAfterURL.split('&');
+                                                var nameAfterURL = '';
+                                                for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+                                                    if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+                                                }
+                                            }
+                                            location.href = newURL + 'view=' + $(this).attr('rel') + nameAfterURL;
+                                        }
+                                        return false;
+                                    });
+                                </script>
+                            </div>
+                        </div>
+                    </div>
+                    {if !$products}
+                    [`No products matched your filtering criteria.`]
+                    {else if waRequest::get(view) eq 'table'}
+                    {foreach $products as $p}
+                    {include file='product_list.html' p=$p}
+                    {/foreach}
+                    {else}
+                    <div class="row">
+                        {foreach $products as $p}
+                        <div class="col-xs-12 col-sm-6 col-md-4 text-center mb-25">
+                            {include file='product_grid.html' p=$p}
+                        </div>
+                        {/foreach}
+                    </div>
+                    {/if}
+
+                    {if isset($pages_count) && $pages_count > 1}
+                    <div class="block-pagination">
+                        {wa_pagination total=$pages_count attrs=['class' => "pagination"]}
+                    </div><!-- .pagination -->
+                    {/if}
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</section>

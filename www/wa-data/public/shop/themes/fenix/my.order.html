@@ -1,0 +1,143 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s">Детали <span>Заказа</span></h1>
+                </div>
+                <div class="row">
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="box-border wow fadeInLeft" data-wow-duration="1s">
+                            {if !empty($pin_required)}
+                                <h3><i class="fa fa-tasks"></i> Заказ {$order.id_str}</h3>
+                                <form action="" method="post">
+                                    {if $wrong_pin}
+                                    <p style="color:red">[`PIN is not valid`]</p>
+                                    {/if}
+                                    <p>[`Please enter a 4-digit PIN that you received with your order receipt by email.`]</p>
+                                    <div>
+                                        <input type="text" name="pin">
+                                    </div>
+                                    <div>
+                                        <input type="submit" value="[`View order`]">
+                                    </div>
+                                </form>
+                            {else}
+                            <h3><i class="fa fa-tasks"></i> Заказ {$order.id_str} {$order.state->getName()}</h3>
+                            <hr>
+                            {$order.create_datetime|wa_date:'humandatetime'}
+
+                            <h3>[`Shipping`]
+                                {if $order.shipping_name}
+                                &mdash; <strong>{$order.shipping_name}</strong>
+                                {/if}
+                            </h3>
+
+                            <!-- shipping plugin output -->
+                            {if !empty($order.params.tracking_number)}
+                            [`Shipment tracking number`]: {$order.params.tracking_number}
+                            <br />
+                            {/if}
+                            {if !empty($tracking) && $order.state->getId() != 'completed'}
+                            <div class="plugin">
+                                {$tracking}
+                            </div>
+                            {/if}
+
+                            <p>
+                                {$contact.name|escape}<br>
+                                {if $shipping_address}
+                                {$shipping_address}
+                                {/if}
+                            </p>
+
+                            <!-- billing -->
+                            <h3>[`Payment`]
+                                {if $order.payment_name}
+                                &mdash; <strong>{$order.payment_name}</strong>
+                                {/if}
+                            </h3>
+
+                            <!-- payment plugin output -->
+                            {if !empty($payment)}
+                            <div class="plugin">
+                                {$payment}
+                            </div>
+                            {/if}
+
+                            <p>
+                                {$contact.name|escape}<br>
+                                {if $billing_address}
+                                {$billing_address}
+                                {/if}
+                            </p>
+
+                            {if !empty($order.comment)}
+                            <h3>[`Comment`]</h3>
+                            <p>
+                                {$order.comment|escape}<br>
+                            </p>
+                            {/if}
+
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>Наименование</th>
+                                        <th>Количество</th>
+                                        <th>Сумма</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    {foreach $order.items as $item}
+                                    <tr>
+                                        <td>{$item.name}</td>
+                                        <td>{wa_currency($item.price, $order.currency)} x</span> {$item.quantity}</td>
+                                        <td>{wa_currency($item.price * $item.quantity, $order.currency)}</td>
+                                    </tr>
+                                    {/foreach}
+
+                                    <tr class="no-border thin">
+                                        <td colspan="2" class="text-right">Промежуточный итог</td>
+                                        <td>{wa_currency($subtotal, $order.currency)}</td>
+                                    </tr>
+                                    <tr class="no-border thin">
+                                        <td colspan="2" class="text-right">[`Discount`]</td>
+                                        <td>&minus; {wa_currency($order.discount, $order.currency)}</td>
+                                    </tr>
+                                    <tr class="no-border thin">
+                                        <td colspan="2" class="text-right">
+                                            [`Shipping`]
+                                            {if !empty($order.params.shipping_name)}
+                                            (<strong>{$order.params.shipping_name}</strong>)
+                                            {/if}
+                                        </td>
+                                        <td>{wa_currency($order.shipping, $order.currency)}</td>
+                                    </tr>
+                                    {if $order.tax > 0}
+                                    <tr class="no-border thin">
+                                        <td colspan="2" class="text-right">[`Tax`]</td>
+                                        <td>{wa_currency($order.tax, $order.currency)}</td>
+                                    </tr>
+                                    {/if}
+                                    <tr class="no-border thin large">
+                                        <td colspan="2" class="text-right"><b>[`Total`]</b></td>
+                                        <td class="bold">{wa_currency($order.total, $order.currency)}</td>
+                                    </tr>
+
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            {/if}
+
+
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

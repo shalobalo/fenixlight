@@ -1,0 +1,160 @@
+<div id="sidebar" class="grid_3">
+	{include file="sidebar.html"}  
+</div>
+<!-- general welcome text -->
+<div id="content" class="grid_9"> 
+	<h1 class="page_title">{if !empty($category.params) && isset($category.params.h1)}{$category.params.h1}{else}{$category.name}{/if}</h1>
+	<!-- subcategories -->
+	<!-- {if $category.subcategories}
+			<div class="sub-categories">
+				{foreach $category.subcategories as $sc}
+					<a href="{$sc.url}">{$sc.name|escape}</a><br />
+				{/foreach}
+			</div>
+		{/if}-->
+          
+	<div class="options">
+		<div class="grid-list">
+			<a title="Витрина" class="list_link grid {if waRequest::get(view) eq 'grid'}current{/if}" rel="grid"  {if waRequest::get(view) neq 'grid'}style="cursor:pointer"{/if}><span>img</span></a>
+			<a title="Список" class="list_link list {if waRequest::get(view) eq 'table' or !waRequest::get(view)}current{/if}" rel="table"  {if waRequest::get(view) neq 'table'}style="cursor:pointer"{/if}><span>img</span></a>
+			<script type="text/javascript">
+				$("a.list_link").click(function () {
+				var url = location.href;
+				if (url.indexOf('?') == -1) {
+				url += '?';
+				} else {
+				url += '&';
+				}
+				if(url.indexOf('view') == -1) {
+				location.href = url + 'view=' + $(this).attr('rel');
+				} 
+				else {
+				if(url.indexOf('&view') == -1) {
+				var newURL = url.split('?view', 1)[0];
+				newURL += '?';
+				newAfterURL = url.split('?view')[1];
+				newAfterURL = newAfterURL.split('&'); 
+				var nameAfterURL = '';
+				for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+				if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+				}
+				} else if(url.indexOf('?view') == -1) {
+				var newURL = url.split('&view', 1)[0];
+				newURL += '&';
+				newAfterURL = url.split('&view')[1];
+				newAfterURL = newAfterURL.split('&'); 
+				var nameAfterURL = '';
+				for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+				if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+				}
+				} 
+				location.href = newURL + 'view=' + $(this).attr('rel') + nameAfterURL;	
+				} 
+				});
+			</script>
+			</div>
+			<!-- .grid-list -->
+			<!--<div class="show">
+			    Показать
+			    <select>
+				   <option>1</option>
+				   <option>2</option>
+				   <option>3</option>
+				   <option>4</option>
+				   <option>5</option>
+				   <option>6</option>
+				   <option>7</option>
+				   <option>8</option>
+				   <option>9</option>
+				   <option>10</option>
+				   <option>11</option>
+				   <option>12</option>
+			     </select>
+			    
+			    на страницу
+			</div> -->
+	<div class="sort">
+         {$sort_fields = ['rating' => '[`Customer rating`]', 'total_sales' => '[`Bestsellers`]', 'price' => '[`Price`]', 'name' => '[`Name`]', 'create_datetime'=>'[`Date added`]', 'stock' => '[`In stock`]']}
+    {if !isset($active_sort)}
+    {$active_sort = $wa->get('sort', 'create_datetime')}
+    {/if}
+			 Сортировать:
+			    <select style="width:170px;" id="sorting"  class="select">
+        {if !empty($category) && !$category.sort_products}
+            <option {if !$active_sort} selected{/if} value="{$wa->currentUrl(0, 1)}">[`New & Popular`]</option>
+        {/if}
+        {foreach $sort_fields as $sort => $name}
+        <option {if $active_sort == $sort} selected{/if} value="{$sort}">{$name}</option>
+        {if $wa->get('sort') == $sort}{$wa->title( $wa->title()|cat:' — '|cat:$name)}{/if}
+        {/foreach}
+			     </select>
+                <script type="text/javascript">
+                    $("#sorting").change(function () {
+                        var url = location.href;
+                        if (url.indexOf('?') == -1) {
+                            url += '?';
+                        } else {
+                            url += '&';
+                        }
+						
+                        if(url.indexOf('sort') == -1) {
+                        location.href = url + 'sort=' + $(this).val();
+						} 
+						else {
+						if(url.indexOf('&sort') == -1) {
+						var newURL = url.split('?sort', 1)[0];
+						newURL += '?';
+						newAfterURL = url.split('?sort')[1];
+						newAfterURL = newAfterURL.split('&'); 
+						var nameAfterURL = '';
+						for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+						 if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+						}
+						} else if(url.indexOf('?sort') == -1) {
+						var newURL = url.split('&sort', 1)[0];
+						newURL += '&';
+						newAfterURL = url.split('&sort')[1];
+						newAfterURL = newAfterURL.split('&'); 
+						var nameAfterURL = '';
+						for (i = 1, l = newAfterURL.length; i < l; i += 1) {
+						 if( newAfterURL[i] != '') { nameAfterURL += '&' + newAfterURL[i]; }
+						}
+						} 
+						location.href = newURL + 'sort=' + $(this).val() + nameAfterURL;	
+						} 
+						
+                    });
+                </script>
+		     </div><!-- .sort -->
+	      </div><!-- .options -->
+
+   
+    {if !$products}
+        [`No products matched your filtering criteria.`]
+    {else if waRequest::get(view) eq 'table'}
+    <div class="listing_product">
+       {include file='list-table.html' sorting=!empty($category.params.enable_sorting)}
+    	      <div class="clear"></div>
+	      </div>
+    {else}
+    <div class="grid_product">
+       {include file='list-thumbs.html' sorting=!empty($category.params.enable_sorting)} 
+        <div class="clear"></div>
+	</div> 
+    {/if}
+
+ <div class="clear"></div>
+	   {if isset($pages_count) && $pages_count > 1}    
+	      <div class="pagination">
+		      {wa_pagination total=$pages_count}
+	      </div><!-- .pagination -->
+	      <p class="pagination_info"></p>
+  {/if}
+      <!-- description -->
+    {if $category.description && !waRequest::get(page)}
+        <div id="category_description">{$category.description}</div>
+    {/if}
+    
+       </div><!-- #content -->
+       <div class="categoryID">{$category.id}</div>       
+      <div class="clear"></div>

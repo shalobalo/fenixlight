@@ -1,0 +1,262 @@
+<style type="text/css">
+	#sposobi_oplati {
+		width: 376px;
+		height: 216px;
+		padding: 10px;
+		background: #fafafa;
+		z-index: 1000;
+		position: absolute;
+		margin: -253px 0 0 313px;
+		border: 1px solid rgba(0,0,0,0.1);
+    	-webkit-box-shadow: 0 0 10px rgba(0,0,0,0.4);
+		-moz-box-shadow:    0 0 10px rgba(0,0,0,0.4);
+		box-shadow:         0 0 10px rgba(0,0,0,0.4);
+	}
+  	#prinimaem_list_button {
+   		 float: left;
+    	text-align: center;
+    	font-size: 11px;
+    	color: #6e6e6e;
+    	font-style: italic;
+    	cursor: pointer;
+    	background: #e2e2e2;
+    	-webkit-border-radius: 3px;
+    	-moz-border-radius: 3px;
+    	border-radius: 3px;
+    	padding: 0 5px;
+    	margin: 0 0 0 10px;
+  	}
+  	#prinimaem_list_button:hover {
+    	color: #fff;
+  	}
+	.row1 {
+		float: left;
+		width: 100%;
+		height: 44px;
+		padding: 5px 0;
+	}
+	.row2 {
+		float: left;
+		width: 100%;
+		height: 44px;
+		padding: 5px 0;
+	}
+	.row3 {
+		float: left;
+		width: 100%;
+		height: 44px;
+		padding: 5px 0;
+	}
+	.row4 {
+		float: left;
+		width: 100%;
+		height: 44px;
+		padding: 5px 0;
+	}
+	.row4_item {
+		width: 84px;
+		height: 44px;
+		float: left;
+		padding: 0 5px;
+	}
+	.row3_item {
+		width: 84px;
+		height: 44px;
+		float: left;
+		padding: 0 5px;
+	}
+	.row2_item {
+		width: 84px;
+		height: 44px;
+		float: left;
+		padding: 0 5px;
+	}
+	.row1_item {
+		width: 84px;
+		height: 44px;
+		float: left;
+		padding: 0 5px;
+	}
+  	#prinimaem {
+    	float: left;
+		width: 65%;
+		border-top: 1px solid #ccc;
+		padding: 15px 0 10px 0;
+  	}
+  	#prinimaem_list_block {
+  		float: left;
+  	}
+  	#prinimaem_list_block #prinimaem_list_ul {
+    	list-style: none;
+		padding: 0;
+		margin: 0;
+  	}
+  	#prinimaem_list_block #prinimaem_list_ul .prinimaem_list_li {
+    	float: left;
+		padding: 0 5px 0 15px;
+		margin: 0;
+		display: inline-block;
+  	}
+  	#prinimaem_text {
+    	float: left;
+  	}
+</style>
+<!-- Conversion tracking code: purchases. Step 2: Order started -->
+<script type="text/javascript">
+(function(w, p) {
+var a, s;
+(w[p] = w[p] || []).push({
+counter_id: 371963834,
+tag: '1be03a3a9b4d02543cc93058870daa1f'
+});
+a = document.createElement('script'); a.type = 'text/javascript'; a.async = true;
+a.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'autocontext.begun.ru/analytics.js';
+s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(a, s);
+})(window, 'begun_analytics_params');
+</script>
+<div id="content">
+
+<div class="grid_9" id="checkout_info" style="margin-top:0px;">
+    {if isset($checkout_steps)}
+    <!-- checkout step content -->
+    
+    {foreach $checkout_steps as $step_id => $s}
+        {if $checkout_current_step == $step_id}
+        <ul class="checkout_list">
+		<li class="active">
+		<div class="list_header">{$s.name} <span style="font-size: 10px;float: right;margin: -10px;font-style: italic;">(поля отмеченные <b style="color:red;font-style: normal;">*</b> обязательны для заполнения)</span><div class="number"></div></div>
+		<div class="list_body">
+        <form method="post" action="">
+            {if in_array($step_id,['contactinfo', 'shipping', 'payment', 'confirmation'])}
+                {include file="checkout.`$step_id`.html"}
+            {else}
+                {$s.content}
+            {/if}
+            <div class="clear-both"></div>
+            {if $s@last}
+                {if empty($error)}
+                <div class="float-right">
+                    <input type="submit" class="large" value="[`Place order`]">
+                </div>
+          <div id="prinimaem">
+	<span id="prinimaem_text">Мы принимаем: </span>
+	<div id="prinimaem_list">
+		<div id="prinimaem_list_block">
+			<ul id="prinimaem_list_ul">
+				<li class="prinimaem_list_li">
+                  <img class="prinimaem_list_img" alt="Яндекс.Деньги" title="Яндекс.Деньги" src="http://fonarik-market.ru/contact/img/yandexmoney.gif">
+				</li>
+				<li class="prinimaem_list_li">
+					<img class="prinimaem_list_img" alt="Visa" title="Visa" src="http://fonarik-market.ru/contact/img/visa.gif">
+				</li>
+				<li class="prinimaem_list_li">
+                  <img class="prinimaem_list_img" alt="MasterCard" title="MasterCard" src="http://fonarik-market.ru/contact/img/mastercard.gif">
+				</li>
+				<li class="prinimaem_list_li">
+					<img class="prinimaem_list_img" alt="WebMoney" title="WebMoney" src="http://fonarik-market.ru/contact/img/webmoney.gif">
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div id="prinimaem_list_button" style=""><span onmouseover="mopen('sposobi_oplati')" onmouseout="mclosetime()" style="">Все способы оплаты</span></div>
+              			<div id="sposobi_oplati" style="visibility: hidden;" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+	<div class="row1">
+		<div class="row1_item">
+			<img class="row1_item_img" src="/contact/img/webmoney.jpg">
+		</div>
+		<div class="row1_item">
+			<img class="row1_item_img" src="/contact/img/qiwi.jpg">
+		</div>
+		<div class="row1_item">
+			<img class="row1_item_img" src="/contact/img/yandexmoney.jpg">
+		</div>
+		<div class="row1_item">
+			<img class="row1_item_img" src="/contact/img/visamastercard.jpg">
+		</div>
+	</div>
+	<div class="row2">
+		<div class="row2_item">
+			<img class="row2_item_img" src="/contact/img/alfabank.jpg">
+		</div>
+		<div class="row2_item">
+			<img class="row2_item_img" src="/contact/img/vtb24.jpg">
+		</div>
+		<div class="row2_item">
+			<img class="row2_item_img" src="/contact/img/petrokommercebank.jpg">
+		</div>
+		<div class="row2_item">
+			<img class="row2_item_img" src="/contact/img/ocean.jpg">
+		</div>
+	</div>
+	<div class="row3">
+		<div class="row3_item">
+			<img class="row3_item_img" src="/contact/img/eleksnet.jpg">
+		</div>
+		<div class="row3_item">
+			<img class="row3_item_img" src="/contact/img/pskb.jpg">
+		</div>
+		<div class="row3_item">
+			<img class="row3_item_img" src="/contact/img/pinpay.jpg">
+		</div>
+		<div class="row3_item">
+			<img class="row3_item_img" src="/contact/img/absoluteplat.jpg">
+		</div>
+	</div>
+	<div class="row4">
+		<div class="row4_item">
+			<img class="row4_item_img" src="/contact/img/megaphone.jpg">
+		</div>
+		<div class="row4_item">
+			<img class="row4_item_img" src="/contact/img/mts.jpg">
+		</div>
+		<div class="row4_item">
+			<img class="row4_item_img" src="/contact/img/beeline.jpg">
+		</div>
+		<div class="row4_item">
+			<img class="row4_item_img" src="/contact/img/tele2.jpg">
+		</div>
+	</div>
+</div>
+</div>
+                {/if}
+            {else}
+                <input type="submit" value="[`Next &rarr;`]">
+            {/if}
+        </form>
+        </div>
+        </li>
+        </ul>
+        </div>
+        
+        {/if}
+    {/foreach}
+    {else}
+    
+        <div class="checkout-step">
+            {include file="checkout.`$checkout_current_step`.html"}
+        </div>
+        
+    {/if}
+</div>
+<div class="grid_3" id="sidebar_right" style="margin-top:0px;">
+			<aside id="checkout_progress" style="margin-top:0px;">
+			<h3>Оформление заказа:</h3>
+        {if isset($checkout_steps) && count($checkout_steps) > 1}
+        <ul class="checkout-navigation menu-h">
+            <li>
+                [`Cart`] <a href="{$wa->getUrl('/frontend/cart')}">Вернуться</a>
+            </li>
+            {foreach $checkout_steps as $step_id => $s}
+                <li class="{if isset($_upcoming_flag)} upcoming{/if}{if $step_id == $checkout_current_step} selected{$_upcoming_flag = 1}{/if}">
+                    {$s.name} <a href="{if $s@first}{$wa->getUrl('/frontend/checkout')}{else}{$wa->getUrl('/frontend/checkout', ['step' => $step_id])}{/if}">Перейти</a>
+                </li>
+               
+            {/foreach}
+        </ul>
+       {else}
+       <p>Благодарим за заказ</p>
+    {/if}
+                 </div><!-- #sidebar_right -->
+       </div><!-- #content -->
+       
+      <div class="clear"></div>

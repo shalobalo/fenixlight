@@ -1,7 +1,6 @@
 # Runtime data
 www/wa-cache/**
 www/wa-log/**
-www/wa-data/public/**
 *.log
 
 # Database

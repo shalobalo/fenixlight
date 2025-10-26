@@ -1,0 +1,80 @@
+<footer id="footer-block">
+
+    <div class="footer-information">
+        <div class="container">
+            <div class="row"></div>
+        </div>
+    </div>
+
+    <div class="footer-copy color-scheme-1">
+        <div class="container">
+            <div class="row">
+            
+                
+
+                <p class="text-center" style="margin-right: 40%;">&copy; 2016 - 2025 / Интернет-магазин fenixlight.by</p>
+
+                <div class="col-md-4"></div>
+
+            </div>
+            <div style="border-bottom: 1px solid #666;"></div>
+            <div style="font-size: 11px; color: #ccc; padding-top:10px;">Индивидуальный предприниматель Анисимова Ольга Павловна; 220036, Минск, Жукова 21-2-19<br/>
+Свидетельство о регистрации № 192034424 от 23.08.2013 выдано Минским горисполкомом.<br/>
+В Торговом реестре с 27 июля 2016 г., регистрационный номер 346043.<br/>
+Оплата: наличными, наложенным платежом, банковской картой, посредством системы "Расчет" (ЕРИП).<br/>
+
+<p></p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<div id="fon_box" onClick="close_pop_up('#onclick_buy'); close_pop_up('#fast_purchase')"></div>
+<div id="onclick_buy" class="shop_popup">
+    <div class="header-with-icon"><i class="fa fa-thumbs-up"></i> Товар добавлен в корзину</div>
+    <div class="block-form">
+        <div class="row">
+            <noindex><div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><a class="btn-default-1 continue-shopping" href="#" onclick="close_pop_up('#onclick_buy'); return false;">Продолжить покупки</a></div>
+            <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6"><a class="btn-default-1" href="#" onclick="location.href='/cart/';return false;">Перейти в корзину</a></div>
+        </div>
+    </div>
+</div>
+<div class="shop_popup" id="fast_purchase">
+    <div class="header-with-icon"><i class="fa fa-phone"></i>Оставьте Ваш телефон и мы перезвоним</div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="block-form box-border">
+                <h4>Наш менеджер свяжется с Вами в течение 15 минут</h4>
+                <form method="post" action="#" id="buy_one_click">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control" name="phone">
+                            <input type="hidden" name="product" value="{$product.name}">
+                            <input type="hidden" name="product_url" value="http://fenix-russia.ru{$wa->shop->productUrl($product, 'page')}">
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a class="btn-default-1" href="#" onclick="close_pop_up('#fast_purchase'); return false;">закрыть</a>
+                            <input type="submit" class="btn-default-1 pull-right btn_orange" value="Жду звонка">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</noindex>
+
+<!-- End Section footer -->
+<script src="{$wa_theme_url}js/vendor/bootstrap.js"></script>
+<script src="{$wa_theme_url}js/vendor/wow.min.js"></script>
+<script src="{$wa_theme_url}js/vendor/owl.carousel.js"></script>
+<script src="{$wa_theme_url}js/vendor/responsiveslides.min.js"></script>
+<!-- Custome Slider  -->
+<script async type="text/javascript" src="{$wa_url}wa-content/js/jquery-plugins/jquery.cookie.js"></script>
+<script async src="{$wa_theme_url}js/main.js?v=1"></script>
+<!--Here will be Google Analytics code from BoilerPlate-->
+
+<img style="display:none;" src="//a.marketgid.com/1x1.gif?id=251043&type=c&g=x&t=x&tg=&v=1&r=">
+

@@ -1,0 +1,29 @@
+<aside class="col-md-3 blog-sidebar">
+    <div class="main-category-block ">
+        <div class="main-category-title">
+            <i class="fa fa-list"></i> Категории
+        </div>
+
+        <div class="widget-block">
+            {$frontendSidebar = blogCategoryPlugin::frontendSidebar([])}
+            {$frontendSidebar['sidebar']}
+        </div>
+    </div>
+
+    <div class="main-category-block new-products-widget new_products">
+        <div class="main-category-title">
+            <i class="icon news"></i> Новинки
+        </div>
+
+        <div class="widget-block">
+            {$products = $wa->shop->productSet('new')}
+            {$res = $products|shuffle}
+            {$res = $products|array_slice:-3}
+            {foreach $res as $p}
+            <div class="text-center">
+                {include file="`$wa_parent_theme_path`/product_grid.html" p=$p}
+            </div>
+            {/foreach}
+        </div>
+    </div>
+</aside>

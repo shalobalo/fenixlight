@@ -1,0 +1,57 @@
+<section>
+<div class="second-page-container">
+
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+<div class="block-breadcrumb">
+    <ul class="breadcrumb">
+        <li><a href="{$wa->blog->url()}">[`All posts`]</a></li>
+        {if isset($breadcrumbs)}
+            {foreach $breadcrumbs as $breadcrumb}
+                <li><a href="{$breadcrumb.url}">{$breadcrumb.name|escape}</a></li>
+            {/foreach}
+        {/if}
+        <li class="active">{$wa->title()|escape}</li>
+    </ul>
+</div>
+
+<div class="block-blog" itemscope itemtype="http://schema.org/BlogPosting">
+    <!--img class="img-responsive blog-img" alt="image" src="img/preview/page-image.jpg"-->
+    <div class="block">
+        <div class="header-for-light">
+            <h1 class="wow fadeInRight animated animated"
+                data-wow-duration="1s"
+                style="visibility: visible;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;">{$post.title}
+                {* @event prepare_posts_frontend.%plugin_id%.post_title *}
+                {if !empty($post.plugins.post_title)}
+                {foreach $post.plugins.post_title as $plugin => $output}{$output}{/foreach}
+                {/if}</h1>
+
+        </div>
+        <div itemprop="articleBody">
+            {$post.text}
+        </div>
+
+        {if $show_comments && $post.comments_allowed}
+            {if $post.status eq blogPostModel::STATUS_PUBLISHED}
+                {include 'comments.html' inline}
+            {else}
+                <div class="block">
+                    <div class="header-for-light">
+                        <h4 data-wow-duration="1s" class="wow fadeInRight animated" style="visibility: hidden; -webkit-animation-name: none; -moz-animation-name: none; animation-name: none;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;">[`Comments for non published posts are disabled`]</h4>
+                    </div>
+                </div>
+            {/if}
+        {/if}
+    </div>
+</div>
+</div>
+    {include file="sidebar.html" inline}
+</div>
+</div>
+</div>
+
+</section>

@@ -1,0 +1,230 @@
+    <div class="grid_12">
+        {$wa->dislider->showSlider('1')}
+    </div><!-- .grid_12 -->
+
+  <div class="clear"></div>
+
+      <div id="top_button">
+         {$slires = $wa->dislider->getSlides('4')}
+         {if $slires}
+            {foreach $slires as $slide}
+                <div class="grid_4" style="width:320px;margin:0px 0px 0px 12px;">
+                    <a href="{$slide['link']}" title="{$slide['title']}" class="button_block best_price">
+                        <img src="{$slide['url']}" alt="{$slide['title']}" width="320" height="101"/>
+                    </a>
+                </div>
+            {/foreach}
+         {/if}          
+         
+        <div class="clear"></div>
+      </div><!-- #top_button -->
+
+      <div class="clear"></div>
+
+<!-- top products -->
+{$promos = $wa->shop->productSet('promo')}
+{$bestsellers = $wa->shop->productSet('bestsellers')}
+{if $promos && count($promos)}
+<div class="container_12" style="display:block;height:455px;overflow:hidden;">  
+<div class="carousel" style="min-height:413px;">
+        <div class="c_header">
+          <div class="grid_10">
+            <h2>Популярные продукты:</h2>
+          </div><!-- .grid_10 -->
+
+          <div class="grid_2">
+            <a id="next_c1" class="next arows" href="#"><span>Вперёд</span></a>
+            <a id="prev_c1" class="prev arows" href="#"><span>Назад</span></a>
+           </div><!-- .grid_2 -->
+        </div><!-- .c_header -->
+
+        <div class="list_carousel">
+
+        <ul id="list_product" class="list_product">
+        {foreach $promos as $p}
+        
+        <li class="">
+            <div class="grid_3 product">             
+              <div class="prev">
+                <a href="{$p.frontend_url}" title="{$p.name}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">
+                {$wa->shop->productImgHtml($p, '210x210', ['default' => "`$wa_theme_url`img/dummy200.png", 'alt' => $p.name])}
+                    </a></div>
+                {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+            <div class="product-rating">
+            {if !empty($p.rating) && $p.rating > 0}
+                    <span class="rating nowrap" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" title="{sprintf('[`Average user rating: %s / 5`]', $product.rating)}">
+                        {$wa->shop->ratingHtml($p.rating, 16)}
+                        <span itemprop="ratingValue" style="display: none;" itemprop="ratingValue">{$p.rating}</span>
+                        <span itemprop="reviewCount" style="display: none;" itemprop="ratingCount">{$p.rating_count}</span>
+                        <span itemprop="bestRating" style="display: none;">5</span>
+                    </span>
+            {else}
+                <span class="rating nowrap">
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                </span>
+            {/if}
+            {if $reviews_total_count }
+                <a href="http://fonarik-market.ru{$p.frontend_url}#reviews"><span>Отзывы {$reviews_total_count}</span></a>
+            {/if}
+            </div>
+              <h3 class="title">{$p.name}</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">{shop_currency($p.price)}</div>
+                  {if $p.compare_price > 0 }<div class="price_old">{shop_currency($p.compare_price|ceil)}</div>{/if}
+                </div>
+                </div>
+                <form class="addtocart" method="post" action="{$wa->getUrl('/frontendCart/add')}">
+                <input type="hidden" name="product_id" value="{$p.id}">
+                <input type="submit" {if $p.price eq 0}disabled="disabled" style="background:#CCC;"{/if} value="Купить" onclick="{literal}open_pop_up('#onclick_buy');{/literal}">
+                </form>
+              </div>
+            </div>
+          </li>  
+        {/foreach}
+    </ul><!-- #list_product -->
+  </div><!-- .list_carousel -->
+</div><!-- .carousel -->
+</div>
+{/if}
+
+{if $bestsellers && count($bestsellers)}
+<div class="container_12" style="display:block;height:455px;overflow:hidden;">  
+  <div class="carousel" style="min-height:413px;">
+        <div class="c_header">
+          <div class="grid_10">
+            <h2>Самые продаваемые:</h2>
+          </div><!-- .grid_10 -->
+
+          <div class="grid_2">
+            <a id="next_c2" class="next arows" href="#"><span>Вперёд</span></a>
+            <a id="prev_c2" class="prev arows" href="#"><span>Назад</span></a>
+           </div><!-- .grid_2 -->
+        </div><!-- .c_header -->
+
+        <div class="list_carousel">
+
+        <ul id="list_product2" class="list_product">
+        {foreach $bestsellers as $p}
+        
+        <li class="">
+            <div class="grid_3 product">             
+              <div class="prev">
+                <a href="{$p.frontend_url}" title="{$p.name}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">
+                {$wa->shop->productImgHtml($p, '210x210', ['default' => "`$wa_theme_url`img/dummy200.png", 'alt' => $p.name])}
+                    </a></div>
+                {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+            <div class="product-rating">
+            {if !empty($p.rating) && $p.rating > 0}
+                    <span class="rating nowrap" itemprop="aggregateRating" itemscope itemtype="http://schema.org/AggregateRating" title="{sprintf('[`Average user rating: %s / 5`]', $product.rating)}">
+                        {$wa->shop->ratingHtml($p.rating, 16)}
+                        <span itemprop="ratingValue" style="display: none;" itemprop="ratingValue">{$p.rating}</span>
+                        <span itemprop="reviewCount" style="display: none;" itemprop="ratingCount">{$p.rating_count}</span>
+                        <span itemprop="bestRating" style="display: none;">5</span>
+                    </span>
+            {else}
+                <span class="rating nowrap">
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                    <i class="icon16 star-empty"></i>
+                </span>
+            {/if}
+            {if $reviews_total_count }
+                <a href="http://fonarik-market.ru{$p.frontend_url}#reviews"><span>Отзывы {$reviews_total_count}</span></a>
+            {/if}
+            </div>
+              <h3 class="title">{$p.name}</h3>
+              <div class="cart">
+                <div class="price">
+                <div class="vert">
+                  <div class="price_new">{shop_currency($p.price)}</div>
+                  {if $p.compare_price > 0 }<div class="price_old">{shop_currency($p.compare_price|ceil)}</div>{/if}
+                </div>
+                </div>
+                <form class="addtocart" method="post" action="{$wa->getUrl('/frontendCart/add')}">
+                <input type="hidden" name="product_id" value="{$p.id}">
+                <input type="submit" {if $p.price eq 0}disabled="disabled" style="background:#CCC;"{/if} value="Купить">
+                </form>
+              </div>
+            </div>
+          </li>  
+        {/foreach}
+    </ul><!-- #list_product -->
+  </div><!-- .list_carousel -->
+</div><!-- .carousel -->
+</div>
+{/if}
+<div class="container_12 home_page_news_blocks">
+    <div class="grid_6 homepage_posts">
+        <div class="homepage_posts-header"><a href="http://fonarik-market.ru/blog/">Новости</a></div>
+        <div class="home_page_news_block">
+        {$wa->block("blog.latest_posts")}
+        </div>
+    </div>
+    <div class="grid_6 homepage_reviews">
+
+        <div class="homepage_review-header"><a href="http://fonarik-market.ru/reviews/">Отзывы</a></div>
+        <div class="home_page_news_block">
+            {$comments_data = shopCustomPlugin::getLastComments(3)}
+            {$last_comments = $comments_data.parent_reviews}
+            {if $last_comments}
+                {foreach $last_comments as $comment}
+
+                <div class="home_review">
+                    <div class="product_img"><a href="{$wa->getUrl('/frontend/product', ['product_url' => $comment['product_data'].url])}">
+                        {$wa->shop->getProductImgHtml($comment['product_data'], '110x110', ['itemprop' => 'image', 'id' => 'product-image', 'title' => $comment['product_data'].name|escape|cat:' ':strip_tags($comment['product_data'].summary)|escape, 'alt' => $comment['product_data'].name])}
+                    </a></div>
+                    <div class="review_body">
+                        <div class="review-title"><a href="{$wa->getUrl('/frontend/product', ['product_url' => $comment['product_data'].url])}">{$comment['product_data'].name}</a></div>
+                        {if !$comment.parent_id && !empty($comment.rate)}
+                            <div class="review-rating">
+                                <div class="text">Рейтинг:</div>
+                                <span itemprop="reviewRating" itemscope itemtype="http://schema.org/Rating">
+                                    {$rate = round($comment.rate)}
+                                    <meta itemprop="worstRating" content = "1">
+                                    <meta itemprop="ratingValue" content="{$comment.rate}">
+                                    <meta itemprop="bestRating" content = "5">
+                                    {$wa->shop->ratingHtml($comment.rate)}
+                                </span>
+                            </div>
+                            <br />
+                        {/if}
+                        <div class="autor" itemprop="author">{$comment.author.name}</div>
+                        <div class="review_text">{$comment.text|truncate:200}{if $comment.text|count_characters:true > 200}<a class="review_link" href="{$wa->shop->productUrl($comment['product_data'])}#review{$comment.id}">Подробнее</a>{/if}</div>
+                    </div>
+                    <div class="clear"></div>
+                    {if $comment['child_review']}
+                    {foreach $comment['child_review'] as $child_review}
+                    <div class="child_review">
+                        <div class="autor" itemprop="author">{$child_review.author.name}</div>
+                        <div class="review_text">{$child_review.text|truncate:180}{if $child_review.text|count_characters:true > 180}<a class="review_link" href="{$wa->shop->productUrl($comment['product_data'])}#review{$comment.id}">Подробнее</a>{/if}</div>
+                    </div>
+                    {/foreach}
+                    {/if}
+                </div>
+                <div class="clear"></div>
+                {/foreach}
+            {/if}
+        </div>
+    </div>
+
+</div>
+<div class="clear"></div>
+
+<div class="main_text">
+  <p>Fonarik-market.ru — интернет магазин фонариков, походного снаряжения, туристических ножей и иных товаров для активного отдыха — готов предложить своим посетителям очень широкий ассортимент качественной продукции от ведущих производителей со всего мира.</p>
+  <p>В настоящее время приобрести что-либо, не выходя при этом из дома — дело весьма привычное и обыденное, и единственное, что может беспокоить покупателя — это соответствие товара картинке и завяленным данным, эффективная помощь и соблюдение гарантийных обязательств. Как ни странно, нам о переживаниях клиентов тоже всё известно, поэтому все вышеперечисленные детали учтены и проработаны, а лучшие решения взяты на вооружение — пользуйтесь в удовольствие.</p>
+  <p>Преследуя весьма благие цели (помимо банальной наживы, конечно же), мы постарались организовать интернет площадку таким образом, чтобы каждому, даже неопытному пользователю сети Интернет, было максимально комфортно отовариваться в нашем магазине. На виртуальных полках Fonarik-market.ru аккуратно, словно в библиотеке, разложены товары и ждут своих поклонников, которые заберут фонари, ножи и многофункциональные инструменты в незабываемый поход или на секретное спецзадание.</p>
+  <p>Неустанная слежка за развитием индустрии туристических товаров приносит определённые плоды, а регулярные вылазки на разнообразные тематические выставки и шоу приводят к расширению ассортимента. И вот уже узкоспециализированный магазин фонариков одну за другой открывает витрины то  <a href="http://fonarik-market.ru/category/nozhi-i-tochilki/nozhi/ganzo/">ножи Ganzo</a>, то мультиинструменты, то непромокаемая одежда, то точилки, предлагая покупателям не ограничиваться банальным набором «фонарь&батарейка».</p>
+  <p>Решили присмотреться, повыбирать ножи, точилки или фонарики — интернет магазин Вам в помощь. Здесь никто не толкается, никто навязчиво не предлагает ненужного и не просит поискать мелочь, «чтоб было без сдачи». Выбирать, перебирать и раздумывать можно хоть сутками без перерыва — никто не станет Вас подгонять и «давить опытом». В общем, интернет магазин предлагает самый комфортный шопинг на сегодняшний день, а Fonarik-market.ru, помимо удобств, обеспечит хорошее настроение, яркие воспоминания и устойчивое привыкание исключительно к лучшему.</p>
+</div>
+
+
+      <div class="clear"></div>

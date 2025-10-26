@@ -1,0 +1,37 @@
+<section>
+    <div class="second-page-container static-page">
+        <div class="container">
+            {if !isset($page.with_sidebar) || !$page.with_sidebar }
+            <div class="header-for-light">
+                <h1 class="wow fadeInRight animated" data-wow-duration="1s">{$page.title}</h1>
+            </div>
+            {/if}
+
+            <div class="row">
+                {if isset($page.with_sidebar) && $page.with_sidebar }
+                    {include file="sidebar.html"}
+                    <div class="col-md-9 main-content">
+                        <div class="header-for-light">
+                            <h1 class="wow fadeInRight animated" data-wow-duration="1s">{$page.title}</h1>
+                        </div>
+                        <div class="row">
+                            {$page.content}
+                        </div>
+
+                    </div>
+                {else}
+                    {$page.content}
+                {/if}
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="block color-scheme-white-90">
+        <div class="container">
+            <div class="row">
+                {$wa->block("home_page_bottom_banners")}
+            </div>
+        </div>
+    </div>
+</section>

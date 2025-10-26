@@ -1,0 +1,23 @@
+{if $products}
+<div>
+    <div class="container">
+        <div class="header-with-icon">
+            <i class="fa fa-tags"></i> {$header}
+            <div class="toolbar-for-light" id="nav-bestseller">
+                <a href="javascript:;" data-role="prev" class="prev"><i class="fa fa-angle-left"></i></a>
+                <a href="javascript:;" data-role="next" class="next"><i class="fa fa-angle-right"></i></a>
+            </div>
+        </div>
+        <div id="owl-bestseller"  class="owl-carousel">
+
+        {foreach $products as $p}
+            <div class="text-center">
+                {include file='product_grid.html' p=$p}
+            </div>
+        {/foreach}
+
+
+        </div>
+    </div>
+</div>
+{/if}

@@ -1,0 +1,38 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s"><span>Войти</span> или <span>Зарегестрироваться</span></h1>
+                </div>
+                <div class="row">
+                    <article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="block-form box-border wow fadeInLeft animated" data-wow-duration="1s">
+                            <h3><i class="fa fa-unlock"></i>Войти</h3>
+                            <p>Пожалуйста войдите, используя существующий аккаунт</p>
+                            <div class="ligin-form">
+                                {$wa->authAdapters()}
+                                {$wa->loginForm($error)}
+                            </div>
+                        </div>
+                    </article>
+                    <!--article class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
+                        <div class="block-form box-border wow fadeInRight animated" data-wow-duration="1s">
+                            <h3><i class="fa fa-pencil"></i>Create new account</h3>
+                            <p>Registration allows you to avoid filling in billing and shipping forms every time you checkout on this website.</p>
+                            <hr>
+                            <a href="#" class="btn-default-1">Register</a>
+                        </div>
+                        <div class="block-form box-border wow fadeInRight animated" data-wow-duration="1s">
+                            <h3><i class="fa fa-bookmark-o"></i>Checkout as Guest</h3>
+                            <p>Checkout as a guest instead!</p>
+                            <hr>
+                            <a href="#" class="btn-default-1">As Guest</a>
+                        </div>
+
+                    </article-->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

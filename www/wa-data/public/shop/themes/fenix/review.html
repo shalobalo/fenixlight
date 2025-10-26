@@ -1,0 +1,32 @@
+{if !isset($parent_id) || $parent_id == $review.parent_id}
+<hr>
+<div class="review" data-id={$review.id} data-parent-id="{$review.parent_id}">
+    <div class="review-header">
+        <h5>{$review.author.name}</h5>
+        {if !$parent_id}
+        <div class="product-rating">
+            <div class="stars">
+                {for $i = 1 to 5}<span class="star {if (5-$i) < $review.rate }active{/if}"></span>{/for}
+            </div>
+        </div>
+        {/if}
+        <meta itemprop="datePublished" content="{$review.datetime|date_format:'Y-m-d'}">
+        <small class="text-muted" datetime="{$review.datetime|date_format:'Y-m-d'}">{$review.datetime|wa_datetime:"humandatetime"}</small>
+    </div>
+    {if $review.text}
+    <div class="review-body"><p>{$review.text|htmlspecialchars_decode}</p></div>
+    {/if}
+    {if $reply_allowed}
+    <div class="actions">
+        <a href="{if isset($reply_link)}{$reply_link}{else}#{/if}" class="review-reply inline-link"><b><i>[`reply`]</i></b></a>
+    </div>
+        {if isset($comments) && $comments}
+            {foreach $comments as $sub_review}
+                {include file="review.html" inline reply_allowed=$reply_allowed single_view=true review=$sub_review comments=$comments parent_id = $review.id}
+            {/foreach}
+        {/if}
+    {/if}
+</div>
+{/if}
+
+

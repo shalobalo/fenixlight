@@ -1,0 +1,315 @@
+<script type="text/javascript">
+    rrApiOnReady.push(function() {
+		try{ rrApi.view({$product.id}); } catch(e) {}
+	})
+</script>
+<section>
+<div class="second-page-container">
+<div class="container">
+<div class="row">
+{include file="sidebar.html"}
+<div class="col-md-9 main-content">
+{include file="breadcrumbs.html"}
+
+<div class="header-for-light">
+    <h1 class="wow fadeInRight animated" data-wow-duration="1s">{$product.name}</h1>
+
+</div>
+<form method="post" action="{$wa->getUrl('/frontendCart/add')}" class="addtocart">
+<div class="block-product-detail">
+    <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+            <div class="product-image">
+                {$bigImage =  $wa->shop->getProductImgHtml($product, '900x0')|regex_replace:'/^.+src="([^"]+)".*$/':'\1'}
+                <div class="image-wrapper">
+                    <a href="{$bigImage}" class="fancybox-button" rel="fancybox-button" data-title-id="add_to_cart_popup">
+                        <img id="product-zoom" src="{$wa->shop->productImgUrl($product,'400x0')}" data-zoom-image="{$wa->shop->productImgUrl($product,'900x0')}" alt="">
+                    </a>
+                </div>
+                {if count($product.images) > 1}
+                <div id="gal1">
+                    {foreach $product.images as $image}
+                        {$bImage =  $wa->shop->getProductImgHtml(['id'=> $product.id, 'image_id' => $image.id, 'ext' => $image.ext], '900x0')|regex_replace:'/^.+src="([^"]+)".*$/':'\1'}
+                        {if $bigImage != $bImage }
+                            <a class="fancybox-button" rel="fancybox-button" href="{$bImage}" data-title-id="add_to_cart_popup">
+                                {$wa->shop->getProductImgHtml(['id'=> $product.id, 'image_id' => $image.id, 'ext' => $image.ext], '62x0', ['itemprop' => 'image', 'alt' => $product.name])}
+                            </a>
+                        {/if}
+                    {/foreach}
+                </div>
+                {/if}
+            </div>
+
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+
+
+            <div class="product-detail-section">
+
+                <div class="product-information">
+                    <div class="clearfix">
+                        <p class="description">{$product.summary}</p>
+                    </div>
+
+                    <div class="product-rating">
+                        <div class="stars">
+                            <a href="{$wa->shop->productUrl($product, 'reviews')}">{for $i = 1 to 5}<span class="star {if (5-$i) < $product.rating }active{/if}"></span>{/for}</a>
+                        </div>
+                        {$reviews_total_count = shopCustomPlugin::getReviewsCount($product.id)}
+                        {if $reviews_total_count}
+                        <a href="{$wa->shop->productUrl($product, 'reviews')}" class="review"> {$reviews_total_count} отзывов</a>
+                        {/if}
+                    </div>
+
+                    <div class="clearfix">
+                        <label class="pull-left">Артикул:</label><span id="product_sku">{$product.skus[$product.sku_id].sku}</span>
+                    </div>
+                    <div class="clearfix">
+			{if count($product.skus) > 1}
+			  <label class="pull-left">Цвет:</label>
+			{/if}
+                        {$product_available = false}
+
+                        {function name=product_sku sku = [] count_skus = 0}
+                            {$sku_available = ($sku.available && $sku.count !== 0) || $product['pre_order']}
+                            <div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                                <label{if !$sku_available} class="disabled"{/if}>
+                                <input name="sku_id" type="{if $count_skus > 1}radio{else}hidden{/if}" value="{$sku.id}"{if !$sku_available} disabled="true"{/if}{if $sku.id == $product.sku_id} checked="checked"{/if} data-pre_order="{$product['pre_order']}" data-old_price="{shop_currency($sku.compare_price)}" data-count="{$sku.count}" data-price="{shop_currency($sku.price)}"{if $sku.image_id} data-image-id="{$sku.image_id}"{/if}
+                                {if $sku.sku} data-sku="{$sku.sku}"{/if}> {$sku.name}
+                                <meta itemprop="price" content="{$sku.price}">
+                                {if $sku.count === 0}<em class="nowrap small out-of-stock">[`Out of stock`]</em>{/if}
+                                </label>
+                            </div>
+                            {$product_available = $product_available or $sku_available}
+                        {/function}
+
+
+                            {if count($product.skus) > 1}
+				<div class="skus" id="product-skus">
+                                {$product_available = false}
+                                {foreach $product.skus as $sku}
+                                    {product_sku sku=$sku count_skus = count($product.skus) }
+                                {/foreach}
+				</div>
+                            <script>
+                                $("#product-skus input").click(function () {
+                                    var sku_id = $(this).val();
+                                    var sku_image = $(this).attr('data-image-id');
+                                    var sku_sku = $(this).attr('data-sku');
+                                    var sku_count = $(this).attr('data-count');
+                                    var sku_price = $(this).attr('data-price');
+                                    var sku_pre_order = $(this).attr('data-pre_order');
+                                    var sku_old_price = $(this).attr('data-old_price');
+                                    $('#product_sku').html(sku_sku);
+                                    $('.product-price').html( ( parseFloat(sku_old_price) > 0 ? '<span>'+ sku_old_price + '</span> ' : '') +  sku_price )
+
+                                    $('.sku_id_fancybox').val(sku_id);
+
+                                    //disable | enable "add to card" button
+                                    if( parseFloat(sku_price) > 0 && (sku_count > 0 || sku_count === '') || sku_pre_order  ) {
+                                        $('.buy').removeAttr('disabled').removeClass('disabled');
+                                    } else {
+                                        $('.buy').attr('disabled', 'disabled').addClass('disabled')
+                                    }
+
+                                });
+                                $(document).ready(function() {
+                                    $("#product-skus input:radio:checked").click();
+
+                                    var notChecked = true,
+                                      skuEls = $('#product-skus input:radio'),
+                                      countSkus = skuEls.length,
+                                      trableEl = false;
+
+                                    skuEls.each(function(key,el){
+                                        if($(el).prop('checked') && $(el).prop('disabled')) {
+                                            $(el).prop('checked',false);
+                                            trableEl = key;
+                                            return;
+                                	}
+                                     });
+
+				    var trableElInxed = trableEl;
+	                            if(trableEl!==false) {
+                                      while(notChecked) {
+                                          trableEl ++
+                                          if( countSkus <= trableEl ) {
+                                            trableEl = 0;
+                                        }
+                                        var el = skuEls[trableEl];
+                                        if( trableElInxed == trableEl ) {
+                                          notChecked = false;
+                                      } else if( !$(el).prop('disabled') ) {
+                                        $(el).prop('checked',true).click();
+        	                          notChecked = false;
+                                      }
+                                    }
+                                    }
+                                });
+                            </script>
+
+                            {else}
+                                {$sku = $product.skus[$product.sku_id]}
+                                {if $sku.name != '' || 1==1}
+                                <div class="skus" id="product-skus">
+                                {product_sku sku=$sku count_skus = count($product.skus) }
+                                </div>
+                                {/if}
+                            {/if}
+
+
+                    </div>
+
+                    {if $product.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $product.count !== null && $product.count <= 0) }
+
+                    {else}
+
+                    <div class="clearfix">
+                        <label class="pull-left">Цена:</label>
+                        <p class="product-price">{if $product.compare_price > 0 }<span>{shop_currency($product.compare_price|ceil)}</span>{/if} {shop_currency($product.price)}</p>
+                    </div>
+                    <p style="font-size:13px; line-height: 1.0em"><strong>Нашли дешевле? Как первый представитель Fenix в Беларуси сделаем еще более выгодное предложение!</strong></p>
+                    <p style="font-size:11px; line-height: 1.0em">*Мы за честную конкуренцию и соблюдение дилерской цены. Но готовы предоставить покупателю ощутимые скидки при демпинге на рынке.</p>
+                    <div class="clearfix">
+                        <label class="pull-left align-fix">Количество:</label>
+                        <input name="quantity" class="form-control" value="1">
+                    </div>
+                    {/if}
+
+                    <div class="shopping-cart-buttons">
+
+                        <!--a href="#" class="shoping"><i class="fa fa-shopping-cart"></i> КУПИТЬ</a-->
+                        {if $product.pre_order }
+                            <input onmousedown="try { rrApi.addToBasket({$product.id}) } catch(e) {}" type="submit" class="buy" value="ПРЕДЗАКАЗ">
+                        {else}
+                            <input onmousedown="try { rrApi.addToBasket({$product.id}) } catch(e) {}" type="submit" class="buy{if $product.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $product.count !== null && $product.count <= 0) } disabled" disabled="disabled{/if}" value="КУПИТЬ">
+                        {/if}
+                        <!--a href="#" title="Wishlist"><i class="fa fa-heart-o"></i></a-->
+                        <a {if $compare}style="display:none"{/if} class="compare-add inline-link" data-product="{$product.id}" href="#" title="[`Add to comparison table`]"><i class="fa fa-random"></i></a>
+                        <a {if !$compare}style="display:none"{/if} class="compare-remove inline-link" data-product="{$product.id}" href="#" title="[`Remove from comparison table`]"><i class="fa fa-random"></i></a>
+                        <a id="compare-link" {if count($compare) lt 2}style="display:none"{/if} href="{$wa->getUrl('/frontend/compare/', ['id' => implode(',', $compare) ])}">[`Compare`] <span class="count">{count($compare)}</span></a>
+                        <a id="only_one_compare" style="display:none" onclick="return false;" href="javascript:;">Для сравнения выберите еще один товар</a>
+                    </div>
+
+
+
+                    <div class="clearfix"><!--a href="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=1248/*http://market.yandex.ru/shop/276473/reviews/add"><img src="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=1248/*http://img.yandex.ru/market/informer12.png" border="0" alt="Оцените качество магазина на Яндекс.Маркете." /></a--></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</form>
+
+<div class="box-border block-form">
+    <!-- Nav tabs -->
+    <ul class="nav nav-pills  nav-justified">
+        <li class="active"><a href="#description" data-toggle="tab">Описание</a></li>
+        <li><a href="#additional" data-toggle="tab" class="disabled">Характеристики</a></li>
+        <li><a href="#review" data-toggle="tab">Отзывы</a></li>
+        <li><a href="#all_photo" data-toggle="tab">Фото</a></li>
+    </ul>
+
+    <!-- Tab panes -->
+    <div class="tab-content">
+        <div class="tab-pane active" id="description">{$product.description}</div>
+
+        <div class="tab-pane" id="additional">
+            {if $product.features}
+                <table class="features" id="fullproduct-features" >
+                    {foreach $product.features as $f_code => $f_value}
+                    <tr>
+                        <td>
+                            {$features[$f_code].name}
+                        </td>
+                        <td >
+                            {if is_array($f_value)}
+                            {implode(', ', $f_value)}
+                            {else}
+                            {$f_value}
+                            {/if}
+                        </td>
+                    </tr>
+                    {/foreach}
+                </table>
+            {/if}
+        </div>
+
+        <div class="tab-pane" id="review">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    <h3>{sprintf('[`%s reviews`]', $product.name)}</h3>
+                    <div class="reviews">
+                        {if $reviews }
+                            {foreach $reviews as $review}
+                                {$comments = ''}
+                                {if isset($review.comments)}
+                                    {$comments = $review.comments}
+                                {/if}
+                                {include file="review.html" inline reply_allowed=false review=$review comments=$comments parent_id = 0}
+                            {/foreach}
+                            <hr>
+                        {/if}
+                    </div>
+                    <div class="block-form">
+                        <a class="btn-default-1" href="{$wa->shop->productUrl($product, 'reviews')}">Показать все комментарии {$reviews_total_count} шт.</a>
+                        <a class="btn-default-1" href="{$wa->shop->productUrl($product, 'reviews')}">Оставить свой отзыв</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="tab-pane" id="all_photo">
+            <br>
+            <div class="row">
+                <div class="col-md-12">
+                    {foreach $product.images as $image}
+                        {$wa->shop->getProductImgHtml(['id'=> $product.id, 'image_id' => $image.id, 'ext' => $image.ext], '900x0', ['itemprop' => 'image', 'alt' => $product.name])}
+                    {/foreach}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    {if $product.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $product.count !== null && $product.count <= 0) }
+
+    {else}
+    <div id="showSetsPlugin">
+    <link rel="stylesheet" type="text/css" href="/wa-data/public/shop/plugins/set/fenix/css/style6.css">
+    {shopSetPlugin::set($product)}
+    </div>
+    {/if}
+
+</div>
+
+
+</div>
+</div>
+</div>
+
+</section>
+
+<script src="{$wa_theme_url}js/product.js" type="text/javascript"></script>
+<link rel="stylesheet" href="{$wa_theme_url}fancybox/jquery.fancybox.css" type="text/css" >
+<link rel="stylesheet" href="{$wa_theme_url}fancybox/helpers/jquery.fancybox-thumbs.css" type="text/css" >
+<script src="{$wa_theme_url}fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+<script src="{$wa_theme_url}fancybox/helpers/jquery.fancybox-thumbs.js" type="text/javascript"></script>
+
+<div id="add_to_cart_popup" class="hidden">
+    <form method="post" action="{$wa->getUrl('/frontendCart/add')}" class="addtocart">
+        <div class="cart product-detail-section">
+            {if $product.pre_order }
+                <input onmousedown="try { rrApi.addToBasket({$product.id}) } catch(e) {}" onclick="$.fancybox.close(); open_pop_up('#onclick_buy');" type="submit" class="buy" value="ПРЕДЗАКАЗ">
+            {else}
+                <input onmousedown="try { rrApi.addToBasket({$product.id}) } catch(e) {}" onclick="$.fancybox.close(); open_pop_up('#onclick_buy');" type="submit" class="buy{if $product.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $product.count !== null && $product.count <= 0) } disabled" disabled="disabled{/if}" value="КУПИТЬ">
+            {/if}
+            <input type="hidden" name="quantity" class="number" value="1">
+            <input type="hidden" value="{$product.sku_id}" class="sku_id_fancybox" name="sku_id">
+            <div class="product-price">
+                <div class="price_new" itemprop="price" value="{shop_currency($product.price|ceil)}">{shop_currency($product.price|ceil)}</div>
+            </div>
+        </div>
+    </form>
+</div>

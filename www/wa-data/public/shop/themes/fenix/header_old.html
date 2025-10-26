@@ -1,0 +1,92 @@
+<!-- Header-->
+<header id="header">
+
+<div class="header-bg">
+<div class="header-main" id="header-main-fixed">
+<div class="header-main-block1">
+    <div class="container">
+        <div id="container-fixed">
+            <div class="row"><div class="col-md-3"><{if waRequest::param('app') == 'shop' && waRequest::param('module') == 'frontend' && !waRequest::param('action')}span{else}a href="/"{/if} href="/" class="header-logo"><img src="{$wa_theme_url}img/logo.svg" alt=""></{if waRequest::param('app') == 'shop' && waRequest::param('module') == 'frontend' && !waRequest::param('action')}span{else}a{/if}></div>
+                <div class="col-md-9">
+                    <div class="small-menu">
+                        <a href="/o-nas/">О нас</a>
+                        <a href="/blog/">Новости</a>
+                        <a href="/garantiya/">Гарантия</a>						
+                        
+                        <a href="/kontakty/">Контакты</a>
+                        <a href="/opt/">Опт</a>
+                        <div class="pull-right">
+                        {if !$wa->user()->getName()}
+                          <a href="/login/">Вход</a>
+                          <a href="/signup/">Регистрация</a>
+                        {else}
+                            <a href="/?logout">Выход</a>
+                        {/if}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                </div>
+
+                <div class="col-md-3">
+                    <div class="top-search-form pull-left">
+                        <form action="{$wa->getUrl('/frontend/search')}" class="search" id="searchform" method="get">
+                            <input type="text" id="search" name="query" class="form-control" placeholder="[s`Search`] ...">
+                            <button type="submit" value="" name="Submit" class="submit"><i class="fa fa-search"></i></button>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="header-contact">
+                        <div style="font-size:20px; margin-top:6px;"><i class="fa fa-phone" ></i><a href="tel://+375296126888" style="color:#FFFFFF"> +375 (29) 6-126-888</a></div>
+                    </div>
+                    <div class="header-mini-cart  pull-right">
+                        <a href="{$wa->getUrl('shop/frontend/cart')}">
+                            [s`Shopping cart`]
+                            <span>{$wa->shop->cart->count()} товаров - {wa_currency( $wa->shop->cart->total(),$wa->shop->currency())}</span>
+                        </a>
+                    </div><!-- /header-mini-cart -->
+                    <div class="top-icons">
+                        {if $wa->user()->getName()}
+                            <!--div class="top-icon"><a href="" title="[s`Wishlist`]"><i class="fa fa-heart"></i></a></div>
+                            <div class="top-icon"><a href="" title="[s`Notification`]"><i class="fa fa-bell"></i></a><span>12</span></div-->
+                            <div class="top-icon"><a href="/?logout" title="[s`Logout`]"><i class="fa fa-unlock"></i></a></div>
+                            <div class="top-icon"><a href="/my/orders/" title="Заказы"><i class="fa fa-tasks"></i></a></div>
+                            <div class="top-icon"><a href="/my/profile/" title="Профайл"><i class="fa fa-user"></i></a></div>
+                        {else}
+                            <div class="top-icon"><a href="/login/" title="[s`Login`]"><i class="fa fa-lock"></i></a></div>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<div class="header-main-block2">
+<nav class="navbar yamm  navbar-main" role="navigation">
+
+<div class="container">
+<div class="navbar-header">
+    <button type="button" data-toggle="collapse" data-target="#navbar-collapse-1" class="navbar-toggle"><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+    <a href="/" class="navbar-brand"><i class="fa fa-home"></i></a>
+</div>
+<div id="navbar-collapse-1" class="navbar-collapse collapse ">
+    <ul class="nav navbar-nav navbar-right">
+        <li><a href="/oplata/">Оплата</a></li>
+        <li><a href="/dostavka/">Доставка</a></li>
+    </ul>
+    {shopCustommenuPlugin::displayMenu(1)}
+</div>
+</div>
+</nav>
+</div>
+</div>
+
+<!-- /header-main-menu -->
+</div>
+</header>
+
+<!-- End header -->

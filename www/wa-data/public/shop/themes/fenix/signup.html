@@ -1,0 +1,24 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s">Создать нового <span>пользователя</span></h1>
+                </div>
+                <div class="row">
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-7">
+                        <div class="block-form box-border wow fadeInLeft animated" data-wow-duration="1s">
+                            <h3><i class="fa fa-user"></i>Персональные данные</h3>
+                            <hr>
+
+                            {$wa->authAdapters()}
+                            <div class="signup_form">
+                                {$wa->signupForm($errors)}
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

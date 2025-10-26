@@ -1,0 +1,57 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s">История <span>Заказов</span></h1>
+                </div>
+                <div class="row">
+                    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <div class="box-border wow fadeInLeft" data-wow-duration="1s">
+                            <h3><i class="fa fa-tasks"></i> Заказы</h3>
+                            <hr>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                    <tr>
+                                        <th>№ Заказа.</th>
+                                        <th>Дата</th>
+                                        <th>Товары</th>
+                                        <th>Сумма</th>
+                                        <th>Статус</th>
+                                        <th>&nbsp;</th>
+                                    </tr>
+                                    </thead>
+
+                                    <tbody>
+                                    {foreach $orders as $o}
+                                    <tr>
+                                        <td>{$o.id_str}</td>
+                                        <td>{$o.create_datetime|wa_date:'humandate'}</td>
+                                        <td>{if !empty($o.items)}
+                                            {foreach $o.items as $i}
+                                            {$i.name|escape} <span>x {$i.quantity}</span><br />
+                                            {/foreach}
+                                            {/if}
+                                        </td>
+                                        <td>{$o.total_formatted}</td>
+                                        <td><span class="label {$o.state->getId()}">{$o.state->getName()}</span></td>
+                                        <td class="text-right">
+                                            <a class="btn btn-mini" href="{$o.url}">Подробно &nbsp;<i class="fa fa-angle-right"></i></a>
+                                        </td>
+                                    </tr>
+                                    {foreachelse}
+                                    <tr><td colspan="6">[`You have no order history yet.`]</td></tr>
+                                    {/foreach}
+                                    </tbody>
+                                </table>
+                            </div>
+
+                        </div>
+                    </article>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>

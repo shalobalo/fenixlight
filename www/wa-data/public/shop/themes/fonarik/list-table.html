@@ -1,0 +1,37 @@
+    {foreach $products as $p}
+             <div class="product_li" itemscope itemtype ="http://schema.org/Product">
+				<div class="grid_3">
+					<div class="prev">
+						<a href="{$p.frontend_url}" title="{$p.name|escape}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">
+                        {$badge_html = $wa->shop->badgeHtml($p.badge)}
+                        {if $badge_html}
+                            <div class="corner top right">{$badge_html}</div>
+                        {/if}
+                        {$wa->shop->productImgHtml($p, '200x0', ['itemprop' => 'image', 'default' => "`$wa_theme_url`img/dummy200.png", 'alt' => $p.name])}</a>
+					</div><!-- .prev -->
+				</div><!-- .grid_3 -->
+				
+				<div class="grid_4">
+					<div class="entry_content">
+						<a href="{$p.frontend_url}" title="{$p.name|escape}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">
+                        <h3 class="title" itemprop="name">{$p.name}</h3></a>
+						{if $p.rating > 0}
+                        <div class="review">
+                           {$wa->shop->ratingHtml($p.rating)}
+                        {if $p.rating_count}<span>{$p.rating_count} оценок</span>{/if}
+						</div>
+                        {/if}
+						{if $p.summary}<p itemprop="description">{$p.summary}</p>{/if}
+						<a class="more" href="{$p.frontend_url}" title="{$p.name|escape}{if $p.summary} &mdash; {strip_tags($p.summary)}{/if}">Подробнее</a>
+					</div><!-- .entry_content -->
+				</div><!-- .grid_4 -->
+				
+				<div class="grid_2">
+					{include file='product-price-cart.html' p=$p}
+				</div><!-- .grid_2 -->
+				
+				<div class="clear"></div>
+			</div><!-- .article -->
+
+    {/foreach}
+

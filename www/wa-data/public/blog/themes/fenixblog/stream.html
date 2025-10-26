@@ -1,0 +1,53 @@
+<section>
+<div class="second-page-container">
+<div class="container">
+<div class="row">
+
+<div class="col-md-9">
+
+    <div class="block-breadcrumb">
+        <ul class="breadcrumb">
+            <li><a href="{$wa->blog->url()}">[`All posts`]</a></li>
+            {if isset($breadcrumbs)}
+            {foreach $breadcrumbs as $breadcrumb}
+            <li><a href="{$breadcrumb.url}">{$breadcrumb.name|escape}</a></li>
+            {/foreach}
+            {/if}
+        </ul>
+    </div>
+    <div class="block">
+        <div class="row">
+            {foreach $posts as $post}
+            <article class="col-md-12" {if $wa->param('blog_url')}itemprop="blogPosts" {/if}itemscope itemtype="http://schema.org/BlogPosting">
+                <div class="blog">
+                    <!--figure class="figure-hover-overlay">
+                        <a class="figure-href" href="#"></a>
+
+                        <i class="fa fa-comment"></i><a class="blog-link" href=""> 4 </a>
+                        <img title="" alt="" src="img/preview/blog4.jpg" class="img-responsive">
+
+                        <span class="bar"></span>
+                    </figure-->
+                    <div class="blog-caption">
+                        <h3><a class="blog-name" href="{$post.link}" itemprop="url">{$post.title}</a></h3>
+                        <p class="post-information">
+                            <span><a href="{$post.user.posts_link}"><i class="fa fa-user"></i> {$post.user.name}</a></span>
+                            <span><i class="fa fa-clock-o"></i> {$post.datetime|wa_datetime:"humandate"}</span>
+                        </p>
+                        <p>
+                            {$post.text}
+                        </p>
+                        <a class="btn-read" href="{$post.link}">{$post.cut_link_label|default:'[`Continue reading →`]'}</a>
+                    </div>
+                </div>
+            </article>
+            {/foreach}
+        </div>
+    </div>
+</div>
+{include file="sidebar.html" inline}
+</div>
+</div>
+</div>
+
+</section>

@@ -1,0 +1,14 @@
+User-agent: * 
+Disallow: /*_openstat
+Disallow: /*from=adwords
+Disallow: /*utm_source*
+Disallow: /*gclid=
+Disallow: /search/
+Disallow: /*?view=
+Disallow: /*?sort=
+Disallow: /cart/
+Disallow: /login/
+Disallow: /signup/
+
+Host: fenix-russia.ru.ru
+Sitemap: http://fenix-russia.ru/sitemap.xml

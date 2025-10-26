@@ -1,0 +1,64 @@
+<article class="product list product_{$p.id}">
+    <div class="row">
+        <div class="col-xs-12 col-sm-4 col-md-4 text-center">
+            <figure class="figure-hover-overlay text-center">
+                <a href="{$p.frontend_url}"  class="figure-href"></a>
+                {$badge_html = $wa->shop->badgeHtml($p.badge)}
+                {if $badge_html}
+                {$badge_html}
+                {/if}
+                <!--a href="#" class="product-compare"><i class="fa fa-random"></i></a>
+                <a href="#" class="product-wishlist"><i class="fa fa-heart-o"></i></a-->
+                {$product = $wa->shop->product($p.id)}
+                <img src="{$wa->shop->productImgUrl($product,'255x0')}" class="img-responsive" alt="">
+            </figure>
+        </div>
+        <div class="col-xs-12 col-sm-8 col-md-8">
+            <div class="product-caption">
+                <div class="block-name">
+                    <a href="{$p.frontend_url}" class="product-name">{$p.name}</a>
+                </div>
+
+                <div class="row">
+                
+                    {if $p.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $p.count !== null && $p.count <= 0) }
+        
+                    {else}
+                    <div class="col-xs-3 col-sm-3 col-md-3 ">
+                        <p class="product-price-grid text-center">{shop_currency($p.price)}{if $p.compare_price > 0 }<br><span>{shop_currency($p.compare_price|ceil)}</span>{/if}</p>
+                    </div>
+                    {/if}
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <form method="post" action="{$wa->getUrl('/frontendCart/add')}" class="addtocart product-cart">
+                            <input type="hidden" name="product_id" value="{$p.id}">
+                            <input type="submit" class="buy{if ($p.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $p.count !== null && $p.count <= 0)) && !$p.pre_order } disabled" disabled="disabled{/if}" value="{if $p.pre_order}ПРЕДЗАКАЗ{else}КУПИТЬ{/if}">
+                        </form>
+                    </div>
+                    <div class="col-xs-3 col-sm-3 col-md-3">
+                        <div class="product-rating">
+                            <div class="stars">
+                                <a href="{$p.frontend_url}reviews">{for $i = 1 to 5}<span class="star {if (5-$i) < $p.rating }active{/if}"></span>{/for}</a>
+                            </div>
+                            {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+                            {if $reviews_total_count}
+                            <a href="{$p.frontend_url}reviews" class="review">{$reviews_total_count} отзывов</a>
+                            {/if}
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-3 col-xs-3 to-compare-block">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" class="compare-grid-checkbox" data-product="{$p.id}">
+                                <a class="compare-grid-add" data-product="{$p.id}" href="#">К&nbsp;сравнению</a>
+                                <a class="compare-grid-link" data-product="{$p.id}" href="{$wa->getUrl('/frontend/compare/')}">В&nbsp;сравнении</a>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <br />
+                <p class="description">{$p.summary}</p>
+
+            </div>
+        </div>
+    </div>
+</article>

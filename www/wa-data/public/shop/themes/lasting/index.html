@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <!--[if IE]>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">``
+    <![endif]-->
+    <title>{$wa->title()|escape}</title>
+    <meta name="description" content="{$wa->meta('description')|escape}">
+    <meta name="keywords" content="{$wa->meta('keywords')|escape}">
+    {include file="`$wa_active_theme_path`/head.html" inline}
+
+</head>
+{$body_class = ''}
+{if $wa->param('page_id')}
+    {$pages =  $wa->shop->pages()}
+    {foreach $pages as $page}
+        {if $page.id == $wa->param('page_id')}
+            {$body_class = $page.url|trim:"/"}
+        {/if}
+    {/foreach}
+{/if}
+<body class="{$body_class}">
+{literal}
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function (d, w, c) {
+        (w[c] = w[c] || []).push(function() {
+            try {
+                w.yaCounter26013798 = new Ya.Metrika({id:26013798,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+            } catch(e) { }
+        });
+
+        var n = d.getElementsByTagName("script")[0],
+                s = d.createElement("script"),
+                f = function () { n.parentNode.insertBefore(s, n); };
+        s.type = "text/javascript";
+        s.async = true;
+        s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+        if (w.opera == "[object Opera]") {
+            d.addEventListener("DOMContentLoaded", f, false);
+        } else { f(); }
+    })(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/26013798" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{/literal}
+{include file="header.html" inline}
+{$content}
+{include file="footer.html" inline}
+</body>
+</html>

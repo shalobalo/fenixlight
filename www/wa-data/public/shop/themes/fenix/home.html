@@ -1,0 +1,150 @@
+<div>
+{$wa->dislider->showSlider('6')}
+</div>
+
+
+<div>
+    <div class="home-category">
+        {$wa->block("home_page_static_menu")}
+    </div>
+</div>
+<div>
+<h1 class="style-h1">Официальный сайт светодиодных фонарей Fenix</h1>
+</div>
+<div>
+    {$bestsellers = $wa->shop->productSet('promo')}
+    {include file='products_carusel.html' products=$bestsellers header='Популярные продукты'}
+</div>
+
+{$wa->block("home_chess_banners")}
+<div>
+  <div class="block ">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-md-4 recommended-block">
+          <div class="widget-title">
+            <i class="fa fa-thumbs-up"></i> Рекомендуем
+          </div>
+            <div class="widget-area wow fadeInLeft animated animated" data-wow-duration="2s" style="visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;">
+            {$products = $wa->shop->productSet('bestsellers')}
+            {$res = $products|shuffle}
+            {$res = $products|array_slice:-5}
+            {foreach $res as $p}
+
+            <div class="widget-block">
+                <div class="product-caption">
+                  <div class="product-image">
+                    <a href="{$p.frontend_url}"><img title="" alt="" src="{$wa->shop->productImgUrl($p,'100x0')}" class="img-responsive"></a>
+                  </div>
+                    <div class="block-name">
+                      <a class="product-name" href="{$p.frontend_url}">{$p.name}</a>
+                      <p class="product-price-grid">{if $p.compare_price > 0 }<span>{shop_currency($p.compare_price|ceil)}</span>{/if} {shop_currency($p.price)}</p>
+                    </div>
+                    <div class="product-rating">
+                        <div class="stars">
+                            <a href="{$p.frontend_url}reviews">{for $i = 1 to 5}<span class="star {if (5-$i) < $p.rating }active{/if}"></span>{/for}</a>
+                        </div>
+                      {$reviews_total_count = shopCustomPlugin::getReviewsCount($p.id)}
+                      {if $reviews_total_count}
+                        <a class="review" href="{$p.frontend_url}reviews">{$reviews_total_count} отзывов</a>
+                      {/if}
+                    </div>
+                    <p class="description">{$p.summary}</p>
+                </div>
+            </div>
+            {/foreach}
+            </div>
+        </div>
+
+	<div class="col-md-4 last-comments">
+	  <div class="widget-title">
+          <i class="fa fa-comments"></i>Отзывы и вопросы
+	  </div>
+        <div class="widget-area">
+        {$comments_data = shopCustomPlugin::getLastComments(5)}
+        {$last_comments = $comments_data.parent_reviews}
+        {if $last_comments}
+        {foreach $last_comments as $comment}
+            <div data-wow-duration="1s" class="widget-block wow fadeInUp animated" style="visibility: visible;-webkit-animation-duration: 1s; -moz-animation-duration: 1s; animation-duration: 1s;">
+                <div class="product-caption">
+                    <div class="product-image">
+                        <a href="{$wa->getUrl('/frontend/product', ['product_url' => $comment['product_data'].url])}">
+                            {$wa->shop->getProductImgHtml($comment['product_data'], '110x0', ['id' => 'product-image', 'title' => $comment['product_data'].name|escape|cat:' ':strip_tags($comment['product_data'].summary)|escape, 'alt' => $comment['product_data'].name])}
+                        </a>
+                    </div>
+                    <div class="block-name">
+                        <a class="product-name" href="{$wa->getUrl('/frontend/product', ['product_url' => $comment['product_data'].url])}">{$comment['product_data'].name}</a>
+                    </div>
+                    {if !$comment.parent_id && !empty($comment.rate)}
+                    <div class="product-rating">
+                        <div class="stars">
+                            <a href="{$wa->getUrl('/frontend/product', ['product_url' => $comment['product_data'].url])}reviews">{for $i = 1 to 5}<span class="star {if (5-$i) < $comment.rate }active{/if}"></span>{/for}</a>
+                        </div>
+                    </div>
+                    {/if}
+                    <div class="autor">{$comment.author.name}</div>
+                    <p class="description">{$comment.text|strip_tags|truncate:200}{if $comment.text|count_characters:true > 200}<a class="review_link" href="{$wa->shop->productUrl($comment['product_data'])}#review{$comment.id}">Подробнее</a>{/if}</p>
+                </div>
+                {if $comment['child_review']}
+                {foreach $comment['child_review'] as $child_review}
+                <blockquote>
+                    <div class="autor">{$child_review.author.name}</div>
+                    {$child_review.text|strip_tags|truncate:180}{if $child_review.text|count_characters:true > 180}<a class="review_link" href="{$wa->shop->productUrl($comment['product_data'])}#review{$comment.id}">Подробнее</a>{/if}
+                </blockquote>
+                {/foreach}
+                {/if}
+            </div>
+        {/foreach}
+        {/if}
+
+        </div>
+	</div>
+
+	<div class="col-md-4 last-posts">
+	  <div class="widget-title">
+	    <a href="{$wa->blog->url()}"><i class="fa fa-newspaper-o"></i>Новости</a>
+	  </div>
+        <div class="widget-area  wow fadeInRight animated animated" data-wow-duration="2s" style="visibility: visible;-webkit-animation-duration: 2s; -moz-animation-duration: 2s; animation-duration: 2s;">
+        {$latest_posts = $wa->blog->posts(null,3)}
+        {foreach $latest_posts as $post}
+            <div class="widget-block">
+            <div class="block-name">
+                <a class="product-name" href="{$post.link}">{$post.title}</a>
+                <p class="post-information">
+                    <span><a href="{$post.user.posts_link}"><i class="fa fa-user"></i> {$post.user.name}</a></span>
+                    <span><i class="fa fa-clock-o"></i> {$post.datetime|wa_datetime:"humandate"}</span>
+                </p>
+            </div>
+            <p class="description">{$post.text|truncate:350} <a class="review_link" href="{$post.link}">Подробнее</a></p>
+        </div>
+        {/foreach}
+        </div>
+	</div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div>
+
+    <div class="block">
+        <div class="container">
+		
+            <div class="row">
+                {$wa->block("home_page_promo_text")}
+            </div>
+        </div>
+    
+        <div class="container"><div class="rr-widget"
+     data-rr-widget-type="main-page"
+     data-rr-widget-category-id="0"
+     data-rr-widget-id="56791d756636b327249bd6c2"
+     data-rr-widget-width="100%"></div>
+            <div class="row">
+                {$wa->block("home_page_bottom_banners")}
+            </div>
+        </div>
+    </div>
+</div>

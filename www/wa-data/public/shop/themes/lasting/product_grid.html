@@ -1,0 +1,27 @@
+<article class="product light">
+    <figure class="figure-hover-overlay">
+        <a href="{$p.frontend_url}"  class="figure-href"></a>
+        <!--a href="#" class="product-compare"><i class="fa fa-random"></i></a>
+        <a href="#" class="product-wishlist"><i class="fa fa-heart-o"></i></a-->
+        {$product = $wa->shop->product($p.id)}
+         <img src="{$wa->shop->productImgUrl($product,'400x0')}" class="img-responsive" alt="">
+
+    </figure>
+    <div class="product-caption">
+        <div class="block-name">
+            <a href="{$p.frontend_url}" class="product-name">{$p.name}</a>
+            <p class="product-price-grid">{if $p.compare_price > 0 }<span>{shop_currency($p.compare_price|ceil)}</span>{/if} {shop_currency($p.price)}</p>
+        </div>
+        <form method="post" action="{$wa->getUrl('/frontendCart/add')}" class="addtocart product-cart">
+            <input type="hidden" name="product_id" value="{$p.id}">
+            <input type="submit" {if $p.price eq 0 || (!$wa->shop->settings('ignore_stock_count') && $p.count !== null && $p.count <= 0) }class="buy disabled" disabled="disabled"{else}class="buy"{/if} value="КУПИТЬ">
+        </form>
+
+        <div class="product-rating">
+            <div class="stars">
+                <a href="{$p.frontend_url}reviews">{for $i = 1 to 5}<span class="star {if (5-$i) < $p.rating }active{/if}"></span>{/for}</a>
+            </div>
+        </div>
+    </div>
+
+</article>

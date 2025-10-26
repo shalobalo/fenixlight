@@ -1,0 +1,102 @@
+<section>
+    <div class="second-page-container">
+        <div class="block">
+            {if !$cart.count}
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s">Корзина</h1>
+                </div>
+                <div class="row cart">
+                    <div class="col-md-12"><p>[`Your shopping cart is empty.`]</p></div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="block-form">
+                            <form method="post">
+                                <a href="#" class="btn-default-1" onclick="history.go(-1);return false;" >Продолжить покупки</a>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {else}
+            <form method="post">
+            <div class="container">
+                <div class="header-for-light">
+                    <h1 class="wow fadeInRight animated" data-wow-duration="1s">Корзина</h1>
+                </div>
+                <div class="row cart">
+                    <div class="col-md-12">
+                        <table class="cart-table table wow fadeInLeft" data-wow-duration="1s">
+                            <thead>
+                            <tr>
+                                <th class="card_product_image">Фото</th>
+                                <th class="card_product_name">Наименование</th>
+                                <th class="card_product_model">Артикул</th>
+                                <th class="card_product_quantity">Количество</th>
+                                <th class="card_product_price">Цена товара</th>
+                                <th class="card_product_total">Сумма</th>
+                                <th class="card_product_action">&nbsp;</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            {foreach $cart.items as $item}
+                            <tr data-id="{$item.id}">
+                                <td class="card_product_image" data-th="Фото"><a href="{$wa->getUrl('/frontend/product', ['product_url' => $item.product.url])}"><img title="{$item.product.name|escape}" alt="{$item.product.name|escape}" src="{$wa->shop->productImgUrl($item.product, '80x0')}"></a></td>
+                                <td class="card_product_name" data-th="Наименование"><a href="{$wa->getUrl('/frontend/product', ['product_url' => $item.product.url])}">{$item.product.name|escape}</a></td>
+                                <td class="card_product_model" data-th="Артикул">{$item.sku_code|escape}</td>
+                                <td class="card_product_quantity" data-th="Количество"><input type="number" min="0" value="{$item.quantity}" name="quantity[{$item.id}]" class="styler qty"></td>
+                                <td class="card_product_price" data-th="Цена товара">{shop_currency($item.price)}</td>
+                                <td class="card_product_total" data-th="Сумма">{shop_currency($item.price * $item.quantity)}</td>
+                                <td class="card_product_action" data-th="Удалить"><i class="fa fa-times delete"></i> </td>
+                            </tr>
+							</form>
+                            {/foreach}
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="row">
+		  <div class="col-md-6 pull-right">
+		    <div class="pull-right">{if shopDiscounts::isEnabled('coupons')}<span id="discount">Скидка: {shop_currency($discount|ceil, true)}</span>{/if}<div class="cart-total">Всего: <span class="price">{shop_currency($cart.total)}</span></div></div>
+		  </div>
+		  <div class="col-md-6">
+		    {if shopDiscounts::isEnabled('coupons')}
+		    <div class="block-form">
+			  <div class="wa-field wa-field-email"><div class="wa-name">Купон на скидку (если есть)</div><div class="wa-value">
+			      <p><input type="text" value="{$coupon_code|escape}" name="coupon_code"></p>
+			      <input type="submit" class="btn-default-1 to_checkout btn_orange" value="Применить" />
+			      </div>
+			  </div>
+			  <p id="skidkanakomp"><span style="color:red;">*</span> Скидка на комплекты не суммируется со скидками по промокоду и дисконтным картам! Вы сами выбираете какую скидку Вам выгоднее использовать.</p>
+		    </div>
+		    {/if}
+		  </div>
+		  <div class="col-md-6">
+		    <div class="block-form pull-right">
+			    <a href="#" class="btn-default-1" onclick="history.go(-1);return false;" >Продолжить покупки</a>
+			    <input name="checkout" type="submit" class="btn-default-1 to_checkout btn_orange" value="Оформить заказ" />
+		    </div>
+		  </div>
+		  <div class="rr-widget"
+    data-rr-widget-type="cart"
+    data-rr-widget-products-id="{$item.product.id}"
+    data-rr-widget-id="56791d756636b327249bd6c3"
+    data-rr-widget-width="100%"></div>
+		</div>
+                <div class="row">
+                    <div class="col-md-12">
+                        
+                    </div>
+                </div>
+            </div>
+            
+            {/if}
+        </div>
+		
+    </div>
+</section>
+<script src="{$wa_theme_url}js/cart.js"></script>

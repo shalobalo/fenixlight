@@ -1,0 +1,47 @@
+<div class="box-modal">
+	<div class="box-modal_close arcticmodal-close">X</div>
+	<div id="shop-set-plugin-complect-block">
+		<div class="set" id="set-{$set_id}">
+			<div class="set-base-product">
+				<div class="set-image">
+				{if !empty($main.image)}
+				{$wa->shop->productImgHtml($main.image, '80', ['itemprop' => 'image', 'alt' => $main.name])}
+				{/if}
+				</div>
+				<div class="set-product-name">
+					<a href="{$wa->shop->productUrl($main)}">{$main.name}</a>
+				</div>
+				<div class="set-product-price"><b>{shop_currency($main.price,$main.currency)}</b></div>
+			</div>
+			{foreach $items as $item}
+			<div class="set-item-plus">+</div>
+			<div class="set-item">
+				<div class="set-image">
+				{$wa->shop->productImgHtml($item.image, '80', ['itemprop' => 'image', 'alt' => $item.name])}
+				</div>
+				<div class="set-item-name">
+					<a href="{$wa->shop->productUrl($item)}">{$item.name}</a>
+				</div>
+				<div class="set-item-price">
+					<b>{shop_currency($item.set_price,$item.currency)}</b>
+					{if $item.set_price != $item.price}
+					<br>
+					<s>{shop_currency($item.price,$item.currency)}</s>
+					{/if}
+				</div>
+				{if $item.discount}<div class="set-item-discount">-{$item.discount}%</div>{/if}
+				{if $item.count > 1}<div class="set-item-count">{$item.count} шт.</div>{/if}
+			</div>
+			{/foreach}
+		</div>
+		<br>
+		{if !$cart_item.count}<button data-sku-id="0" data-set-id="{$set_id}">Купить комплект</button>{/if}
+	</div>
+	
+	<div class="set-cart-item"{if !$cart_item.count} style="display:none"{/if}>
+		<a class="set-delete" href="#" data-set-id="{$set_id}"><i class="icon16 remove"></i></a>
+		Количество комплектов в корзине:
+		<input type="text" value="{$cart_item.count|default:0}" data-set-id="{$set_id}"/>
+		<span class="cart-item-total">{shop_currency($cart_item.set_item_total,true,null,'h')}</span>
+	</div>
+</div>

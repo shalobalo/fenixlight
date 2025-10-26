@@ -1,0 +1,424 @@
+{literal}
+<script type="text/javascript">
+	function all_reviews(){
+    	$("#reviews_all").css("height", "auto");
+        $("#show_all_rev_bg").css("display", "none");
+        $("#show_all_rev").css("display", "none");
+		}
+</script>
+<script type="text/javascript">
+			function change_head(name_head) {
+				document.getElementById('ob_contact_block_form_head_text').innerText = name_head;
+              	document.getElementById('ob_contact_block_form_head_text').innerHTML = name_head;
+              	document.getElementById('subject').value = name_head;
+				$("#fon_box").show();
+              	$("#ob_contact").show(500);
+              
+			}
+  			function change_head1(name_head1) {
+				document.getElementById('ob_contact_block_form_head_text1').innerText = name_head1;
+              	document.getElementById('ob_contact_block_form_head_text1').innerHTML = name_head1;
+              	document.getElementById('subject1').value = name_head1;
+				$("#fon_box").show();
+              	$("#ob_contact1").show(500);
+              
+			}
+  			function close_popup1() {
+    			$("#ob_contact1").hide(500);
+				$("#fon_box").delay(550).hide(1);
+  			}
+  			function close_popup() {
+    			$("#ob_contact").hide(500);
+				$("#fon_box").delay(550).hide(1);
+  			}
+		</script>
+		<script type="text/javascript">
+				
+		</script>
+{/literal}
+{literal}
+	<script type="text/javascript">
+				$(document).ready (function() {
+					if ($('.price_new').attr('value')=="0 руб." && $('.bay.8').attr('disabled')== 'disabled') {
+						$("#button_1click").empty();
+						$("#button_1click").text("Сделать предзаказ");
+					} else if($('.price_new').attr('value')!="0 руб." && $('.bay.8').attr('disabled')== 'disabled'){
+						$("#button_1click").empty();
+						$("#button_1click").text("Нет в продаже");
+						$('#button_1click').attr('onClick', '');
+						$('#button_1click').css('background', 'rgb(210, 20, 20)');
+						$('#button_1click').css('background', '-moz-linear-gradient(90deg, rgb(210, 20, 20) 30%, rgb(250, 20, 20) 70%)');
+						$('#button_1click').css('background', '-webkit-linear-gradient(90deg, rgb(210, 20, 20) 30%, rgb(250, 20, 20) 70%)');
+						$('#button_1click').css('background', '-o-linear-gradient(90deg, rgb(210, 20, 20) 30%, rgb(250, 20, 20) 70%)');
+						$('#button_1click').css('background', '-ms-linear-gradient(90deg, rgb(210, 20, 20) 30%, rgb(250, 20, 20) 70%)');
+						$('#button_1click').css('background', 'linear-gradient(0deg, rgb(210, 20, 20) 30%, rgb(250, 20, 20) 70%)');
+					} else {}
+				$("#ob_contact_block_form_content_form").submit(function() {
+					var str = $(this).serialize();
+					$.ajax({
+					type: "POST",
+					url: "/jaloba.php",
+					data: str,
+					success: function(msg) {
+						if(msg == 'OK') {
+                          	$("#ob_contact_block_form_content_form").hide();
+							result = '<div class="notification_ok_j">Ваше обращение успешно отправлено в нашу службу поддержки! Спасибо, что помогаете нам развивать fonarik-market.ru!</div>';
+							$('#note_j_j').html(result).fadeIn().delay(3000)
+                        } else {
+							result = msg;
+							$('#note_j').html(result).fadeIn().delay(800).fadeOut("slow");
+						}
+						}
+					});
+					return false;
+				});
+                  $("#ob_contact_block_form_content_form1").submit(function() {
+					var str = $(this).serialize();
+					$.ajax({
+					type: "POST",
+					url: "/jaloba.php",
+					data: str,
+					success: function(msg) {
+                      	if(msg == 'OK1') {
+								$("#ob_contact_block_form_content_form1").hide();
+								result = '<div class="notification_ok_j">Ваша заявка обрабатывается. Наш менеджер свяжется с Вами в ближайшее время.</div>';
+								$('#note_j_j1').html(result).fadeIn().delay(3000)
+						} else {
+								result = msg;
+								$('#note_j1').html(result).fadeIn().delay(800).fadeOut("slow");
+						}
+						}
+					});
+					return false;
+				});
+
+$("#ajax-contact-form").submit(function() {
+var str = $(this).serialize();
+$.ajax({
+type: "POST",
+  url: "/odin_click.php",
+data: str,
+success: function(msg) {
+if(msg == 'OK') {
+$("#ajax-contact-form").hide();
+$("#zakaz_30dney_text").hide();
+  result = '<div class="notification_ok">Спасибо! Ваша заявка принята! Наши менеджеры свяжутся с Вами в ближайшее время!<img id="notification_ok_close" src="http://fonarik.ua/wa-data/public/shop/themes/fonarik/img/close_program.png" onclick="{literal}close_pop_up_1clk(\'#zakaz_30dney_block\');{/literal}"/></div>';
+$('#note').html(result).fadeIn().delay(3000)
+} else {
+result = msg;
+$('#note').html(result).fadeIn().delay(800).fadeOut("slow");
+}
+$(".btn").on( "click", function() {
+$.when( msg == 'OK' ).done(function() {
+});
+});
+}
+});
+return false;
+});
+});
+      /***/
+var timeout = 500;
+var closetimer = 0;
+var ddmenuitem = 0;
+function mopen(id){	
+	mcancelclosetime();
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+	ddmenuitem = document.getElementById(id);
+	ddmenuitem.style.visibility = 'visible';
+}
+function mclose(){
+	if(ddmenuitem) ddmenuitem.style.visibility = 'hidden';
+}
+function mclosetime(){
+	closetimer = window.setTimeout(mclose, timeout);
+}
+function mcancelclosetime(){
+	if(closetimer){
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+document.onclick = mclose; 
+</script>
+	<script type="text/javascript">
+function open_pop_up_1clk(box) {
+	$("#fon_box").show();
+	$(box).show(500);
+}
+ 
+function close_pop_up_1clk(box) {
+	$(box).hide(500);
+  	$("#ob_contact").hide(500);
+	$("#fon_box").delay(550).hide(1);
+}
+function close_fone_1clk(box) {
+	$(box).hide(500);
+  	$("#ob_contact").hide(500);
+  	$('#onclick_buy').hide(500);
+  	$("#fon_box").delay(550).hide(1);
+}
+</script>
+  <!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter22409665 = new Ya.Metrika({id:22409665,
+                    webvisor:true,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/22409665" style="position:absolute; left:-9999px;" alt=""></div></noscript>
+<!-- /Yandex.Metrika counter -->
+{/literal}
+{literal}
+<script type="text/javascript">
+function open_pop_up(box) {
+	$("#fon_box").show();
+	$(box).show(500);
+}
+ 
+function close_pop_up(box) {
+	$(box).hide(500);
+	$("#fon_box").delay(550).hide(1);
+}
+</script>
+<script type="text/javascript"> _shcp = []; _shcp.push({widget_id : 121106, widget : "Chat"}); (function() { var hcc = document.createElement("script"); hcc.type = "text/javascript"; hcc.async = true; hcc.src = ("https:" == document.location.protocol ? "https" : "http")+"://widget.siteheart.com/apps/js/sh.js"; var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(hcc, s.nextSibling); })();</script>{/literal}
+<!-- Traffic tracking code -->
+<script type="text/javascript">
+(function(w, p) {
+var a, s;
+(w[p] = w[p] || []).push({
+counter_id: 371937180
+});
+a = document.createElement('script'); a.type = 'text/javascript'; a.async = true;
+a.src = ('https:' == document.location.protocol ? 'https://' : 'http://') + 'autocontext.begun.ru/analytics.js';
+s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(a, s);
+})(window, 'begun_analytics_params');
+</script>
+<div class="container_12">
+    <div id="top">
+    
+    <a href="{$wa_url}" title="{$wa->accountName()}" id="top_home"></a>
+    
+    
+      <div class="grid_3" id="top_pages_nav">
+      {$pages =  $wa->shop->pages()}
+      {foreach $pages as $page}
+       <a href="{$page.url}" >{$page.name}</a>
+      {/foreach} 
+      </div><!-- .grid_3 -->
+      <div id="test_fonarey"><a href="http://fonarik.com/test/" target="_blank"><span id="test_fonarey_text">ТЕСТ ФОНАРЕЙ</span></a></div>
+      
+      <div class="grid_3" id="top_loginblock">
+      {if $wa->user()->getName()} 
+      <a href="/my" id="top_profile"><span></span>Профиль</a>&nbsp;
+      <a href="/?logout" id="top_logout"><span></span>Выйти</a>
+      {else}
+      <a href="/login/" id="top_login"><span></span>Вход</a>&nbsp;
+      <a href="/signup/" id="top_register"><span></span>Регистрация</a>      
+      {/if}
+      </div>
+      
+    </div>
+
+    <div class="clear"></div>
+
+    <div id="branding">
+      <div class="grid_3" style="width:auto;float:left;display:block;margin:5px 0 0 10px;" >       
+          <a href="{$wa_url}" title="{$wa->accountName()}" style="width:auto;margin:0px;padding:0px;">
+          <img src="{$wa_theme_url}images/logo.png" alt="{$wa->accountName()}"></a>
+      </div><!-- .grid_3 -->
+<div id="search_header">
+<div id="top_phones"><sup>(495)</sup>&nbsp;<span>646-13-69</span>&nbsp;&nbsp;&nbsp;<sup>8 800</sup>&nbsp;<span>555-10-92</span></div>
+<div id="top_time"><span></span><p>Время&nbsp;работы&nbsp;консультантов:&nbsp;с&nbsp;9:00&nbsp;до&nbsp;22:00 (Без выходных)</p></div>
+<form method="get" id="searchform" class="search" action="{$wa->getUrl('/frontend/search')}">
+<input class="text entry_form" type="text" name="query" {if !empty($query)}value="{$query}"{/if} id="search">
+<input type="submit" class="submit" name="Submit" value="" >
+</form>  
+</div>
+<div style="float: left;width: 200px;">
+  <div class="tooltip leftArrow">Бесплатно в пределах России</div>
+	<div class="grid_6" id="links_header" style="margin: 10px 0 0 0;height: 0;">
+	<div id="online_call"></div>
+		<form method="POST" accept-charset="utf-8" id="siteheart_button_121106" action="https://siteheart.com/webconsultation/121106?byhref=1" target="siteheart_button_121106" >
+			<input type="hidden" name="_charset_">
+			<input type="hidden" name="data[your_name]" value="your_value">
+			<a href="https://siteheart.com/webconsultation/121106?byhref=1" target="siteheart_sitewindow_121106" onclick="_gaq.push(['_trackEvent', 'button', 'ask']);o=window.open;o('https://siteheart.com/webconsultation/121106', 'siteheart_sitewindow_121106', 'width=550,height=400,top=30,left=30,resizable=yes'); return false;" style="margin: 5px 0px 0px 10px;">
+			    <span></span><span class="text">Онлайн-консультация</span></a>
+   		</form>
+   		<a style="cursor:pointer;margin: 5px 0px 0px 10px;" onclick="popupWin = window.open('/zvonok.php', 'contacts', 'location,width=400,height=300,top=0'); popupWin.focus();return false;">
+          <span class="linkcall"></span><span class="text">Вам перезвонить?</span>
+      </a>
+      <span id="all_towns_a" onmouseover="mopen('all_town_list')" onmouseout="mclosetime()" style=""><span class="linkcall_towns"></span><span class="text">Все города ⇓</span></span>
+      <div id="all_town_list" style="visibility: hidden;" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+	  	<div class="all_town_list_block">
+          <a href="http://fonarik-market.ru/kontakty/#1" class="all_town_list_a">Москва</a>
+          <span class="all_town_list_tel">7(495) 646-13-69</span>
+        </div>
+        <div class="all_town_list_block">
+          <a href="http://fonarik-market.ru/fonari-v-sankt-peterburge/" class="all_town_list_a">Санкт-Петербург</a>
+          <span class="all_town_list_tel">7(812) 425-32-92</span>
+        </div>
+        <div class="all_town_list_block">
+          <a href="http://fonarik-market.ru/fonari-v-ekaterinburge/" class="all_town_list_a">Екатеринбург</a>
+          <span class="all_town_list_tel">7(343) 247-82-30</span>
+        </div>
+	   </div>
+ </div><!-- .grid_6 -->
+</div>
+<div class="grid_3"  id="cart_header">
+       {$cart_total = $wa->shop->cart->total()}
+       <p class="cart_head">В корзине: <span></span></p>
+       <a class="cart_li" href="{$wa->getUrl('/frontend/cart')}" id="cart_count">{$wa->shop->cart->count()} товаров</a>
+       <p class="cart-total-container">На сумму: <span class="cart-total">{wa_currency($cart_total)}</span></p>
+       <a class="cart_li_checkout" href="{$wa->getUrl('/frontend/checkout')}">Оформить заказ</a>
+</div>
+
+</div><!-- #branding -->
+</div><!-- .container_12 -->
+
+  <div class="clear"></div>
+
+<div id="block_nav_primary" class="main-menu">
+    <div class="container_12">
+        <div class="grid_12 show">
+            <ul class='custom-menu'>{shopCustommenuPlugin::displayMenu(1)}</ul>
+        </div>
+    </div>
+</div>
+
+  <div class="clear"></div>
+  <!-- navigation breadcrumbs -->
+ {if isset($breadcrumbs)}
+  <div class="container_12" itemscope itemtype="http://schema.org/WebPage">
+    <div class="grid_12">
+       <div class="breadcrumbs" itemprop="breadcrumb">
+                    <a href="{$wa_app_url}">{$wa->accountName()}</a>&nbsp;<span>&#8250;</span>
+                    {if $breadcrumbs}
+                        {foreach $breadcrumbs as $breadcrumb}
+                            <a href="{$breadcrumb.url}">{$breadcrumb.name}</a>&nbsp;<span>&#8250;</span>
+                        {/foreach}
+                    {else} <span>&#8250;</span> {/if}
+					{if isset($product.name) && $wa->currentUrl(0) eq $wa->shop->productUrl($product)}<span style="font-size:11px;">{$product.name}</span>{/if}
+                </div></div></div>
+            {/if}
+<div id="main">  
+  <div class="container_12">
+            {$content}
+  </div>
+  </div><!-- #main -->
+  
+  <div class="clear"></div>
+
+<div id="footer">
+    <div class="f_navigation">
+      <div class="container_12">
+        <div class="grid_3">
+        <a href="{$wa_url}" title="{$wa->accountName()}" style="width:auto;margin:0px;padding:0px;">
+          <img src="{$wa_theme_url}images/logo.png" alt="{$wa->accountName()}" style="margin: 5px 0;"></a>
+         <a style="display: block;width: 150px;margin: 10px auto 0 auto;" href="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2508/*http://market.yandex.ru/shop/205444/reviews"><img src="http://clck.yandex.ru/redir/dtype=stred/pid=47/cid=2507/*http://grade.market.yandex.ru/?id=205444&action=image&size=2" border="0" width="150" height="101" alt="Читайте отзывы покупателей и оценивайте качество магазина на Яндекс.Маркете" /></a>
+        </div><!-- .grid_3 -->
+
+        <div class="grid_2">
+          <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik.com/">Блог о фонарях</a></div>
+          <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/o-nas/">О нас</a></div>
+          <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/dostavka/">Доставка</a></div>
+          <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/oplata/">Оплата</a></div>
+		  <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/garantiya/">Гарантия</a></div>
+		  <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/vozvrat/">Возврат</a></div>
+		  <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik-market.ru/kontakty/">Контакты</a></div>
+          <div style="font-size:14px;margin: 5px 0;"><a href="http://fonarik.com/test/">Тест фонарей</a></div>
+        </div><!-- .grid_3 -->
+        <div class="grid_4">
+          <h4>График работы Call-центра</h4>          
+          <div class="footer_time">
+          	<span ></span>
+            <p>ПН-ВС&nbsp;с&nbsp;9:00&nbsp;до&nbsp;20:00</p>
+          </div>
+          <h4>Представительства</h4>   
+        <div class="footer_time" style="margin-bottom:10px;"><span class="phone"></span><p>8 (800) 555-10-92 - Россия
+          <br/>+7 (495) 646-13-69 - Москва<br/>+7 (812) 425-32-92 - Санкт-Петербург<br/>+7 (343) 247-82-30 - Екатеринбург</p></div>
+        <div class="footer_time"><span class="mail"></span><p><a href="mailto:info@fonarik.ua" title="mailto">info@fonarik-market.ru</a></p></div>
+          <!--<form method="get" id="searchform-footer" class="search" action="{$wa->getUrl('/frontend/search')}" style="float:left;display:block;width:230px;margin-top:20px;background-position: -147px -68px;border-left:1px #bec3c7 solid;">
+<input class="text entry_form" type="text" name="query" {if !empty($query)}value="{$query}"{/if} id="search-footer" style="width:200px;">
+<input type="submit" class="submit" name="Submit" value="" >
+</form>-->
+        </div><!-- .grid_4 -->
+        <div class="grid_3">
+        <h4>Обратная связь</h4>
+        <div id="footer_svyaz">
+            <div>
+            	<span id="footer_svyaz_h">Нашли ошибку на сайте?</span>
+              	<span id="footer_svyaz_ht">Пожалуйста, <span id="footer_svyaz_htl" onClick="change_head('Нашли ошибку? Сообщите нам.');">напишите</span> нам об этом, помогите нам улучшить fonarik-market.ru</span>
+              	<span id="footer_svyaz_m"><a href="http://market.yandex.ru/shop/205444/reviews/add?cmid=p7PGOHjqUvU4ujy-6VTiLA&retpath=http%3A%2F%2Fmarket.yandex.ru%2Fsearch.xml%3Ftext%3Dfenix%2520pd35%26cvredirect%3D2%26page%3D2">Оцените качество</a> магазина fonarik-market.ru на Яндекс.Маркете.</span>
+            </div>
+          <div id="button_director">
+            <span style="font-size: 12px; text-align: left;display: block;margin: 0 0 0 5px;">Претензии к качеству товара или обслуживанию?</span>
+          	<span id="button_director_button" onClick="change_head('Претензии к качеству товара или обслуживанию? Сообщите нам об этом.');">Сообщить директору</span>
+          </div>
+          </div>
+        </div><!-- .grid_3 --> 
+        <div id="ob_contact">
+			<div id="ob_contact_block_form">
+				<div id="ob_contact_block_form_head">
+					<span id="ob_contact_block_form_head_text"></span>
+					<span id="ob_contact_block_form_head_button" onClick="close_popup();">х</span>
+				</div>
+				<div id="ob_contact_block_form_content">
+					<div id="note_j"></div>
+                  	<div id="note_j_j"></div>
+					<form id="ob_contact_block_form_content_form" name="ob_contact" action="#">
+						<label>Ваше имя</label>
+                        <input type="text" name="name" value="Введите Ваше имя" onfocus="this.value = ''" class="ob_contact_block_form_content_form_input" maxlength="25">
+						<label>E-mail для ответа</label>
+						<input type="text" name="email" value="Введите E-mail" onfocus="this.value = ''" class="ob_contact_block_form_content_form_input" maxlength="25">
+						<label>Ваше сообщение</label>
+						<textarea rows="5" cols="40" name="message"></textarea>
+                      	<input id="subject" type="hidden" name="subject" value="">
+						<input class="ob_contact_block_form_content_form_button" type="submit" name="submit" value="ОТПРАВИТЬ">
+					</form>
+				</div>
+			</div>
+		</div>
+         <div class="grid_12">
+            <div id="copyright" style="float:left;width:100%;padding-top:10px;margin:5px 0px 10px 0px;border-top:1px #1386b3 solid;">
+                <span style="float:left;"><a href="{$wa_url}">© 2014 / fonarik-market.ru  Интернет-магазин</a></span>
+            </div>  
+         </div>  
+
+        <div class="clear"></div>
+        <div id="fon_box" onClick="close_fone_1clk('#zakaz_30dney_block');close_popup1();close_popup();"></div>
+        <div id="onclick_buy">
+          <div class="onclick_buy_wrapper">
+          	<span class="onclick_buy_wrapper_text">Товар добавлен в корзину</span>
+            <div id="onclick_buy_wrapper_buttons">
+              <span class="onclick_buy_wrapper_shop" onclick="close_pop_up('#onclick_buy');">Продолжить покупки</span>
+              <span class="onclick_buy_wrapper_cart" onclick="location.href='/cart/'">Перейти в корзину</span>
+            </div>
+          </div>
+        </div>
+      </div>     
+    </div><!-- .f_navigation -->
+
+</div>
+  {* @event frontend_footer.%plugin_id% *}
+  {foreach $frontend_footer as $_}{$_}{/foreach}
+
+<script src="//config1.veinteractive.com/tags/C332A04C/A86B/47C8/A143/D5534D83373C/tag.js" type="text/javascript" async></script>

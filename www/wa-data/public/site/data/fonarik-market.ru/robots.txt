@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /*_openstat
+Disallow: /*from=adwords
+Disallow: /*utm_source*
+Disallow: /*gclid=
+Host: fonarik-market.ru
+Sitemap: http://fonarik-market.ru/sitemap.xml

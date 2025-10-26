@@ -1,0 +1,47 @@
+<section>
+<div class="second-page-container">
+<div class="block">
+<div class="container">
+<div class="header-for-light">
+    <h1 class="wow fadeInRight animated" data-wow-duration="1s"><span>Оформление</span> заказа</h1>
+</div>
+
+<div class="row">
+<article class="col-xs-12 col-sm-12 col-md-8 col-lg-8">
+<div class="box-border block-form wow fadeInLeft" data-wow-duration="1s">
+{if isset($checkout_steps)}
+    {foreach $checkout_steps as $step_id => $s}
+    <form method="post" action="">
+        {if $checkout_current_step == $step_id}
+            {if in_array($step_id,['contactinfo', 'shipping', 'payment', 'confirmation'])}
+                {include file="checkout.`$step_id`.html"}
+            {else}
+                {$s.content}
+            {/if}
+        {/if}
+    </form>
+    {/foreach}
+{else}
+    <div class="checkout-step">
+        {include file="checkout.`$checkout_current_step`.html"}
+    </div>
+{/if}
+</div>
+</article>
+<!--article class="col-xs-12 col-sm-12 col-md-4 col-lg-4">
+    <div class="block-form block-order-total box-border wow fadeInRight" data-wow-duration="1s">
+        <h3><i class="fa fa-dollar"></i>Заказ</h3>
+        <hr>
+
+        <ul class="list-unstyled">
+
+            <li><hr></li>
+            <li class="active"><b>Всего:</b> <strong></strong></li>
+        </ul>
+    </div>
+</article-->
+</div>
+</div>
+</div>
+</div>
+</section>
