@@ -11,8 +11,6 @@ database.sql
 !migrations/**/*.sql
 
 # SSL certificates (actual secrets)
-ssl/*.key
-ssl/*.pem
 !.ssl-template/.gitkeep
 
 # Environment
