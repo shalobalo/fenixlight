@@ -89,3 +89,34 @@ Admin panel: https://fenixlight.by/webasyst/
 ├── migrations/       # Database dumps & migrations
 └── backups/          # Database backups (gitignored)
 ```
+
+## Automated Backups
+
+### S3 Configuration
+
+Add to `.env`:
+```bash
+AWS_ACCESS_KEY_ID=your_key
+AWS_SECRET_ACCESS_KEY=your_secret
+AWS_REGION=us-east-1
+S3_BUCKET=your-bucket-name
+```
+
+### Backup Schedule
+- **Daily at 02:00 UTC**
+- **First run**: Full backup (database + www + configs + ssl)
+- **Subsequent**: Incremental (only changed files)
+- **Local retention**: 7 days
+- **S3 retention**: 30 days
+
+### Manual Backup
+```bash
+make db-backup  # Database only
+docker exec fenixlight-backup /backup-entrypoint.sh  # Trigger backup now
+```
+
+### Backup Contents
+- Database dump (gzipped)
+- Website files (www/)
+- Configurations (config/, nginx/)
+- SSL certificates
