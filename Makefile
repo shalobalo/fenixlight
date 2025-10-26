@@ -173,6 +173,10 @@ help:
 	@echo ""
 	@echo "PHP:"
 	@echo "  make php-upgrade     - Upgrade PHP version"
+	@echo ""
+	@echo "Environment:"
+	@echo "  PASSWORD=pass make env-encrypt  - Encrypt .env for git"
+	@echo "  PASSWORD=pass make env-decrypt  - Decrypt .env.encrypted"
 
 # Environment encryption (requires PASSWORD env var)
 env-encrypt:

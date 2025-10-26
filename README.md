@@ -17,7 +17,12 @@ E-commerce website for Fenix flashlights in Belarus. Built on Webasyst framework
 ```bash
 git clone <repo-url> fenixlight
 cd fenixlight
-make install
+
+# Decrypt environment (you'll be asked for password)
+PASSWORD=your-secret-password make env-decrypt
+
+# Or set PASSWORD and install in one go:
+PASSWORD=your-secret-password make install
 ```
 
 ### Local Development
@@ -25,7 +30,13 @@ make install
 ```bash
 git clone <repo-url> fenixlight
 cd fenixlight
+
+# Decrypt environment
+PASSWORD=your-secret-password make env-decrypt
+
+# Or use example (no real credentials)
 cp .env.example .env
+
 make ssl-generate-self-signed  # or make ssl-copy-from-prod
 make up
 ```
