@@ -60,7 +60,7 @@ services:
       - DB_USER=${DB_USER:-fenixrussiaru}
       - DB_PASSWORD=${DB_PASSWORD:-7P1a4N2o}
       - DB_NAME=${DB_NAME:-fenix_russia_ru}
-      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-/tmp/sa.json}
+      - GOOGLE_APPLICATION_CREDENTIALS=/tmp/sa.json
       - GCP_PROJECT_ID=${GCP_PROJECT_ID}
       - GCP_REGION=${GCP_REGION:-us-central1}
       - GCS_BUCKET=${GCS_BUCKET}
