@@ -30,11 +30,29 @@ if [ -n "$GCS_BUCKET" ]; then
     fi
 fi
 
+echo "Entering backup loop. Current time: $(date)"
+echo "Backup will trigger at 02:00 UTC daily"
+
+# Check if immediate backup is requested
+if [ "$FORCE_BACKUP" = "true" ]; then
+    echo "🚀 FORCE_BACKUP=true detected, running backup immediately..."
+    BACKUP_TRIGGERED=true
+else
+    BACKUP_TRIGGERED=false
+fi
+
 while true; do
     current_hour=$(date +%H)
     current_min=$(date +%M)
+    current_time=$(date '+%H:%M')
     
-    if [ "$current_hour" = "02" ] && [ "$current_min" = "00" ]; then
+    # Only log time check every 10 minutes to reduce spam
+    if [ $(($(date +%M) % 10)) -eq 0 ] && [ $(date +%S) -lt 30 ]; then
+        echo "Current time: $current_time UTC (waiting for 02:00 or FORCE_BACKUP)"
+    fi
+    
+    if [ "$BACKUP_TRIGGERED" = "true" ] || ([ "$current_hour" = "02" ] && [ "$current_min" = "00" ]); then
+        BACKUP_TRIGGERED=false  # Reset flag
         echo "Starting backup at $(date)"
         
         BACKUP_DATE=$(date +%Y%m%d_%H%M%S)
