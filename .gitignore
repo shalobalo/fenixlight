@@ -13,6 +13,9 @@ database.sql
 !.ssl-template/.gitkeep
 
 # Environment
+.env
+!.env.encrypted
+!.env.example
 *.local
 
 # IDE

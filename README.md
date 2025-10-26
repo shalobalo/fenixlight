@@ -120,3 +120,26 @@ docker exec fenixlight-backup /backup-entrypoint.sh  # Trigger backup now
 - Website files (www/)
 - Configurations (config/, nginx/)
 - SSL certificates
+
+## Environment Encryption
+
+The `.env` file contains secrets (DB passwords, AWS keys) and is encrypted for git.
+
+### Encrypt for commit
+```bash
+PASSWORD=your-secret-password make env-encrypt
+git add .env.encrypted
+git commit -m "Update environment"
+```
+
+### Decrypt on server
+```bash
+PASSWORD=your-secret-password make env-decrypt
+# or auto-decrypt during install:
+PASSWORD=your-secret-password make install
+```
+
+**Files:**
+- `.env` - Actual config (gitignored)
+- `.env.encrypted` - Encrypted version (committed to git)
+- `.env.example` - Template without secrets (committed to git)

@@ -23,6 +23,10 @@ install:
 		apt-get install -y docker-compose-plugin; \
 	}
 	@echo "Setting up environment..."
+	@if [ -f .env.encrypted ] && [ -n "$$PASSWORD" ]; then \
+		echo "Decrypting .env from .env.encrypted..."; \
+		openssl enc -aes-256-cbc -d -pbkdf2 -in .env.encrypted -out .env -k "$$PASSWORD" 2>/dev/null || echo "Decryption failed, using .env.example"; \
+	fi
 	@test -f .env || cp .env.example .env
 	@echo "Creating writable directories..."
 	@mkdir -p www/wa-cache www/wa-log www/wa-data/public
@@ -169,3 +173,17 @@ help:
 	@echo ""
 	@echo "PHP:"
 	@echo "  make php-upgrade     - Upgrade PHP version"
+
+# Environment encryption (requires PASSWORD env var)
+env-encrypt:
+	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make env-encrypt" && exit 1)
+	@echo "Encrypting .env file..."
+	@openssl enc -aes-256-cbc -salt -pbkdf2 -in .env -out .env.encrypted -k "$(PASSWORD)"
+	@echo "✅ .env encrypted to .env.encrypted"
+	@echo "You can now commit .env.encrypted to git"
+
+env-decrypt:
+	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make env-decrypt" && exit 1)
+	@echo "Decrypting .env.encrypted..."
+	@openssl enc -aes-256-cbc -d -pbkdf2 -in .env.encrypted -out .env -k "$(PASSWORD)"
+	@echo "✅ .env decrypted from .env.encrypted"
