@@ -4,8 +4,23 @@ set -e
 echo "Backup service starting..."
 echo "Schedule: Daily at 02:00 UTC"
 
+# Authenticate with GCP using service account
+if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ] && [ -f "$GOOGLE_APPLICATION_CREDENTIALS" ]; then
+    echo "Authenticating with GCP..."
+    gcloud auth activate-service-account --key-file="$GOOGLE_APPLICATION_CREDENTIALS"
+    if [ $? -eq 0 ]; then
+        echo "✅ GCP authentication successful"
+    else
+        echo "❌ GCP authentication failed"
+        exit 1
+    fi
+else
+    echo "❌ No GCP credentials found at $GOOGLE_APPLICATION_CREDENTIALS"
+    exit 1
+fi
+
 # Create GCS bucket if configured and doesn't exist
-if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ] && [ -n "$GCS_BUCKET" ]; then
+if [ -n "$GCS_BUCKET" ]; then
     echo "Checking GCS bucket..."
     if ! gsutil ls "gs://$GCS_BUCKET" >/dev/null 2>&1; then
         echo "Creating GCS bucket: $GCS_BUCKET"
@@ -48,7 +63,7 @@ while true; do
         fi
         
         # Upload to GCS
-        if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ] && [ -n "$GCS_BUCKET" ]; then
+        if [ -n "$GCS_BUCKET" ]; then
             echo "Uploading to GCS..."
             gsutil -m rsync -r -d "$BACKUP_DIR" "gs://$GCS_BUCKET/fenixlight/$BACKUP_DATE/"
             echo "Backup uploaded to gs://$GCS_BUCKET/fenixlight/$BACKUP_DATE/"
