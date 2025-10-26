@@ -4,14 +4,14 @@ set -e
 echo "Backup service starting..."
 echo "Schedule: Daily at 02:00 UTC"
 
-# Create S3 bucket if configured and doesn't exist
-if [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$S3_BUCKET" ]; then
-    echo "Checking S3 bucket..."
-    if ! aws s3 ls "s3://$S3_BUCKET" >/dev/null 2>&1; then
-        echo "Creating S3 bucket: $S3_BUCKET"
-        aws s3 mb "s3://$S3_BUCKET" --region "$AWS_DEFAULT_REGION" 2>&1 || echo "Bucket creation failed (might already exist)"
+# Create GCS bucket if configured and doesn't exist
+if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ] && [ -n "$GCS_BUCKET" ]; then
+    echo "Checking GCS bucket..."
+    if ! gsutil ls "gs://$GCS_BUCKET" >/dev/null 2>&1; then
+        echo "Creating GCS bucket: $GCS_BUCKET"
+        gsutil mb -p "$GCP_PROJECT_ID" -c STANDARD -l "$GCP_REGION" "gs://$GCS_BUCKET" 2>&1 || echo "Bucket creation failed (might already exist)"
     else
-        echo "S3 bucket exists: $S3_BUCKET"
+        echo "GCS bucket exists: $GCS_BUCKET"
     fi
 fi
 
@@ -47,23 +47,23 @@ while true; do
             find /ssl -newer /backups/$LAST_FULL/ssl-full.tar.gz -type f 2>/dev/null | tar czf "$BACKUP_DIR/ssl-diff.tar.gz" -T - 2>/dev/null || touch "$BACKUP_DIR/ssl-diff.tar.gz"
         fi
         
-        # Upload to S3
-        if [ -n "$AWS_ACCESS_KEY_ID" ] && [ -n "$S3_BUCKET" ]; then
-            echo "Uploading to S3..."
-            aws s3 sync "$BACKUP_DIR" "s3://$S3_BUCKET/fenixlight/$BACKUP_DATE/" --storage-class STANDARD_IA
-            echo "Backup uploaded to s3://$S3_BUCKET/fenixlight/$BACKUP_DATE/"
+        # Upload to GCS
+        if [ -n "$GOOGLE_APPLICATION_CREDENTIALS" ] && [ -n "$GCS_BUCKET" ]; then
+            echo "Uploading to GCS..."
+            gsutil -m rsync -r -d "$BACKUP_DIR" "gs://$GCS_BUCKET/fenixlight/$BACKUP_DATE/"
+            echo "Backup uploaded to gs://$GCS_BUCKET/fenixlight/$BACKUP_DATE/"
             
-            # Cleanup old S3 backups (keep 30 days)
+            # Cleanup old GCS backups (keep 30 days)
             CUTOFF_DATE=$(date -d '30 days ago' +%Y%m%d 2>/dev/null || date -v-30d +%Y%m%d)
-            aws s3 ls "s3://$S3_BUCKET/fenixlight/" | awk '{print $2}' | while read prefix; do
-                backup_date=$(echo "$prefix" | cut -d'_' -f1)
+            gsutil ls "gs://$GCS_BUCKET/fenixlight/" | grep -E '/[0-9]{8}_[0-9]{6}/$' | while read backup_path; do
+                backup_date=$(basename "$backup_path" | cut -d'_' -f1)
                 if [ "$backup_date" \< "$CUTOFF_DATE" ]; then
-                    echo "Removing old S3 backup: $prefix"
-                    aws s3 rm "s3://$S3_BUCKET/fenixlight/$prefix" --recursive
+                    echo "Removing old GCS backup: $backup_path"
+                    gsutil -m rm -r "$backup_path"
                 fi
             done
         else
-            echo "S3 credentials not configured, backup saved locally only"
+            echo "GCS credentials not configured, backup saved locally only"
         fi
         
         # Cleanup old local backups (keep 7 days)

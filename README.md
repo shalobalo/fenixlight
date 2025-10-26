@@ -103,22 +103,24 @@ Admin panel: https://fenixlight.by/webasyst/
 
 ## Automated Backups
 
-### S3 Configuration
+### GCP Cloud Storage Configuration
 
 Add to `.env`:
 ```bash
-AWS_ACCESS_KEY_ID=your_key
-AWS_SECRET_ACCESS_KEY=your_secret
-AWS_REGION=us-east-1
-S3_BUCKET=your-bucket-name
+GCP_PROJECT_ID=your-project-id
+GCP_REGION=us-central1
+GCS_BUCKET=your-bucket-name
+GOOGLE_APPLICATION_CREDENTIALS=/tmp/sa.json
 ```
+
+Place your GCP service account JSON key file as `sa.json` in the project root.
 
 ### Backup Schedule
 - **Daily at 02:00 UTC**
 - **First run**: Full backup (database + www + configs + ssl)
 - **Subsequent**: Incremental (only changed files)
 - **Local retention**: 7 days
-- **S3 retention**: 30 days
+- **GCS retention**: 30 days
 
 ### Manual Backup
 ```bash
@@ -134,18 +136,18 @@ docker exec fenixlight-backup /backup-entrypoint.sh  # Trigger backup now
 
 ## Environment Encryption
 
-The `.env` file contains secrets (DB passwords, AWS keys) and is encrypted for git.
+The `.env` file contains secrets (DB passwords, GCP credentials) and is encrypted for git.
 
 ### Encrypt for commit
 ```bash
-PASSWORD=your-secret-password make env-encrypt
-git add .env.encrypted
-git commit -m "Update environment"
+PASSWORD=your-secret-password make encrypt
+git add .env.encrypted sa.json.encrypted
+git commit -m "Update encrypted credentials"
 ```
 
 ### Decrypt on server
 ```bash
-PASSWORD=your-secret-password make env-decrypt
+PASSWORD=your-secret-password make decrypt
 # or auto-decrypt during install:
 PASSWORD=your-secret-password make install
 ```
@@ -154,3 +156,5 @@ PASSWORD=your-secret-password make install
 - `.env` - Actual config (gitignored)
 - `.env.encrypted` - Encrypted version (committed to git)
 - `.env.example` - Template without secrets (committed to git)
+- `sa.json` - GCP service account key (gitignored)
+- `sa.json.encrypted` - Encrypted service account key (committed to git)

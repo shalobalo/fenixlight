@@ -60,16 +60,17 @@ services:
       - DB_USER=${DB_USER:-fenixrussiaru}
       - DB_PASSWORD=${DB_PASSWORD:-7P1a4N2o}
       - DB_NAME=${DB_NAME:-fenix_russia_ru}
-      - AWS_ACCESS_KEY_ID=${AWS_ACCESS_KEY_ID}
-      - AWS_SECRET_ACCESS_KEY=${AWS_SECRET_ACCESS_KEY}
-      - AWS_DEFAULT_REGION=${AWS_REGION:-us-east-1}
-      - S3_BUCKET=${S3_BUCKET}
+      - GOOGLE_APPLICATION_CREDENTIALS=${GOOGLE_APPLICATION_CREDENTIALS:-/tmp/sa.json}
+      - GCP_PROJECT_ID=${GCP_PROJECT_ID}
+      - GCP_REGION=${GCP_REGION:-us-central1}
+      - GCS_BUCKET=${GCS_BUCKET}
     volumes:
       - ${WWW_PATH:-./www}:/www:ro
       - ./config:/config:ro
       - ./nginx:/nginx:ro
       - ./ssl:/ssl:ro
       - backup-data:/backups
+      - ./sa.json:/tmp/sa.json:ro
     networks:
       - fenixlight-net
     depends_on:

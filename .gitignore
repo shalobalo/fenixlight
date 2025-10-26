@@ -13,6 +13,7 @@ database.sql
 !.ssl-template/.gitkeep
 
 # Environment
+sa.json
 .env
 !.env.encrypted
 !.env.example
@@ -29,3 +30,7 @@ Thumbs.db
 
 # Docker volumes
 docker-compose.override.yml
+
+# GCP Service Account (unencrypted)
+sa.json
+!sa.json.encrypted

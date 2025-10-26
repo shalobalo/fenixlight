@@ -23,9 +23,9 @@ install:
 		apt-get install -y docker-compose-plugin; \
 	}
 	@echo "Setting up environment..."
-	@if [ -f .env.encrypted ] && [ -n "$$PASSWORD" ]; then \
-		echo "Decrypting .env from .env.encrypted..."; \
-		openssl enc -aes-256-cbc -d -pbkdf2 -in .env.encrypted -out .env -k "$$PASSWORD" 2>/dev/null || echo "Decryption failed, using .env.example"; \
+	@if [ -n "$$PASSWORD" ] && ([ -f .env.encrypted ] || [ -f sa.json.encrypted ]); then \
+		echo "Decrypting sensitive files..."; \
+		$(MAKE) decrypt PASSWORD="$$PASSWORD" 2>/dev/null || echo "Decryption failed, check PASSWORD"; \
 	fi
 	@test -f .env || cp .env.example .env
 	@echo "Creating writable directories..."
@@ -145,6 +145,33 @@ web-shell:
 nginx-shell:
 	docker exec -it fenixlight-nginx sh
 
+backup-shell:
+	docker exec -it fenixlight-backup bash
+
+# GCP Cloud Storage operations
+gcs-list-backups:
+	@test -n "$(GCS_BUCKET)" || (echo "Error: GCS_BUCKET not set in .env" && exit 1)
+	gsutil ls "gs://$(GCS_BUCKET)/fenixlight/"
+
+gcs-download-backup:
+	@test -n "$(GCS_BUCKET)" || (echo "Error: GCS_BUCKET not set in .env" && exit 1)
+	@test -n "$(BACKUP_DATE)" || (echo "Error: BACKUP_DATE not set. Use: make gcs-download-backup BACKUP_DATE=20241026_020000" && exit 1)
+	@mkdir -p downloads
+	gsutil -m rsync -r "gs://$(GCS_BUCKET)/fenixlight/$(BACKUP_DATE)/" downloads/$(BACKUP_DATE)/
+	@echo "Backup downloaded to downloads/$(BACKUP_DATE)/"
+
+gcs-cleanup-old:
+	@test -n "$(GCS_BUCKET)" || (echo "Error: GCS_BUCKET not set in .env" && exit 1)
+	@echo "Cleaning up GCS backups older than 30 days..."
+	@CUTOFF_DATE=$$(date -d '30 days ago' +%Y%m%d 2>/dev/null || date -v-30d +%Y%m%d); \
+	gsutil ls "gs://$(GCS_BUCKET)/fenixlight/" | grep -E '/[0-9]{8}_[0-9]{6}/$$' | while read backup_path; do \
+		backup_date=$$(basename "$$backup_path" | cut -d'_' -f1); \
+		if [ "$$backup_date" \< "$$CUTOFF_DATE" ]; then \
+			echo "Removing old backup: $$backup_path"; \
+			gsutil -m rm -r "$$backup_path"; \
+		fi; \
+	done
+
 # Help
 help:
 	@echo "Fenixlight Development Environment"
@@ -167,6 +194,11 @@ help:
 	@echo "  make migrate         - Run migrations"
 	@echo "  make migrate-create  - Create new migration"
 	@echo ""
+	@echo "GCP Cloud Storage:"
+	@echo "  make gcs-list-backups           - List all GCS backups"
+	@echo "  make gcs-download-backup BACKUP_DATE=... - Download specific backup"
+	@echo "  make gcs-cleanup-old            - Remove backups older than 30 days"
+	@echo ""
 	@echo "SSL:"
 	@echo "  make ssl-generate-self-signed - Generate dev certificates"
 	@echo "  make ssl-copy-from-prod       - Copy from production"
@@ -174,20 +206,37 @@ help:
 	@echo "PHP:"
 	@echo "  make php-upgrade     - Upgrade PHP version"
 	@echo ""
-	@echo "Environment:"
-	@echo "  PASSWORD=pass make env-encrypt  - Encrypt .env for git"
-	@echo "  PASSWORD=pass make env-decrypt  - Decrypt .env.encrypted"
+	@echo "Security & Encryption:"
+	@echo "  PASSWORD=pass make encrypt        - Encrypt all sensitive files"
+	@echo "  PASSWORD=pass make decrypt        - Decrypt all sensitive files"
 
-# Environment encryption (requires PASSWORD env var)
-env-encrypt:
-	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make env-encrypt" && exit 1)
-	@echo "Encrypting .env file..."
-	@openssl enc -aes-256-cbc -salt -pbkdf2 -in .env -out .env.encrypted -k "$(PASSWORD)"
-	@echo "✅ .env encrypted to .env.encrypted"
-	@echo "You can now commit .env.encrypted to git"
+# Security & Encryption (requires PASSWORD env var)
+encrypt:
+	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make encrypt" && exit 1)
+	@echo "Encrypting sensitive files..."
+	@if [ -f .env ]; then \
+		echo "Encrypting .env..."; \
+		openssl enc -aes-256-cbc -salt -pbkdf2 -in .env -out .env.encrypted -k "$(PASSWORD)"; \
+		echo "✅ .env encrypted"; \
+	fi
+	@if [ -f sa.json ]; then \
+		echo "Encrypting sa.json..."; \
+		openssl enc -aes-256-cbc -salt -pbkdf2 -in sa.json -out sa.json.encrypted -k "$(PASSWORD)"; \
+		echo "✅ sa.json encrypted"; \
+	fi
+	@echo "✅ All sensitive files encrypted and ready for git commit"
 
-env-decrypt:
-	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make env-decrypt" && exit 1)
-	@echo "Decrypting .env.encrypted..."
-	@openssl enc -aes-256-cbc -d -pbkdf2 -in .env.encrypted -out .env -k "$(PASSWORD)"
-	@echo "✅ .env decrypted from .env.encrypted"
+decrypt:
+	@test -n "$(PASSWORD)" || (echo "Error: PASSWORD not set. Use: PASSWORD=yourpass make decrypt" && exit 1)
+	@echo "Decrypting sensitive files..."
+	@if [ -f .env.encrypted ]; then \
+		echo "Decrypting .env..."; \
+		openssl enc -aes-256-cbc -d -pbkdf2 -in .env.encrypted -out .env -k "$(PASSWORD)"; \
+		echo "✅ .env decrypted"; \
+	fi
+	@if [ -f sa.json.encrypted ]; then \
+		echo "Decrypting sa.json..."; \
+		openssl enc -aes-256-cbc -d -pbkdf2 -in sa.json.encrypted -out sa.json -k "$(PASSWORD)"; \
+		echo "✅ sa.json decrypted"; \
+	fi
+	@echo "✅ All sensitive files decrypted"
